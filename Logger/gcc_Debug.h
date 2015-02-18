@@ -366,7 +366,6 @@
 #define __QQ_IBIT__ 0
 #define __ATOMIC_ACQ_REL 4
 #define __ATOMIC_RELEASE 3
-#define DEBUG 
 #endif
 
 // --- Include directories begin --- //
