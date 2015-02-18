@@ -22,9 +22,24 @@
     <ClCompile Include="Logger.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
+    <ClCompile Include="Appender.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="LogFileAppender.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Logger.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="Appender.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="Common.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="LogFileAppender.h">
       <Filter>Header files</Filter>
     </ClInclude>
   </ItemGroup>

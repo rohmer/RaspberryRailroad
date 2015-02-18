@@ -61,9 +61,14 @@
   <ItemDefinitionGroup>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Appender.cpp" />
+    <ClCompile Include="LogFileAppender.cpp" />
     <ClCompile Include="Logger.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Appender.h" />
+    <ClInclude Include="Common.h" />
+    <ClInclude Include="LogFileAppender.h" />
     <ClInclude Include="Logger.h" />
   </ItemGroup>
   <ItemGroup>
