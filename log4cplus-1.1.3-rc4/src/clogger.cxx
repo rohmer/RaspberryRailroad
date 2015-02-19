@@ -4,7 +4,7 @@
 // Author:  Jens Rehsack
 //
 //
-// Copyright 2011-2013 Jens Rehsack & Tad E. Smith
+// Copyright 2011-2015 Jens Rehsack & Tad E. Smith
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -157,7 +157,7 @@ log4cplus_logger_log(const log4cplus_char_t *name, loglevel_t ll,
             }
             while (retval == -1);
 
-            logger.forcedLog(ll, msg);
+            logger.forcedLog(ll, msg, 0, -1);
         }
 
         retval = 0;
@@ -191,7 +191,7 @@ log4cplus_logger_force_log(const log4cplus_char_t *name, loglevel_t ll,
         }
         while (retval == -1);
 
-        logger.forcedLog(ll, msg);
+        logger.forcedLog(ll, msg, 0, -1);
 
         retval = 0;
     }

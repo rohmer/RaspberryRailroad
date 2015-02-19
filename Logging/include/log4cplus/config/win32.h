@@ -5,7 +5,7 @@
 // Author:  Tad E. Smith
 //
 //
-// Copyright 2003-2013 Tad E. Smith
+// Copyright 2003-2015 Tad E. Smith
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -68,6 +68,7 @@
 #define LOG4CPLUS_HAVE_SYS_STAT_H
 #define LOG4CPLUS_HAVE_TIME_H
 #define LOG4CPLUS_HAVE_STDLIB_H
+#define LOG4CPLUS_HAVE_DIRECT_H
 
 // MSVC has both and so does MinGW.
 #define LOG4CPLUS_HAVE_VSNPRINTF
@@ -159,6 +160,7 @@
 #  endif
 #  if _MSC_VER >= 1700
 #    define LOG4CPLUS_HAVE_CXX11_ATOMICS
+#    define LOG4CPLUS_WITH_CXX11_THREADS
 #  endif
 #endif
 

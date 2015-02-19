@@ -176,6 +176,7 @@ Debug/factory.o: ../src/factory.cxx \
  ../include/log4cplus/socketappender.h \
  ../include/log4cplus/helpers/socket.h \
  ../include/log4cplus/helpers/socketbuffer.h \
+ ../include/log4cplus/helpers/connectorthread.h \
  ../include/log4cplus/syslogappender.h \
  ../include/log4cplus/win32debugappender.h \
  ../include/log4cplus/win32consoleappender.h \

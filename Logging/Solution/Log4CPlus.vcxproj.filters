@@ -235,6 +235,9 @@
     <ClInclude Include="..\include\log4cplus\config.h">
       <Filter>config</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\log4cplus\helpers\connectorthread.h">
+      <Filter>helpers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\asyncappender.cxx">
@@ -318,9 +321,6 @@
     <ClCompile Include="..\src\appender.cxx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\appenderattachableimpl.cxx">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\clogger.cxx">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -380,6 +380,12 @@
     </ClCompile>
     <ClCompile Include="..\src\threads.cxx">
       <Filter>thread</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\appenderattachableimpl.cxx">
+      <Filter>helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\connectorthread.cxx">
+      <Filter>helpers</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

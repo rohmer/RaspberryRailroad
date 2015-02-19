@@ -4,7 +4,7 @@
 // Author:  Tad E. Smith
 //
 //
-// Copyright 2001-2013 Tad E. Smith
+// Copyright 2001-2015 Tad E. Smith
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -79,7 +79,7 @@ defaultStringToLogLevelMethod(const tstring& s)
     switch (s[0])
     {
 #define DEF_LLMATCH(_chr, _logLevel)                 \
-        case LOG4CPLUS_TEXT (_chr):                  \
+        case _chr:                                   \
             if (s == _logLevel ## _STRING)           \
                 return _logLevel ## _LOG_LEVEL;      \
             else                                     \
@@ -109,12 +109,9 @@ defaultStringToLogLevelMethod(const tstring& s)
 
 LogLevelManager::LogLevelManager()
 {
-    LogLevelToStringMethodRec rec;
-    rec.func = defaultLogLevelToStringMethod;
-    rec.use_1_0 = false;
-    toStringMethods.push_back (rec);
+    pushToStringMethod (defaultLogLevelToStringMethod);
 
-    fromStringMethods.push_back (defaultStringToLogLevelMethod);
+    pushFromStringMethod (defaultStringToLogLevelMethod);
 }
 
 
@@ -181,7 +178,7 @@ LogLevelManager::pushToStringMethod(LogLevelToStringMethod newToString)
     LogLevelToStringMethodRec rec;
     rec.func = newToString;
     rec.use_1_0 = false;
-    toStringMethods.push_back (rec);
+    toStringMethods.insert (toStringMethods.begin (), rec);
 }
 
 
@@ -191,14 +188,14 @@ LogLevelManager::pushToStringMethod(LogLevelToStringMethod_1_0 newToString)
     LogLevelToStringMethodRec rec;
     rec.func_1_0 = newToString;
     rec.use_1_0 = true;
-    toStringMethods.push_back (rec);
+    toStringMethods.insert (toStringMethods.begin (), rec);
 }
 
 
 void
 LogLevelManager::pushFromStringMethod(StringToLogLevelMethod newFromString)
 {
-    fromStringMethods.push_back (newFromString);
+    fromStringMethods.insert (fromStringMethods.begin (), newFromString);
 }
 
 

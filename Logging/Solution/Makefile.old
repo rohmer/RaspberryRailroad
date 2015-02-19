@@ -23,7 +23,7 @@ error:
 	$(error Invalid configuration, please check your inputs)
 endif
 
-SOURCEFILES :=
+SOURCEFILES := ../src/appender.cxx ../src/appenderattachableimpl.cxx ../src/asyncappender.cxx ../src/clogger.cxx ../src/configurator.cxx ../src/consoleappender.cxx ../src/env.cxx ../src/factory.cxx ../src/fileappender.cxx ../src/fileinfo.cxx ../src/global-init.cxx ../src/hierarchy.cxx ../src/hierarchylocker.cxx ../src/layout.cxx ../src/lockfile.cxx ../src/log4judpappender.cxx ../src/logger.cxx ../src/loggerimpl.cxx ../src/loggingevent.cxx ../src/loggingmacros.cxx ../src/loglevel.cxx ../src/loglog.cxx ../src/logloguser.cxx ../src/mdc.cxx ../src/ndc.cxx ../src/nteventlogappender.cxx ../src/nullappender.cxx ../src/objectregistry.cxx ../src/patternlayout.cxx ../src/pointer.cxx ../src/property.cxx ../src/queue.cxx ../src/rootlogger.cxx ../src/sleep.cxx ../src/snprintf.cxx ../src/socket.cxx ../src/socketappender.cxx ../src/stringhelper-clocale.cxx ../src/stringhelper-cxxlocale.cxx ../src/stringhelper-iconv.cxx ../src/stringhelper.cxx ../src/syncprims.cxx ../src/syslogappender.cxx ../src/threads.cxx ../src/timehelper.cxx ../src/version.cxx ../src/win32consoleappender.cxx ../src/win32debugappender.cxx
 EXTERNAL_LIBS := 
 EXTERNAL_LIBS_COPIED := $(foreach lib, $(EXTERNAL_LIBS),$(BINARYDIR)/$(notdir $(lib)))
 
@@ -163,3 +163,196 @@ $(BINARYDIR)/%.o : %.cxx $(all_make_files) |$(BINARYDIR)
 	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
 
 #VisualGDB: GeneratedRules				#<--- All lines below are auto-generated
+
+
+$(BINARYDIR)/appender.o : ../src/appender.cxx $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/appenderattachableimpl.o : ../src/appenderattachableimpl.cxx $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/asyncappender.o : ../src/asyncappender.cxx $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/clogger.o : ../src/clogger.cxx $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/configurator.o : ../src/configurator.cxx $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/consoleappender.o : ../src/consoleappender.cxx $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/env.o : ../src/env.cxx $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/factory.o : ../src/factory.cxx $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/fileappender.o : ../src/fileappender.cxx $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/fileinfo.o : ../src/fileinfo.cxx $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/global-init.o : ../src/global-init.cxx $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/hierarchy.o : ../src/hierarchy.cxx $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/hierarchylocker.o : ../src/hierarchylocker.cxx $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/layout.o : ../src/layout.cxx $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/lockfile.o : ../src/lockfile.cxx $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/log4judpappender.o : ../src/log4judpappender.cxx $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/logger.o : ../src/logger.cxx $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/loggerimpl.o : ../src/loggerimpl.cxx $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/loggingevent.o : ../src/loggingevent.cxx $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/loggingmacros.o : ../src/loggingmacros.cxx $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/loglevel.o : ../src/loglevel.cxx $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/loglog.o : ../src/loglog.cxx $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/logloguser.o : ../src/logloguser.cxx $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/mdc.o : ../src/mdc.cxx $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/ndc.o : ../src/ndc.cxx $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/nteventlogappender.o : ../src/nteventlogappender.cxx $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/nullappender.o : ../src/nullappender.cxx $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/objectregistry.o : ../src/objectregistry.cxx $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/patternlayout.o : ../src/patternlayout.cxx $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/pointer.o : ../src/pointer.cxx $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/property.o : ../src/property.cxx $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/queue.o : ../src/queue.cxx $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/rootlogger.o : ../src/rootlogger.cxx $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/sleep.o : ../src/sleep.cxx $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/snprintf.o : ../src/snprintf.cxx $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/socket.o : ../src/socket.cxx $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/socketappender.o : ../src/socketappender.cxx $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/stringhelper-clocale.o : ../src/stringhelper-clocale.cxx $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/stringhelper-cxxlocale.o : ../src/stringhelper-cxxlocale.cxx $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/stringhelper-iconv.o : ../src/stringhelper-iconv.cxx $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/stringhelper.o : ../src/stringhelper.cxx $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/syncprims.o : ../src/syncprims.cxx $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/syslogappender.o : ../src/syslogappender.cxx $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/threads.o : ../src/threads.cxx $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/timehelper.o : ../src/timehelper.cxx $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/version.o : ../src/version.cxx $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/win32consoleappender.o : ../src/win32consoleappender.cxx $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/win32debugappender.o : ../src/win32debugappender.cxx $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+

@@ -1,4 +1,4 @@
-//  Copyright (C) 2009-2013, Vaclav Haisman. All rights reserved.
+//  Copyright (C) 2009-2015, Vaclav Haisman. All rights reserved.
 //
 //  Redistribution and use in source and binary forms, with or without modifica-
 //  tion, are permitted provided that the following conditions are met:
@@ -117,6 +117,17 @@
     /* empty */
 #endif
 
+#if defined (__GNUC__) \
+    && (__GNUC__ > 4 || (__GNUC__ == 4 && __GNUC_MINOR__ >= 8))
+#  define LOG4CPLUS_CALLER_FILE() __builtin_FILE ()
+#  define LOG4CPLUS_CALLER_LINE() __builtin_LINE ()
+#  define LOG4CPLUS_CALLER_FUNCTION() __builtin_FUNCTION ()
+#else
+#  define LOG4CPLUS_CALLER_FILE() (NULL)
+#  define LOG4CPLUS_CALLER_LINE() (-1)
+#  define LOG4CPLUS_CALLER_FUNCTION() (NULL)
+#endif
+
 #if defined (__GNUC__) && __GNUC__ >= 3
 #  define LOG4CPLUS_ATTRIBUTE_NORETURN __attribute__ ((__noreturn__))
 #  define LOG4CPLUS_ATTRIBUTE_PURE __attribute__ ((__pure__))
@@ -143,9 +154,12 @@
 #  pragma once
 #endif
 
-#if defined (LOG4CPLUS_HAVE_FUNC_ATTRIBUTE_CONSTRUCTOR)
+#if defined (LOG4CPLUS_HAVE_FUNC_ATTRIBUTE_CONSTRUCTOR_PRIORITY)
 #  define LOG4CPLUS_CONSTRUCTOR_FUNC(prio) \
     __attribute__ ((__constructor__ ((prio))))
+#elif defined (LOG4CPLUS_HAVE_FUNC_ATTRIBUTE_CONSTRUCTOR)
+#  define LOG4CPLUS_CONSTRUCTOR_FUNC(prio) \
+    __attribute__ ((__constructor__))
 #else
 #  define LOG4CPLUS_CONSTRUCTOR_FUNC(prio) /* empty */
 #endif

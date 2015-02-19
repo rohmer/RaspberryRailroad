@@ -106,6 +106,11 @@ Debug/loglog.o: ../src/loglog.cxx \
  c:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\4.9\cassert \
  c:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\assert.h \
  ../include/log4cplus/internal/env.h \
+ c:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\4.9\vector \
+ c:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\4.9\bits\stl_uninitialized.h \
+ c:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\4.9\bits\stl_vector.h \
+ c:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\4.9\bits\stl_bvector.h \
+ c:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\4.9\bits\vector.tcc \
  c:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\unistd.h \
  c:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf\bits\posix_opt.h \
  c:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf\bits\environments.h \
@@ -113,11 +118,6 @@ Debug/loglog.o: ../src/loglog.cxx \
  c:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\getopt.h \
  ../include/log4cplus/consoleappender.h ../include/log4cplus/appender.h \
  ../include/log4cplus/layout.h ../include/log4cplus/loglevel.h \
- c:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\4.9\vector \
- c:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\4.9\bits\stl_uninitialized.h \
- c:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\4.9\bits\stl_vector.h \
- c:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\4.9\bits\stl_bvector.h \
- c:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\4.9\bits\vector.tcc \
  ../include/log4cplus/spi/filter.h \
  ../include/log4cplus/helpers/lockfile.h \
  c:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\4.9\memory \

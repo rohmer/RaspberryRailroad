@@ -4,7 +4,7 @@
 // Author:  Tad E. Smith
 //
 //
-// Copyright 2002-2013 Tad E. Smith
+// Copyright 2002-2015 Tad E. Smith
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -141,14 +141,41 @@ public:
 } // namespace spi
 
 
+namespace
+{
+
+template <typename Factory>
+struct DisableFactoryLocking
+{
+    typedef Factory factory_type;
+
+    DisableFactoryLocking (factory_type & f)
+        : factory (f)
+    {
+        factory._enableLocking (false);
+    }
+
+    ~DisableFactoryLocking ()
+    {
+        factory._enableLocking (true);
+    }
+
+    factory_type & factory;
+};
+
+} // namespace
+
+
 void initializeFactoryRegistry()
 {
     spi::AppenderFactoryRegistry& reg = spi::getAppenderFactoryRegistry();
+    DisableFactoryLocking<spi::AppenderFactoryRegistry> dfl_reg (reg);
     LOG4CPLUS_REG_APPENDER (reg, ConsoleAppender);
     LOG4CPLUS_REG_APPENDER (reg, NullAppender);
     LOG4CPLUS_REG_APPENDER (reg, FileAppender);
     LOG4CPLUS_REG_APPENDER (reg, RollingFileAppender);
     LOG4CPLUS_REG_APPENDER (reg, DailyRollingFileAppender);
+    LOG4CPLUS_REG_APPENDER (reg, TimeBasedRollingFileAppender);
     LOG4CPLUS_REG_APPENDER (reg, SocketAppender);
 #if defined(_WIN32)
 #  if defined(LOG4CPLUS_HAVE_NT_EVENT_LOG)
@@ -166,17 +193,20 @@ void initializeFactoryRegistry()
     LOG4CPLUS_REG_APPENDER (reg, Log4jUdpAppender);
 
     spi::LayoutFactoryRegistry& reg2 = spi::getLayoutFactoryRegistry();
+    DisableFactoryLocking<spi::LayoutFactoryRegistry> dfl_reg2 (reg2);
     LOG4CPLUS_REG_LAYOUT (reg2, SimpleLayout);
     LOG4CPLUS_REG_LAYOUT (reg2, TTCCLayout);
     LOG4CPLUS_REG_LAYOUT (reg2, PatternLayout);
 
     spi::FilterFactoryRegistry& reg3 = spi::getFilterFactoryRegistry();
+    DisableFactoryLocking<spi::FilterFactoryRegistry> dfl_reg3 (reg3);
     LOG4CPLUS_REG_FILTER (reg3, DenyAllFilter);
     LOG4CPLUS_REG_FILTER (reg3, LogLevelMatchFilter);
     LOG4CPLUS_REG_FILTER (reg3, LogLevelRangeFilter);
     LOG4CPLUS_REG_FILTER (reg3, StringMatchFilter);
 
     spi::LocaleFactoryRegistry& reg4 = spi::getLocaleFactoryRegistry();
+    DisableFactoryLocking<spi::LocaleFactoryRegistry> dfl_reg4 (reg4);
     LOG4CPLUS_REG_LOCALE (reg4, LOG4CPLUS_TEXT("GLOBAL"), spi::GlobalLocale);
     LOG4CPLUS_REG_LOCALE (reg4, LOG4CPLUS_TEXT("DEFAULT"), spi::GlobalLocale);
     LOG4CPLUS_REG_LOCALE (reg4, LOG4CPLUS_TEXT("USER"), spi::UserLocale);

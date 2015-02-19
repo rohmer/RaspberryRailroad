@@ -176,6 +176,12 @@ Debug/fileappender.o: ../src/fileappender.cxx \
  ../include/log4cplus/thread/impl/tls.h \
  ../include/log4cplus/helpers/snprintf.h \
  c:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\4.9\cstdarg \
+ ../include/log4cplus/internal/env.h \
+ c:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\unistd.h \
+ c:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf\bits\posix_opt.h \
+ c:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf\bits\environments.h \
+ c:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf\bits\confname.h \
+ c:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\getopt.h \
  c:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\4.9\stdexcept \
  c:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\4.9\cerrno \
  c:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\errno.h \

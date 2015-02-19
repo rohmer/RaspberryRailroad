@@ -118,6 +118,7 @@ Debug/socketappender.o: ../src/socketappender.cxx \
  ../include/log4cplus/helpers/socket.h \
  ../include/log4cplus/helpers/socketbuffer.h \
  ../include/log4cplus/thread/threads.h \
+ ../include/log4cplus/helpers/connectorthread.h \
  ../include/log4cplus/spi/loggingevent.h ../include/log4cplus/ndc.h \
  c:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\4.9\map \
  c:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\4.9\bits\stl_tree.h \

@@ -81,6 +81,7 @@
     <ClInclude Include="..\include\log4cplus\fileappender.h" />
     <ClInclude Include="..\include\log4cplus\fstreams.h" />
     <ClInclude Include="..\include\log4cplus\helpers\appenderattachableimpl.h" />
+    <ClInclude Include="..\include\log4cplus\helpers\connectorthread.h" />
     <ClInclude Include="..\include\log4cplus\helpers\fileinfo.h" />
     <ClInclude Include="..\include\log4cplus\helpers\lockfile.h" />
     <ClInclude Include="..\include\log4cplus\helpers\loglog.h" />
@@ -140,6 +141,7 @@
     <ClCompile Include="..\src\asyncappender.cxx" />
     <ClCompile Include="..\src\clogger.cxx" />
     <ClCompile Include="..\src\configurator.cxx" />
+    <ClCompile Include="..\src\connectorthread.cxx" />
     <ClCompile Include="..\src\consoleappender.cxx" />
     <ClCompile Include="..\src\env.cxx" />
     <ClCompile Include="..\src\factory.cxx" />
