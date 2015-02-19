@@ -1,0 +1,3 @@
+Debug/piNes.o: ../devLib/piNes.c \
+ c:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\stdc-predef.h \
+ ../wiringPI/wiringPi.h ../devLib/piNes.h

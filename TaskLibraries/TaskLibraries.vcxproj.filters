@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Make files">
+      <UniqueIdentifier>{1d58d4e7-cc54-4390-8d11-64ba0fd709a5}</UniqueIdentifier>
+      <Extensions>*.mak</Extensions>
+    </Filter>
+    <Filter Include="TaskBase">
+      <UniqueIdentifier>{edb56952-594e-4dac-819d-c2df92c08f15}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="LEDTask">
+      <UniqueIdentifier>{9f6d506d-49c5-42ad-8f8d-a6d91023fb1a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Makefile" />
+    <None Include="debug.mak">
+      <Filter>Make files</Filter>
+    </None>
+    <None Include="release.mak">
+      <Filter>Make files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="TaskBase\TaskBase.cpp">
+      <Filter>TaskBase</Filter>
+    </ClCompile>
+    <ClCompile Include="LEDTask\LEDTask.cpp">
+      <Filter>LEDTask</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="TaskBase\TaskBase.h">
+      <Filter>TaskBase</Filter>
+    </ClInclude>
+    <ClInclude Include="LEDTask\LEDTask.h">
+      <Filter>LEDTask</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

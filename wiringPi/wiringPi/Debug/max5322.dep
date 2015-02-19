@@ -1,0 +1,3 @@
+Debug/max5322.o: max5322.c \
+ c:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\stdc-predef.h \
+ ../wiringPI/wiringPi.h ../wiringPI/wiringPiSPI.h max5322.h

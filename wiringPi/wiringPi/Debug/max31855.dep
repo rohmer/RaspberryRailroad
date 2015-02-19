@@ -1,0 +1,3 @@
+Debug/max31855.o: max31855.c \
+ c:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\stdc-predef.h \
+ ../wiringPI/wiringPi.h ../wiringPI/wiringPiSPI.h max31855.h
