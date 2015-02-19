@@ -1,14 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.22310.1
+VisualStudioVersion = 14.0.22512.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TaskLibraries", "TaskLibraries.vcxproj", "{542DD695-A5C3-42BA-89E7-47BC491D31D6}"
 	ProjectSection(ProjectDependencies) = postProject
 		{31172E34-FEE3-4CE2-9691-07CC1BA2B371} = {31172E34-FEE3-4CE2-9691-07CC1BA2B371}
+		{C2A0FFC1-44BF-4AEE-B4C1-937F1DC998D6} = {C2A0FFC1-44BF-4AEE-B4C1-937F1DC998D6}
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Log4CPlus", "..\Logging\Solution\Log4CPlus.vcxproj", "{31172E34-FEE3-4CE2-9691-07CC1BA2B371}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "wiringPi", "..\wiringPi\wiringPi\wiringPi.vcxproj", "{C2A0FFC1-44BF-4AEE-B4C1-937F1DC998D6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,6 +27,10 @@ Global
 		{31172E34-FEE3-4CE2-9691-07CC1BA2B371}.Debug|Win32.Build.0 = Debug|Win32
 		{31172E34-FEE3-4CE2-9691-07CC1BA2B371}.Release|Win32.ActiveCfg = Release|Win32
 		{31172E34-FEE3-4CE2-9691-07CC1BA2B371}.Release|Win32.Build.0 = Release|Win32
+		{C2A0FFC1-44BF-4AEE-B4C1-937F1DC998D6}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C2A0FFC1-44BF-4AEE-B4C1-937F1DC998D6}.Debug|Win32.Build.0 = Debug|Win32
+		{C2A0FFC1-44BF-4AEE-B4C1-937F1DC998D6}.Release|Win32.ActiveCfg = Release|Win32
+		{C2A0FFC1-44BF-4AEE-B4C1-937F1DC998D6}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

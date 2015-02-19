@@ -370,7 +370,6 @@
 #endif
 
 // --- Include directories begin --- //
-//..\Logging\include
 //c:\sysgcc\raspberry\bin\../lib/gcc/arm-linux-gnueabihf/4.9/../../../../arm-linux-gnueabihf/include/c++/4.9
 //c:\sysgcc\raspberry\bin\../lib/gcc/arm-linux-gnueabihf/4.9/../../../../arm-linux-gnueabihf/include/c++/4.9/backward
 //c:\sysgcc\raspberry\bin\../lib/gcc/arm-linux-gnueabihf/4.9/include
@@ -380,6 +379,7 @@
 //c:\sysgcc\raspberry\bin\../arm-linux-gnueabihf/sysroot/usr/include/arm-linux-gnueabihf
 //c:\sysgcc\raspberry\bin\../arm-linux-gnueabihf/sysroot/usr/include
 //..\Logging\include
+//..\wiringPI\wiringPI
 // --- Include directories end --- //
 
 
