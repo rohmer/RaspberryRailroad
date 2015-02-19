@@ -1,0 +1,4 @@
+Debug/nteventlogappender.o: ../src/nteventlogappender.cxx \
+ c:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\stdc-predef.h \
+ ../include/log4cplus/config.hxx ../include/log4cplus/config/defines.hxx \
+ ../include/log4cplus/helpers/thread-config.h
