@@ -23,7 +23,7 @@ error:
 	$(error Invalid configuration, please check your inputs)
 endif
 
-SOURCEFILES := LEDTask/LEDTask.cpp TaskBase/TaskBase.cpp
+SOURCEFILES := LEDTask/LEDTask.cpp ServoTask/servod.c ServoTask/ServoTask.cpp TaskBase/TaskBase.cpp
 EXTERNAL_LIBS := ../Logging/Solution/$(BINARYDIR)/Log4CPlus.so ../wiringPi/wiringPi/$(BINARYDIR)/wiringPi.so
 EXTERNAL_LIBS_COPIED := $(foreach lib, $(EXTERNAL_LIBS),$(BINARYDIR)/$(notdir $(lib)))
 
@@ -166,6 +166,14 @@ $(BINARYDIR)/%.o : %.cxx $(all_make_files) |$(BINARYDIR)
 
 
 $(BINARYDIR)/LEDTask.o : LEDTask/LEDTask.cpp $(all_make_files) |$(BINARYDIR)
+	$(CXX) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/servod.o : ServoTask/servod.c $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/ServoTask.o : ServoTask/ServoTask.cpp $(all_make_files) |$(BINARYDIR)
 	$(CXX) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
 
 

@@ -46,5 +46,4 @@ Debug/mcp3422.o: mcp3422.c \
  c:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\linux\posix_types.h \
  c:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\linux\stddef.h \
  c:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf\asm\posix_types.h \
- c:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\asm-generic\posix_types.h \
  ../wiringPI/wiringPi.h ../wiringPI/wiringPiI2C.h mcp3422.h

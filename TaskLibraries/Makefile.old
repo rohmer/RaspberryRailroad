@@ -23,8 +23,8 @@ error:
 	$(error Invalid configuration, please check your inputs)
 endif
 
-SOURCEFILES := 
-EXTERNAL_LIBS := ../../Logging/Solution/$(BINARYDIR)/Log4CPlus.so
+SOURCEFILES := LEDTask/LEDTask.cpp TaskBase/TaskBase.cpp
+EXTERNAL_LIBS := ../Logging/Solution/$(BINARYDIR)/Log4CPlus.so ../wiringPi/wiringPi/$(BINARYDIR)/wiringPi.so
 EXTERNAL_LIBS_COPIED := $(foreach lib, $(EXTERNAL_LIBS),$(BINARYDIR)/$(notdir $(lib)))
 
 CFLAGS += $(COMMONFLAGS)
@@ -163,6 +163,18 @@ $(BINARYDIR)/%.o : %.cxx $(all_make_files) |$(BINARYDIR)
 	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
 
 #VisualGDB: GeneratedRules				#<--- All lines below are auto-generated
-$(BINARYDIR)/Log4CPlus.so : ../../Logging/Solution/$(BINARYDIR)/Log4CPlus.so
-	$(CP) ../../Logging/Solution/$(BINARYDIR)/Log4CPlus.so $(BINARYDIR)/Log4CPlus.so
+
+
+$(BINARYDIR)/LEDTask.o : LEDTask/LEDTask.cpp $(all_make_files) |$(BINARYDIR)
+	$(CXX) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/TaskBase.o : TaskBase/TaskBase.cpp $(all_make_files) |$(BINARYDIR)
+	$(CXX) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+$(BINARYDIR)/Log4CPlus.so : ../Logging/Solution/$(BINARYDIR)/Log4CPlus.so
+	$(CP) ../Logging/Solution/$(BINARYDIR)/Log4CPlus.so $(BINARYDIR)/Log4CPlus.so
+
+$(BINARYDIR)/wiringPi.so : ../wiringPi/wiringPi/$(BINARYDIR)/wiringPi.so
+	$(CP) ../wiringPi/wiringPi/$(BINARYDIR)/wiringPi.so $(BINARYDIR)/wiringPi.so
 
