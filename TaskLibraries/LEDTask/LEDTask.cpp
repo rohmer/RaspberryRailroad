@@ -13,20 +13,30 @@ LEDTask::LEDTask(Logger logger) :TaskBase(logger)
 	_scl = 9;
 	_sda = 8;
 	SetPins(_ce1, _ce0, _sclk, _miso, _mosi, _rxd, _txd, _scl, _sda);
+	numDevice = 1;
 }
 
 void LEDTask::Init()
-{	
-	int rc = wiringPiSetup();
-	if (rc == 0)
+{		
+	for (int a = 0; a < numDevice; a++)
 	{
-		log.log(log4cplus::DEBUG_LOG_LEVEL, "wiringPiSetup initalized successfully");
-		successfulInit = true;
-	}
-	else
-	{
-		log.log(log4cplus::ERROR_LOG_LEVEL, "wiringPiSetup failed to initalize, rc==" + rc);
-		successfulInit = false;
+		int rc = wiringPiSPISetup(a, 1000000);
+
+			if (rc == 0)
+			{
+				ostringstream msg;
+				msg << "wiringPiSetup initalized successfully, channel: " << a;
+
+				log.log(log4cplus::DEBUG_LOG_LEVEL, msg.str());
+				successfulInit = true;
+			}
+			else
+			{
+				ostringstream msg;
+				msg << "wiringPiSetup failed to initalize, on channel: " << a << ", rc==" << rc;
+				log.log(log4cplus::ERROR_LOG_LEVEL, msg.str());
+				successfulInit = false;
+			}
 	}
 }
 
@@ -69,6 +79,12 @@ void LEDTask::Clear()
 			digitalWrite(rows[row], LOW);
 		}
 	}
+}
+
+void LEDTask::SetNumDevice(int numberOfMax)
+{
+	numDevice = numberOfMax;
+	log.log(DEBUG_LOG_LEVEL, "numDevice set to: " + numDevice);
 }
 
 void LEDTask::Draw(int column, int row, bool powerMode)

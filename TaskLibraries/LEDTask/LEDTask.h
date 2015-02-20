@@ -5,6 +5,7 @@
 #include "../TaskBase/TaskBase.h"
 #include <wiringPi.h>
 #include <signal.h>
+#include <wiringPiSPI.h>
 
 using namespace std;
 using namespace log4cplus;
@@ -18,12 +19,14 @@ class LEDTask : TaskBase
 		int _ce1, _ce0, _sclk, _miso, _mosi, _rxd, _txd, _scl, _sda;
 		int rows[8];
 		int columns[8];
+		int numDevice;
 
 	public:
 		LEDTask(Logger logger);
-		void Run();	
+		void Run(int args[]);	
 		void Init();
 		void SetPins(int ce1, int ce0, int sclk, int miso, int mosi, int rxd, int txd, int scl, int sda);
+		void SetNumDevice(int numberOfMax);
 		void Clear();
 		void Draw(int column, int row, bool powerMode);
 		~LEDTask();

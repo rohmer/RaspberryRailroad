@@ -10,6 +10,6 @@ class TaskBase
 
 	public:
 		TaskBase(Logger logger);
-		virtual void Run();
+		virtual void Run(int args[]);
 		virtual void Init();
 };
