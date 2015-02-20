@@ -31,10 +31,13 @@
     <ClCompile Include="LEDTask\LEDTask.cpp">
       <Filter>LEDTask</Filter>
     </ClCompile>
-    <ClCompile Include="ServoTask\servod.c">
+    <ClCompile Include="ServoTask\ServoTask.cpp">
       <Filter>ServoTask</Filter>
     </ClCompile>
-    <ClCompile Include="ServoTask\ServoTask.cpp">
+    <ClCompile Include="ServoTask\PCA9685Driver.cpp">
+      <Filter>ServoTask</Filter>
+    </ClCompile>
+    <ClCompile Include="ServoTask\pca9685.c">
       <Filter>ServoTask</Filter>
     </ClCompile>
   </ItemGroup>
@@ -46,6 +49,12 @@
       <Filter>LEDTask</Filter>
     </ClInclude>
     <ClInclude Include="ServoTask\ServoTask.h">
+      <Filter>ServoTask</Filter>
+    </ClInclude>
+    <ClInclude Include="ServoTask\PCA9685Driver.h">
+      <Filter>ServoTask</Filter>
+    </ClInclude>
+    <ClInclude Include="ServoTask\pca9685.h">
       <Filter>ServoTask</Filter>
     </ClInclude>
   </ItemGroup>

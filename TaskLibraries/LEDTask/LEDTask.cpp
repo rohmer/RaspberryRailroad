@@ -16,6 +16,10 @@ LEDTask::LEDTask(Logger logger) :TaskBase(logger)
 	numDevice = 1;
 }
 
+void LEDTask::Run(vector<int> args)
+{
+}
+
 void LEDTask::Init()
 {		
 	for (int a = 0; a < numDevice; a++)

@@ -23,7 +23,7 @@ class LEDTask : TaskBase
 
 	public:
 		LEDTask(Logger logger);
-		void Run(int args[]);	
+		void Run(vector<int> args);	
 		void Init();
 		void SetPins(int ce1, int ce0, int sclk, int miso, int mosi, int rxd, int txd, int scl, int sda);
 		void SetNumDevice(int numberOfMax);

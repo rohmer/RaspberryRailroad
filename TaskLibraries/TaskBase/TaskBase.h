@@ -1,7 +1,9 @@
 #pragma once
 #include <log4cplus/logger.h>
+#include <vector>
 
 using namespace log4cplus;
+using namespace std;
 
 class TaskBase
 {
@@ -10,6 +12,6 @@ class TaskBase
 
 	public:
 		TaskBase(Logger logger);
-		virtual void Run(int args[]);
+		virtual void Run(vector<int> args);
 		virtual void Init();
 };
