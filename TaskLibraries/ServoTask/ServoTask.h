@@ -12,6 +12,7 @@ using namespace std;
 using namespace log4cplus;
 using namespace log4cplus::helpers;
 
+
 // Initally only going to support the one I own :-)
 
 // Notes:

@@ -6,28 +6,45 @@
 #include <wiringPi.h>
 #include <signal.h>
 #include <wiringPiSPI.h>
+#include "max7219.h"
+#include <stdlib.h>
 
 using namespace std;
 using namespace log4cplus;
 using namespace log4cplus::helpers;
+
+// The Max7219 Registers :
+
+#define DECODE_MODE   0x09                       
+#define INTENSITY     0x0a                        
+#define SCAN_LIMIT    0x0b                        
+#define SHUTDOWN      0x0c                        
+#define DISPLAY_TEST  0x0f            
 
 // Used in conjunction with a Max7219 to control multiple LEDs
 class LEDTask : TaskBase
 {
 	private:
 		bool successfulInit;
-		int _ce1, _ce0, _sclk, _miso, _mosi, _rxd, _txd, _scl, _sda;
-		int rows[8];
-		int columns[8];
+		int _data, _clock, _load;
 		int numDevice;
+		int spiFD;
+		vector<int> maxData;
+		unsigned char *TxBuffer;
+		int TxBufferIndex;
+		int spiChannel;
+		int spiSpeed;
+		void sendData();
 
 	public:
 		LEDTask(Logger logger);
 		void Run(vector<int> args);	
 		void Init();
-		void SetPins(int ce1, int ce0, int sclk, int miso, int mosi, int rxd, int txd, int scl, int sda);
 		void SetNumDevice(int numberOfMax);
+		void SetSPIChannel(int channel);
+		void SetSPISpeed(int speed);
+
 		void Clear();
-		void Draw(int column, int row, bool powerMode);
+		void Draw(int device, int column, int row, bool powerMode);
 		~LEDTask();
 };

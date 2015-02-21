@@ -16,6 +16,14 @@ ServoTask::ServoTask(Logger logger) : TaskBase(logger)
 ///		args[1] - Angle 0-180</param>
 void ServoTask::Run(vector<int> args)
 {
+	if (!successfulInit)
+	{
+		ostringstream msg;
+		msg << "ServoTask::failed to init, aborting run.";
+		log.log(ERROR_LOG_LEVEL, msg.str());
+		return;
+	}
+
 	if (args.size() < 2)
 	{
 		ostringstream msg;

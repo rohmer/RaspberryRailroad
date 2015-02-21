@@ -40,6 +40,9 @@
     <ClCompile Include="ServoTask\pca9685.c">
       <Filter>ServoTask</Filter>
     </ClCompile>
+    <ClCompile Include="LEDTask\max7219.c">
+      <Filter>LEDTask</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TaskBase\TaskBase.h">
@@ -56,6 +59,9 @@
     </ClInclude>
     <ClInclude Include="ServoTask\pca9685.h">
       <Filter>ServoTask</Filter>
+    </ClInclude>
+    <ClInclude Include="LEDTask\max7219.h">
+      <Filter>LEDTask</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
