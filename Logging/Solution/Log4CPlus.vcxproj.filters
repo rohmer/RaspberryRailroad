@@ -235,8 +235,11 @@
     <ClInclude Include="..\include\log4cplus\config.h">
       <Filter>config</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\log4cplus\helpers\connectorthread.h">
-      <Filter>helpers</Filter>
+    <ClInclude Include="..\include\log4cplus\tracelogger.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\log4cplus\tstring.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -384,8 +387,23 @@
     <ClCompile Include="..\src\appenderattachableimpl.cxx">
       <Filter>helpers</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\connectorthread.cxx">
+    <ClCompile Include="..\src\socketbuffer.cxx">
       <Filter>helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\socket-unix.cxx">
+      <Filter>helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\filter.cxx">
+      <Filter>spi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\tls.cxx">
+      <Filter>thread\impl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\socket-win32.cxx">
+      <Filter>helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\connectorthread.cxx">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

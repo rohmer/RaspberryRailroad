@@ -12,7 +12,7 @@ AR := C:/SysGCC/raspberry/bin/arm-linux-gnueabihf-ar.exe
 OBJCOPY := C:/SysGCC/raspberry/bin/arm-linux-gnueabihf-objcopy.exe
 
 #Additional flags
-PREPROCESSOR_MACROS := DEBUG
+PREPROCESSOR_MACROS := DEBUG INSIDE_LOG4CPLUS LOG4CPLUS_USE_BSD_SOCKETS
 INCLUDE_DIRS := ../include
 LIBRARY_DIRS := 
 LIBRARY_NAMES := 

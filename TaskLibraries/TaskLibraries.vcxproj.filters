@@ -43,6 +43,7 @@
     <ClCompile Include="LEDTask\max7219.c">
       <Filter>LEDTask</Filter>
     </ClCompile>
+    <ClCompile Include="TaskLibrary.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TaskBase\TaskBase.h">
@@ -63,5 +64,6 @@
     <ClInclude Include="LEDTask\max7219.h">
       <Filter>LEDTask</Filter>
     </ClInclude>
+    <ClInclude Include="TaskLibrary.h" />
   </ItemGroup>
 </Project>

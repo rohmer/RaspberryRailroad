@@ -23,6 +23,7 @@
 
 #ifndef LOG4CPLUS_CONFIG_HXX
 #define LOG4CPLUS_CONFIG_HXX
+#undef _WIN32
 
 #if defined (_WIN32)
 #  include <log4cplus/config/win32.h>

@@ -34,7 +34,7 @@ enum EServoDriver { PCA9685 };
 
 class ServoDriverBase;
 
-class ServoTask : TaskBase
+class ServoTask : public TaskBase
 {
 private:
 	bool successfulInit;

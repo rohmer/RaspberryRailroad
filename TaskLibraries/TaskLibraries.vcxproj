@@ -72,6 +72,7 @@
     <ClCompile Include="ServoTask\PCA9685Driver.cpp" />
     <ClCompile Include="ServoTask\ServoTask.cpp" />
     <ClCompile Include="TaskBase\TaskBase.cpp" />
+    <ClCompile Include="TaskLibrary.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LEDTask\LEDTask.h" />
@@ -80,6 +81,7 @@
     <ClInclude Include="ServoTask\PCA9685Driver.h" />
     <ClInclude Include="ServoTask\ServoTask.h" />
     <ClInclude Include="TaskBase\TaskBase.h" />
+    <ClInclude Include="TaskLibrary.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -22,7 +22,7 @@ using namespace log4cplus::helpers;
 #define DISPLAY_TEST  0x0f            
 
 // Used in conjunction with a Max7219 to control multiple LEDs
-class LEDTask : TaskBase
+class LEDTask : public TaskBase
 {
 	private:
 		bool successfulInit;

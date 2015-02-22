@@ -23,7 +23,7 @@ error:
 	$(error Invalid configuration, please check your inputs)
 endif
 
-SOURCEFILES := ../src/appender.cxx ../src/appenderattachableimpl.cxx ../src/asyncappender.cxx ../src/clogger.cxx ../src/configurator.cxx ../src/connectorthread.cxx ../src/consoleappender.cxx ../src/env.cxx ../src/factory.cxx ../src/fileappender.cxx ../src/fileinfo.cxx ../src/global-init.cxx ../src/hierarchy.cxx ../src/hierarchylocker.cxx ../src/layout.cxx ../src/lockfile.cxx ../src/log4judpappender.cxx ../src/logger.cxx ../src/loggerimpl.cxx ../src/loggingevent.cxx ../src/loggingmacros.cxx ../src/loglevel.cxx ../src/loglog.cxx ../src/logloguser.cxx ../src/mdc.cxx ../src/ndc.cxx ../src/nteventlogappender.cxx ../src/nullappender.cxx ../src/objectregistry.cxx ../src/patternlayout.cxx ../src/pointer.cxx ../src/property.cxx ../src/queue.cxx ../src/rootlogger.cxx ../src/sleep.cxx ../src/snprintf.cxx ../src/socket.cxx ../src/socketappender.cxx ../src/stringhelper-clocale.cxx ../src/stringhelper-cxxlocale.cxx ../src/stringhelper-iconv.cxx ../src/stringhelper.cxx ../src/syncprims.cxx ../src/syslogappender.cxx ../src/threads.cxx ../src/timehelper.cxx ../src/version.cxx ../src/win32consoleappender.cxx ../src/win32debugappender.cxx
+SOURCEFILES := ../src/appender.cxx ../src/appenderattachableimpl.cxx ../src/asyncappender.cxx ../src/clogger.cxx ../src/configurator.cxx ../src/connectorthread.cxx ../src/consoleappender.cxx ../src/env.cxx ../src/factory.cxx ../src/fileappender.cxx ../src/fileinfo.cxx ../src/filter.cxx ../src/global-init.cxx ../src/hierarchy.cxx ../src/hierarchylocker.cxx ../src/layout.cxx ../src/lockfile.cxx ../src/log4judpappender.cxx ../src/logger.cxx ../src/loggerimpl.cxx ../src/loggingevent.cxx ../src/loggingmacros.cxx ../src/loglevel.cxx ../src/loglog.cxx ../src/logloguser.cxx ../src/mdc.cxx ../src/ndc.cxx ../src/nteventlogappender.cxx ../src/nullappender.cxx ../src/objectregistry.cxx ../src/patternlayout.cxx ../src/pointer.cxx ../src/property.cxx ../src/queue.cxx ../src/rootlogger.cxx ../src/sleep.cxx ../src/snprintf.cxx ../src/socket-unix.cxx ../src/socket-win32.cxx ../src/socket.cxx ../src/socketappender.cxx ../src/socketbuffer.cxx ../src/stringhelper-clocale.cxx ../src/stringhelper-cxxlocale.cxx ../src/stringhelper-iconv.cxx ../src/stringhelper.cxx ../src/syncprims.cxx ../src/syslogappender.cxx ../src/threads.cxx ../src/timehelper.cxx ../src/tls.cxx ../src/version.cxx ../src/win32consoleappender.cxx ../src/win32debugappender.cxx
 EXTERNAL_LIBS := 
 EXTERNAL_LIBS_COPIED := $(foreach lib, $(EXTERNAL_LIBS),$(BINARYDIR)/$(notdir $(lib)))
 
@@ -209,6 +209,10 @@ $(BINARYDIR)/fileinfo.o : ../src/fileinfo.cxx $(all_make_files) |$(BINARYDIR)
 	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
 
 
+$(BINARYDIR)/filter.o : ../src/filter.cxx $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
 $(BINARYDIR)/global-init.o : ../src/global-init.cxx $(all_make_files) |$(BINARYDIR)
 	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
 
@@ -309,11 +313,23 @@ $(BINARYDIR)/snprintf.o : ../src/snprintf.cxx $(all_make_files) |$(BINARYDIR)
 	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
 
 
+$(BINARYDIR)/socket-unix.o : ../src/socket-unix.cxx $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/socket-win32.o : ../src/socket-win32.cxx $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
 $(BINARYDIR)/socket.o : ../src/socket.cxx $(all_make_files) |$(BINARYDIR)
 	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
 
 
 $(BINARYDIR)/socketappender.o : ../src/socketappender.cxx $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/socketbuffer.o : ../src/socketbuffer.cxx $(all_make_files) |$(BINARYDIR)
 	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
 
 
@@ -346,6 +362,10 @@ $(BINARYDIR)/threads.o : ../src/threads.cxx $(all_make_files) |$(BINARYDIR)
 
 
 $(BINARYDIR)/timehelper.o : ../src/timehelper.cxx $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/tls.o : ../src/tls.cxx $(all_make_files) |$(BINARYDIR)
 	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
 
 

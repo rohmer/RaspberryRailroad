@@ -35,7 +35,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <NMakeIncludeSearchPath>$(ProjectDir)\../include;c:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\4.9;c:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\4.9\backward;c:\sysgcc\raspberry\lib\gcc\arm-linux-gnueabihf\4.9\include;c:\sysgcc\raspberry\lib\gcc\arm-linux-gnueabihf\4.9\include-fixed;c:\sysgcc\raspberry\arm-linux-gnueabihf\include;c:\sysgcc\raspberry\arm-linux-gnueabihf\include\arm-linux-gnueabihf\c++\4.9;c:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf;c:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include;$(ProjectDir)\../include;$(NMakeIncludeSearchPath)</NMakeIncludeSearchPath>
+    <NMakeIncludeSearchPath>c:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\4.9;c:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\4.9\backward;c:\sysgcc\raspberry\lib\gcc\arm-linux-gnueabihf\4.9\include;c:\sysgcc\raspberry\lib\gcc\arm-linux-gnueabihf\4.9\include-fixed;c:\sysgcc\raspberry\arm-linux-gnueabihf\include;c:\sysgcc\raspberry\arm-linux-gnueabihf\include\arm-linux-gnueabihf\c++\4.9;c:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf;c:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include;$(ProjectDir)\../include;$(NMakeIncludeSearchPath)</NMakeIncludeSearchPath>
     <NMakeForcedIncludes>$(ProjectDir)\gcc_Debug.h;$(VISUALGDB_DIR)\gcc_compat.h;$(NMakeForcedIncludes)</NMakeForcedIncludes>
     <NMakeBuildCommandLine>"$(VISUALGDB_DIR)\VisualGDB.exe" /build "$(ProjectPath)" "/solution:$(SolutionPath)" "/config:$(Configuration)" "/platform:$(Platform)"</NMakeBuildCommandLine>
     <NMakeCleanCommandLine>"$(VISUALGDB_DIR)\VisualGDB.exe" /clean "$(ProjectPath)" "/solution:$(SolutionPath)" "/config:$(Configuration)" "/platform:$(Platform)"</NMakeCleanCommandLine>
@@ -81,7 +81,6 @@
     <ClInclude Include="..\include\log4cplus\fileappender.h" />
     <ClInclude Include="..\include\log4cplus\fstreams.h" />
     <ClInclude Include="..\include\log4cplus\helpers\appenderattachableimpl.h" />
-    <ClInclude Include="..\include\log4cplus\helpers\connectorthread.h" />
     <ClInclude Include="..\include\log4cplus\helpers\fileinfo.h" />
     <ClInclude Include="..\include\log4cplus\helpers\lockfile.h" />
     <ClInclude Include="..\include\log4cplus\helpers\loglog.h" />
@@ -131,6 +130,8 @@
     <ClInclude Include="..\include\log4cplus\thread\syncprims-pub-impl.h" />
     <ClInclude Include="..\include\log4cplus\thread\syncprims.h" />
     <ClInclude Include="..\include\log4cplus\thread\threads.h" />
+    <ClInclude Include="..\include\log4cplus\tracelogger.h" />
+    <ClInclude Include="..\include\log4cplus\tstring.h" />
     <ClInclude Include="..\include\log4cplus\version.h" />
     <ClInclude Include="..\include\log4cplus\win32consoleappender.h" />
     <ClInclude Include="..\include\log4cplus\win32debugappender.h" />
@@ -147,6 +148,7 @@
     <ClCompile Include="..\src\factory.cxx" />
     <ClCompile Include="..\src\fileappender.cxx" />
     <ClCompile Include="..\src\fileinfo.cxx" />
+    <ClCompile Include="..\src\filter.cxx" />
     <ClCompile Include="..\src\global-init.cxx" />
     <ClCompile Include="..\src\hierarchy.cxx" />
     <ClCompile Include="..\src\hierarchylocker.cxx" />
@@ -172,8 +174,11 @@
     <ClCompile Include="..\src\rootlogger.cxx" />
     <ClCompile Include="..\src\sleep.cxx" />
     <ClCompile Include="..\src\snprintf.cxx" />
+    <ClCompile Include="..\src\socket-unix.cxx" />
+    <ClCompile Include="..\src\socket-win32.cxx" />
     <ClCompile Include="..\src\socket.cxx" />
     <ClCompile Include="..\src\socketappender.cxx" />
+    <ClCompile Include="..\src\socketbuffer.cxx" />
     <ClCompile Include="..\src\stringhelper-clocale.cxx" />
     <ClCompile Include="..\src\stringhelper-cxxlocale.cxx" />
     <ClCompile Include="..\src\stringhelper-iconv.cxx" />
@@ -182,6 +187,7 @@
     <ClCompile Include="..\src\syslogappender.cxx" />
     <ClCompile Include="..\src\threads.cxx" />
     <ClCompile Include="..\src\timehelper.cxx" />
+    <ClCompile Include="..\src\tls.cxx" />
     <ClCompile Include="..\src\version.cxx" />
     <ClCompile Include="..\src\win32consoleappender.cxx" />
     <ClCompile Include="..\src\win32debugappender.cxx" />
