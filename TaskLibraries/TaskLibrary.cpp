@@ -23,7 +23,7 @@ TaskBase *TaskLibrary::GetTask(TaskTypes types)
 	{
 		case TLEDTask:
 		{
-			TaskBase *tb = new LEDTask(log);
+			TaskBase * tb = new LEDTask(log);
 			libsLoaded.insert(std::pair<TaskTypes, TaskBase*>(TLEDTask, tb));
 			log.log(DEBUG_LOG_LEVEL, "Returning new instance of LEDTask");
 			return tb;
@@ -34,7 +34,7 @@ TaskBase *TaskLibrary::GetTask(TaskTypes types)
 			libsLoaded.insert(std::pair<TaskTypes, TaskBase*>(TServoTask, tb));
 			log.log(DEBUG_LOG_LEVEL, "Returning new instance of ServoTask");
 			map<TaskTypes, TaskBase*>::iterator it = libsLoaded.find(TServoTask);
-			return it->second;
+			return tb;
 		}
 	}
 	

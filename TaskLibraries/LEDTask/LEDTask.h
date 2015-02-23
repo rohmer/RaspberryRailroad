@@ -19,7 +19,7 @@ using namespace log4cplus::helpers;
 #define INTENSITY     0x0a                        
 #define SCAN_LIMIT    0x0b                        
 #define SHUTDOWN      0x0c                        
-#define DISPLAY_TEST  0x0f            
+#define DISPLAY_TEST  0x0f              
 
 // Used in conjunction with a Max7219 to control multiple LEDs
 class LEDTask : public TaskBase
@@ -29,22 +29,14 @@ class LEDTask : public TaskBase
 		int _data, _clock, _load;
 		int numDevice;
 		int spiFD;
-		vector<int> maxData;
-		unsigned char *TxBuffer;
-		int TxBufferIndex;
-		int spiChannel;
-		int spiSpeed;
-		void sendData();
+		void max7219Send(unsigned char reg_number, unsigned char dataout);
+		void send16bits(unsigned short output);
 
 	public:
 		LEDTask(Logger logger);
 		void Run(vector<int> args);	
 		void Init();
-		void SetNumDevice(int numberOfMax);
-		void SetSPIChannel(int channel);
-		void SetSPISpeed(int speed);
-
-		void Clear();
-		void Draw(int device, int column, int row, bool powerMode);
+		void SetPins(int data, int clock, int load);
+		void Draw(int column, int row, bool powerMode);
 		~LEDTask();
 };

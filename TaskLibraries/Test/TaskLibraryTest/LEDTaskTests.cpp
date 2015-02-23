@@ -10,5 +10,14 @@ LEDTaskTests::LEDTaskTests(Logger logger)
 void LEDTaskTests::BlinkRow1Col1()
 {
 	TaskLibrary tl(log);
-	//LEDTask * ledTask = tl.GetTask(TLEDTask);
+	LEDTask *ledTask = reinterpret_cast<LEDTask*>(tl.GetTask(TLEDTask));
+	vector<int> args;
+	args.push_back(1);
+	args.push_back(1);
+	args.push_back(1);
+	args.push_back(1);
+
+	ledTask->Draw(1, 1, true);
+	ledTask->Run(args);
+
 }

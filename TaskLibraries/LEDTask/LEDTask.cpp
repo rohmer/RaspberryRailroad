@@ -4,8 +4,7 @@ LEDTask::LEDTask(Logger logger) :TaskBase(logger)
 {	
 	log.log(log4cplus::DEBUG_LOG_LEVEL, "LEDTask::LEDTask created");
 	numDevice = 1;
-	spiChannel = 0;
-	spiSpeed = 1000000;
+	SetPins(0, 3, 4);
 }
 
 /// <summary>
@@ -18,94 +17,63 @@ LEDTask::LEDTask(Logger logger) :TaskBase(logger)
 /// </param>
 void LEDTask::Run(vector<int> args)
 {
-	int offset = (args[0]-1) * 64 + ((args[1]-1) * 8) + args[2]-1;
-	if (args[2] == 0)
-		maxData[offset] = 0;
-	else
-		maxData[offset] = 1;
+	if (!successfulInit)
+		Init();
 }
 
-void LEDTask::sendData()
+void LEDTask::SetPins(int data, int clock, int load)
 {
-	TxBufferIndex = 0;
-	for (int dNum = 0; dNum < numDevice; dNum++)
+	_data = data;
+	_clock = clock;
+	_load = load;
+}
+
+void LEDTask::max7219Send(unsigned char reg_number, unsigned char dataout)
+{
+	digitalWrite(_load, 1);  // set LOAD 1 to start
+	send16bits((reg_number << 8) + dataout);   // send 16 bits ( reg number + dataout )
+	digitalWrite(_load, 0);  // LOAD 0 to latch
+	digitalWrite(_load, 1);  // set LOAD 1 to finish
+}
+
+void LEDTask::send16bits(unsigned short output)
+{
+	unsigned char i;
+	digitalWrite(_load, LOW);
+	for (i = 16; i > 0; i--)
 	{
-		for (int row = 0; row < 8; row++)
-		{
-			uint8_t total=0;
-			for (int col = 0; col < 8; col++)
-			{
-				if (maxData[dNum * 64 + row * 8 + col] == 1)
-					total += col ^ 2;
-			}
-			TxBuffer[TxBufferIndex] = (char)total;
-		}
+		unsigned short mask = 1 << (i - 1); // calculate bitmask
+
+		digitalWrite(_clock, 0);  // set clock to 0
+								 // Send one bit on the data pin
+		if (output & mask)
+			digitalWrite(_data, 1);
+		else
+			digitalWrite(_data, 0);
+		digitalWrite(_clock, 1);  // set clock to 1
 	}
-	int rc=wiringPiSPIDataRW(spiFD, TxBuffer, TxBufferIndex);
-	TxBufferIndex = 0;
-	ostringstream msg;
-	msg << "Wrote: " << rc << " to SPI bus";
-	log.log(DEBUG_LOG_LEVEL, msg.str());
 }
 
-void LEDTask::SetSPIChannel(int channel)
-{
-	spiChannel = channel;
-}
-
-void LEDTask::SetSPISpeed(int speed)
-{
-	spiSpeed = speed;
-}
 
 void LEDTask::Init()
-{		
-	// Create a clear instance
-	for (int a = 0; a < (numDevice * 16); a++)
-	{
-		maxData.push_back(0);		
-	}
-	TxBuffer = new unsigned char[1024];	
-	if ((spiFD = wiringPiSPISetup(spiChannel, spiSpeed)) < 0)
-	{
-		ostringstream msg;
-		msg << "Error opening SPI port, rc==" << errno;
-		log.log(ERROR_LOG_LEVEL, msg.str());
-		successfulInit = false;
-		return;
-	}
+{			
+	pinMode(_data, OUTPUT);
+	pinMode(_clock, OUTPUT);
+	pinMode(_load, OUTPUT);
+	max7219Send(SCAN_LIMIT, 7);
+	max7219Send(DISPLAY_TEST, 0);
+	max7219Send(INTENSITY, 15);
+	max7219Send(SHUTDOWN, 1);
 }
 
-
-void LEDTask::Clear()
-{
-}
-
-void LEDTask::SetNumDevice(int numberOfMax)
-{
-	numDevice = numberOfMax;
-	log.log(DEBUG_LOG_LEVEL, "numDevice set to: " + numDevice);
-	maxData.clear();
-	for (int a = 0; a < (numDevice * 16); a++)
-	{
-		maxData.push_back(0);
-	}
-	sendData();
-}
-
-void LEDTask::Draw(int device, int column, int row, bool powerMode)
-{
-	int offset = device * 64 + ((row-1) * 8) + column-1;
-	if (powerMode)
-		maxData[offset] = 1;
-	else
-		maxData[offset] = 0;
-	sendData();
+void LEDTask::Draw(int column, int row, bool powerMode)
+{	
+	max7219Send(row, column);
 }
 
 LEDTask::~LEDTask()
 {
 	log.log(DEBUG_LOG_LEVEL, "Running ~LEDTask()");
-	free(TxBuffer);	
+	max7219Send(SHUTDOWN, 0);
 	log.log(DEBUG_LOG_LEVEL, "~LEDTask() complete");
 }

@@ -12,6 +12,6 @@ class TaskBase
 
 	public:
 		TaskBase(Logger logger);
-		virtual void Run(vector<int> args);
-		virtual void Init();
+		virtual void Run(vector<int> args)=0;
+		virtual void Init()=0;
 };

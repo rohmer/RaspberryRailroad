@@ -1,6 +1,8 @@
 #pragma once
 // Get the base class
 #include "TaskBase/TaskBase.h"
+#include "LEDTask/LEDTask.h"
+#include "ServoTask/ServoTask.h"
 
 // Now include each type of specialized task
 #include "LEDTask/LEDTask.h"
