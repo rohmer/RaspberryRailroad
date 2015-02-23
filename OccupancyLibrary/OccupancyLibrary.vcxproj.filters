@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source files">
+      <UniqueIdentifier>{06471004-ac81-40f1-b774-c27173755e9a}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header files">
+      <UniqueIdentifier>{8db560fe-9f8e-4fab-bb41-29ec4a47745c}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource files">
+      <UniqueIdentifier>{92fa1ad2-53ef-441d-9efd-665d1dd1fe42}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="Make files">
+      <UniqueIdentifier>{86f9dbc0-30db-4864-b581-46b85c9a17e2}</UniqueIdentifier>
+      <Extensions>*.mak</Extensions>
+    </Filter>
+    <Filter Include="Source files\Base">
+      <UniqueIdentifier>{f45caa1e-58b3-49d3-b300-a4ad555e3ea7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Detectors">
+      <UniqueIdentifier>{c2b76c5f-6f32-4366-84dc-b2b5018a7373}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Makefile" />
+    <None Include="debug.mak">
+      <Filter>Make files</Filter>
+    </None>
+    <None Include="release.mak">
+      <Filter>Make files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="OccupancyLibrary.cpp">
+      <Filter>Source files\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="DetectorBase.cpp">
+      <Filter>Source files\Detectors</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="OccupancyLibrary.h">
+      <Filter>Source files\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="DetectorBase.h">
+      <Filter>Source files\Detectors</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
