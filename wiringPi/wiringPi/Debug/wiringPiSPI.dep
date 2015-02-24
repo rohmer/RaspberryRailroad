@@ -42,4 +42,5 @@ Debug/wiringPiSPI.o: wiringPiSPI.c \
  c:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\linux\posix_types.h \
  c:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\linux\stddef.h \
  c:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf\asm\posix_types.h \
+ c:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\asm-generic\posix_types.h \
  wiringPi.h wiringPiSPI.h

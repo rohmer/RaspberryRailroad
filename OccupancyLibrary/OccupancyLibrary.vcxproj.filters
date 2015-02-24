@@ -23,6 +23,9 @@
     <Filter Include="Source files\Detectors">
       <UniqueIdentifier>{c2b76c5f-6f32-4366-84dc-b2b5018a7373}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source files\Drivers">
+      <UniqueIdentifier>{47103a01-8ab9-46dd-a076-46d0725f7b18}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="Makefile" />
@@ -40,6 +43,9 @@
     <ClCompile Include="DetectorBase.cpp">
       <Filter>Source files\Detectors</Filter>
     </ClCompile>
+    <ClCompile Include="ADCPI.cpp">
+      <Filter>Source files\Drivers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="OccupancyLibrary.h">
@@ -47,6 +53,9 @@
     </ClInclude>
     <ClInclude Include="DetectorBase.h">
       <Filter>Source files\Detectors</Filter>
+    </ClInclude>
+    <ClInclude Include="ADCPI.h">
+      <Filter>Source files\Drivers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
