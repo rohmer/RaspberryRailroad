@@ -67,13 +67,17 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ADCPI.cpp" />
-    <ClCompile Include="DetectorBase.cpp" />
+    <ClCompile Include="Block.cpp" />
+    <ClCompile Include="BlockManager.cpp" />
     <ClCompile Include="OccupancyLibrary.cpp" />
+    <ClCompile Include="OpticalDetector.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ADCPI.h" />
-    <ClInclude Include="DetectorBase.h" />
+    <ClInclude Include="Block.h" />
+    <ClInclude Include="BlockManager.h" />
     <ClInclude Include="OccupancyLibrary.h" />
+    <ClInclude Include="OpticalDetector.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

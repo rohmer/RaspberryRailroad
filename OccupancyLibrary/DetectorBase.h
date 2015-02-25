@@ -12,6 +12,5 @@ private:
 
 public:
 	DetectorBase(Logger logger);
-	virtual bool IsTriggered(int id)=0;
-	virtual bool IsTriggered() = 0;
+	virtual bool IsTriggered(int id)=0;	
 };

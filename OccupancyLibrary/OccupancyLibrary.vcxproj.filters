@@ -26,6 +26,9 @@
     <Filter Include="Source files\Drivers">
       <UniqueIdentifier>{47103a01-8ab9-46dd-a076-46d0725f7b18}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source files\BlockDetection">
+      <UniqueIdentifier>{9ac01e6a-1752-4bfe-8d63-4da21e04fb23}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="Makefile" />
@@ -40,22 +43,34 @@
     <ClCompile Include="OccupancyLibrary.cpp">
       <Filter>Source files\Base</Filter>
     </ClCompile>
-    <ClCompile Include="DetectorBase.cpp">
-      <Filter>Source files\Detectors</Filter>
-    </ClCompile>
     <ClCompile Include="ADCPI.cpp">
       <Filter>Source files\Drivers</Filter>
+    </ClCompile>
+    <ClCompile Include="Block.cpp">
+      <Filter>Source files\BlockDetection</Filter>
+    </ClCompile>
+    <ClCompile Include="OpticalDetector.cpp">
+      <Filter>Source files\Detectors</Filter>
+    </ClCompile>
+    <ClCompile Include="BlockManager.cpp">
+      <Filter>Source files\BlockDetection</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="OccupancyLibrary.h">
       <Filter>Source files\Base</Filter>
     </ClInclude>
-    <ClInclude Include="DetectorBase.h">
-      <Filter>Source files\Detectors</Filter>
-    </ClInclude>
     <ClInclude Include="ADCPI.h">
       <Filter>Source files\Drivers</Filter>
+    </ClInclude>
+    <ClInclude Include="Block.h">
+      <Filter>Source files\BlockDetection</Filter>
+    </ClInclude>
+    <ClInclude Include="OpticalDetector.h">
+      <Filter>Source files\Detectors</Filter>
+    </ClInclude>
+    <ClInclude Include="BlockManager.h">
+      <Filter>Source files\BlockDetection</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

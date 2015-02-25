@@ -23,8 +23,8 @@ bool ADCPI::AddAdapter(ADCPiI2CAddress adapterAddress)
 		{
 			msg.clear();
 			msg << "Adapter: " << adapterAddress << " already added, timidly not adding it again.";
-			log.log(WARN_LOG_LEVEL, msg.str());
-			return false;
+			log.log(DEBUG_LOG_LEVEL, msg.str());
+			return true;
 		}
 	}
 	int rc = wiringPiI2CSetup(adapterAddress);
