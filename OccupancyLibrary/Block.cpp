@@ -12,6 +12,14 @@ Block::Block(Logger logger, OpticalDetector* opticalDetector, TaskLibrary *taskL
 	log.log(DEBUG_LOG_LEVEL, "Block::Block() initalized");
 }
 
+Block::Block(Logger logger, int blockIdentifier)
+{
+	log = logger;
+	isOccupied = false;
+	neighborOccupied = false;
+	log.log(DEBUG_LOG_LEVEL, "Block::Block() initalized");
+}
+
 void Block::AddActivationDetector(int detectorNum)
 {
 	ostringstream msg;
@@ -169,4 +177,9 @@ void Block::execTask(BlockTaskType task)
 	TaskBase* t=taskLib->GetTask(task.taskType);
 	t->Run(task.runArgs);
 	log.log(DEBUG_LOG_LEVEL, LOG4CPLUS_TEXT("Exiting Block::execTask()"));
+}
+
+int Block::GetID()
+{
+	return blockID;
 }

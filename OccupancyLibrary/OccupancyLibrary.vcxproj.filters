@@ -5,14 +5,6 @@
       <UniqueIdentifier>{06471004-ac81-40f1-b774-c27173755e9a}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="Header files">
-      <UniqueIdentifier>{8db560fe-9f8e-4fab-bb41-29ec4a47745c}</UniqueIdentifier>
-      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
-    </Filter>
-    <Filter Include="Resource files">
-      <UniqueIdentifier>{92fa1ad2-53ef-441d-9efd-665d1dd1fe42}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
-    </Filter>
     <Filter Include="Make files">
       <UniqueIdentifier>{86f9dbc0-30db-4864-b581-46b85c9a17e2}</UniqueIdentifier>
       <Extensions>*.mak</Extensions>
@@ -55,6 +47,9 @@
     <ClCompile Include="BlockManager.cpp">
       <Filter>Source files\BlockDetection</Filter>
     </ClCompile>
+    <ClCompile Include="BlockHelper.cpp">
+      <Filter>Source files\BlockDetection</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="OccupancyLibrary.h">
@@ -70,6 +65,9 @@
       <Filter>Source files\Detectors</Filter>
     </ClInclude>
     <ClInclude Include="BlockManager.h">
+      <Filter>Source files\BlockDetection</Filter>
+    </ClInclude>
+    <ClInclude Include="BlockHelper.h">
       <Filter>Source files\BlockDetection</Filter>
     </ClInclude>
   </ItemGroup>

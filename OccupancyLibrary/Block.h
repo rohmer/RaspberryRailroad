@@ -40,6 +40,7 @@ class Block
 
 	public:
 		Block(Logger logger, OpticalDetector* opticalDetector, TaskLibrary* taskLibrary, int blockIdentifier);
+		Block(Logger logger, int blockIdentifier);
 		void AddActivationDetector(int detectorNum);
 		void AddDeactivationDetector(int detectorNum);
 		void Update();
@@ -52,4 +53,5 @@ class Block
 		BlockTaskType CreateBlockTask(TaskTypes taskType, int runArguments, ...);
 		void AddActivationTask(BlockTaskType task);
 		void AddDeactivationTask(BlockTaskType task);
+		int GetID();
 };
