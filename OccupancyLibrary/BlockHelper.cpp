@@ -35,9 +35,9 @@ vector<Block*> BlockHelper::ReadXMLBlockFile(Logger logger, std::string filename
 	for (pugi::xml_node node = xdoc.child("Block"); node; node = node.next_sibling("Block"))
 	{
 		Block* block = new Block(logger, blockID);
-		if (node.find_attribute("Name"))
+		if (node.attribute("Name"))
 		{
-			xml_attribute nameAttribute = node.find_attribute("Name");
+			xml_attribute nameAttribute = node.attribute("Name");
 			block->SetBlockName(nameAttribute.value());
 			msg.clear();
 			msg << "Block ID: " << blockID << " name set to: " << nameAttribute.value();
@@ -54,7 +54,7 @@ vector<Block*> BlockHelper::ReadXMLBlockFile(Logger logger, std::string filename
 		{
 			for (pugi::xml_node activationNode = node.child("Activation"); activationNode; activationNode = node.next_sibling("Activation"))
 			{
-				xml_attribute activationAttribute = activationNode.find_attribute("SensorID");
+				xml_attribute activationAttribute = activationNode.attribute("SensorID");
 				if (activationAttribute)
 				{
 					msg.clear();
@@ -68,7 +68,7 @@ vector<Block*> BlockHelper::ReadXMLBlockFile(Logger logger, std::string filename
 		{
 			for (pugi::xml_node activationNode = node.child("Deactivation"); activationNode; activationNode = node.next_sibling("Deactivation"))
 			{
-				xml_attribute activationAttribute = activationNode.find_attribute("SensorID");
+				xml_attribute activationAttribute = activationNode.attribute("SensorID");
 				if (activationAttribute)
 				{
 					msg.clear();
@@ -87,9 +87,9 @@ vector<Block*> BlockHelper::ReadXMLBlockFile(Logger logger, std::string filename
 	for (pugi::xml_node node = xdoc.child("Block"); node; node = node.next_sibling("Block"))
 	{
 		Block* thisBlock = NULL;
-		if (node.find_attribute("Name"))
+		if (node.attribute("Name"))
 		{
-			xml_attribute nameAttribute = node.find_attribute("Name");
+			xml_attribute nameAttribute = node.attribute("Name");
 			thisBlock = GetBlockByName(returnValue, nameAttribute.value());
 			if (thisBlock == NULL)
 			{
@@ -107,7 +107,7 @@ vector<Block*> BlockHelper::ReadXMLBlockFile(Logger logger, std::string filename
 		// We have our block, now lets work on connections
 		for (pugi::xml_node connectedNode = node.child("Connected"); connectedNode; connectedNode = node.next_sibling("Connected"))
 		{
-			xml_attribute connectedAttribute = connectedNode.find_attribute("BlockName");
+			xml_attribute connectedAttribute = connectedNode.attribute("BlockName");
 			if (connectedAttribute)
 			{
 				msg.clear();
