@@ -1,14 +1,14 @@
 #include "Block.h"
 
 // Block Manager will call this, and assign a unique blockIdenifier
-Block::Block(Logger logger, OpticalDetector* opticalDetector, int blockIdentifier)
+Block::Block(Logger logger, OpticalDetector* opticalDetector, TaskLibrary *taskLibrary, int blockIdentifier)
 {
 	log = logger;
 	isOccupied = false;
 	neighborOccupied = false;
 	this->opticalDetector = opticalDetector;
 	blockID = blockIdentifier;
-	
+	taskLib = taskLibrary;
 	log.log(DEBUG_LOG_LEVEL, "Block::Block() initalized");
 }
 
@@ -40,7 +40,7 @@ void Block::Update()
 		for (int a = 0; a < deactivationDetectors.size(); a++)
 		{
 			opticalDetector->UpdateDetector(deactivationDetectors[a]);
-			if (opticalDetector->IsTriggered)
+			if (opticalDetector->IsTriggered(activationDetectors[a])
 			{
 				msg.clear();
 				msg << "Block :" << blockID << " is becoming unoccupied";
@@ -54,7 +54,7 @@ void Block::Update()
 		for (int a = 0; a < activationDetectors.size(); a++)
 		{
 			opticalDetector->UpdateDetector(activationDetectors[a]);
-			if (opticalDetector->IsTriggered)
+			if (opticalDetector->IsTriggered(activationDetectors[a])
 			{
 				msg.clear();
 				msg << "Block :" << blockID << " is becoming occupied";
@@ -110,4 +110,18 @@ void Block::AddNeighbor(int neighbor)
 	log.log(DEBUG_LOG_LEVEL, msg.str());
 	connectedBlocks.push_back(neighbor);
 	return;
+}
+
+Block::BlockTaskType Block::CreateBlockTask(TaskTypes taskType, int runArguments, ...)
+{
+	ostringstream msg;
+	msg << "Entering Block::CreateBlock(" << taskType;
+	va_list args;
+	va_start(args, runArguments);
+	vector<int> args;
+	for (int a = 0; a < runArguments; a++)
+	{
+		double foo = va_arg(args, double);
+
+	}
 }

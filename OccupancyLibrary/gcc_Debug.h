@@ -380,6 +380,7 @@
 //c:\sysgcc\raspberry\bin\../arm-linux-gnueabihf/sysroot/usr/include
 //../wiringPI
 //../Logging/include
+//../TaskLibraries
 // --- Include directories end --- //
 
 
