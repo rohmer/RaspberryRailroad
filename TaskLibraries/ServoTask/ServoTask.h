@@ -48,5 +48,6 @@ public:
 	void SetI2CAddress(int addr);
 	void Init();		
 	void SetServoDriver(EServoDriver driver);
+	std::string GetTaskName() { return "ServoTask"; }
 	~ServoTask();
 };

@@ -40,12 +40,14 @@ void Block::Update()
 		for (int a = 0; a < deactivationDetectors.size(); a++)
 		{
 			opticalDetector->UpdateDetector(deactivationDetectors[a]);
-			if (opticalDetector->IsTriggered(activationDetectors[a])
+			if (opticalDetector->IsTriggered(activationDetectors[a]))
 			{
 				msg.clear();
 				msg << "Block :" << blockID << " is becoming unoccupied";
 				log.log(DEBUG_LOG_LEVEL, msg.str());
-				isOccupied = false;			
+				isOccupied = false;		
+				for (int b = 0; b < deactivationTasks.size(); b++)
+					execTask(deactivationTasks[a]);
 			}
 		}
 	}
@@ -54,12 +56,14 @@ void Block::Update()
 		for (int a = 0; a < activationDetectors.size(); a++)
 		{
 			opticalDetector->UpdateDetector(activationDetectors[a]);
-			if (opticalDetector->IsTriggered(activationDetectors[a])
+			if (opticalDetector->IsTriggered(activationDetectors[a]))
 			{
 				msg.clear();
 				msg << "Block :" << blockID << " is becoming occupied";
 				log.log(DEBUG_LOG_LEVEL, msg.str());
 				isOccupied = true;
+				for (int b = 0; b < activationTasks.size(); b++)
+					execTask(activationTasks[a]);
 			}
 		}
 	}
@@ -74,7 +78,7 @@ void Block::NeighborOccupied(bool value)
 
 bool Block::IsNeighborOccupied()
 {
-	return IsNeighborOccupied;
+	return neighborOccupied;
 }
 
 bool Block::IsOccupied()
@@ -112,16 +116,57 @@ void Block::AddNeighbor(int neighbor)
 	return;
 }
 
+/// <summary>
+/// Creates a block task.
+/// </summary>
+/// <param name="taskType">Type of the task.</param>
+/// <param name="runArguments">The passed to the task</param>
+/// <param name="">Continuation of args passed to the task</param>
+/// <returns>BlockTaskType struct</returns>
 Block::BlockTaskType Block::CreateBlockTask(TaskTypes taskType, int runArguments, ...)
 {
 	ostringstream msg;
-	msg << "Entering Block::CreateBlock(" << taskType;
+	msg << "Entering Block::CreateBlockTask(" << taskType;
 	va_list args;
 	va_start(args, runArguments);
-	vector<int> args;
-	for (int a = 0; a < runArguments; a++)
+	vector<int> runArgs;
+	for (int i = 1; i < runArguments; i++)
 	{
-		double foo = va_arg(args, double);
-
+		int val = va_arg(args, int);
+		msg << ", " << val;
+		runArgs.push_back(val);
 	}
+	msg << ")";
+	log.log(DEBUG_LOG_LEVEL, msg.str());
+	BlockTaskType btt;
+	btt.runArgs = runArgs;
+	btt.taskType = taskType;
+	log.log(DEBUG_LOG_LEVEL, LOG4CPLUS_TEXT("Exiting Block::CreateBlockTask()"));
+	return btt;
+}
+
+void Block::AddActivationTask(BlockTaskType task)
+{
+	log.log(DEBUG_LOG_LEVEL, LOG4CPLUS_TEXT("Entering Block::AddActivationTask()"));
+	activationTasks.push_back(task);
+	log.log(DEBUG_LOG_LEVEL, LOG4CPLUS_TEXT("Exiting Block::AddActivationTask()"));
+}
+
+void Block::AddDeactivationTask(BlockTaskType task)
+{
+	log.log(DEBUG_LOG_LEVEL, LOG4CPLUS_TEXT("Entering Block::AddDeactivationTask()"));
+	deactivationTasks.push_back(task);
+	log.log(DEBUG_LOG_LEVEL, LOG4CPLUS_TEXT("Exiting Block::AddDeactivationTask()"));
+}
+
+/// <summary>
+/// Executes the task within the taskLibrary.
+/// </summary>
+/// <param name="task">The task previously defined</param>
+void Block::execTask(BlockTaskType task)
+{
+	log.log(DEBUG_LOG_LEVEL,LOG4CPLUS_TEXT("Entering Block::execTask()"));
+	TaskBase* t=taskLib->GetTask(task.taskType);
+	t->Run(task.runArgs);
+	log.log(DEBUG_LOG_LEVEL, LOG4CPLUS_TEXT("Exiting Block::execTask()"));
 }

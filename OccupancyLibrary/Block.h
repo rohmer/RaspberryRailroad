@@ -8,7 +8,7 @@
 #include "OpticalDetector.h"
 #include "TaskBase/TaskBase.h"
 #include "TaskLibrary.h"
-#include <cstdarg>
+#include <stdarg.h>
 #include "ADCPI.h"
 #include <stdio.h>
 
@@ -36,6 +36,8 @@ class Block
 		Logger log;
 		int blockID;
 
+		void execTask(BlockTaskType task);
+
 	public:
 		Block(Logger logger, OpticalDetector* opticalDetector, TaskLibrary* taskLibrary, int blockIdentifier);
 		void AddActivationDetector(int detectorNum);
@@ -48,4 +50,6 @@ class Block
 		void AddNeighbor(int neighbor);
 		std::string GetBlockName();
 		BlockTaskType CreateBlockTask(TaskTypes taskType, int runArguments, ...);
+		void AddActivationTask(BlockTaskType task);
+		void AddDeactivationTask(BlockTaskType task);
 };

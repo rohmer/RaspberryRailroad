@@ -3,9 +3,9 @@
 #include <log4cplus/loggingmacros.h>
 #include <log4cplus/configurator.h>
 #include "../TaskBase/TaskBase.h"
-#include <wiringPi.h>
+#include "../../wiringPi/wiringPi/wiringPi.h"
 #include <signal.h>
-#include <wiringPiSPI.h>
+#include "../../wiringPi/wiringPi/wiringPiSPI.h"
 #include "max7219.h"
 #include <stdlib.h>
 
@@ -38,5 +38,6 @@ class LEDTask : public TaskBase
 		void Init();
 		void SetPins(int data, int clock, int load);
 		void Draw(int column, int row, bool powerMode);
+		std::string GetTaskName() { return "LEDTask";  }
 		~LEDTask();
 };

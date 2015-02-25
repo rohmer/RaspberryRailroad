@@ -1,5 +1,5 @@
 #pragma once
-#include "wiringPi\wiringPiI2C.h"
+#include "wiringPiI2C.h"
 #include "log4cplus\logger.h"
 #include <map>
 #include <sstream>

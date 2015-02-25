@@ -21,6 +21,7 @@ class BlockManager
 		int blockCounter;
 		Logger log;
 		OpticalDetector* opticalDetector;
+		TaskLibrary* taskLib;
 
 	public:
 		BlockManager(Logger logger);

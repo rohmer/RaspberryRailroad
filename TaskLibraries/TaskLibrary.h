@@ -9,16 +9,22 @@
 #include "ServoTask/ServoTask.h"
 
 #include <vector>
+#include <unistd.h>
 
 enum TaskTypes { TLEDTask, TServoTask };
+
+using namespace std;
 
 class TaskLibrary
 {
 	private:
 		map<TaskTypes,TaskBase*> libsLoaded;
 		Logger log;
+		bool multiThreaded;
 
 	public:
 		TaskLibrary(Logger logger);
 		TaskBase *GetTask(TaskTypes);
+		void SetMultiThreaded(bool value);
+		void RunTask(TaskBase* task, vector<int> args);
 };
