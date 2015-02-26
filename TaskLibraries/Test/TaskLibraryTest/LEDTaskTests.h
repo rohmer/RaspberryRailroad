@@ -2,6 +2,7 @@
 
 #include "TaskLibrary.h"
 #include <log4cplus/logger.h>
+#include <unistd.h>
 
 class LEDTaskTests
 {

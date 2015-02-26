@@ -24,7 +24,7 @@ error:
 endif
 
 SOURCEFILES := ADCPI.cpp Block.cpp BlockHelper.cpp BlockManager.cpp OccupancyLibrary.cpp OpticalDetector.cpp
-EXTERNAL_LIBS := ../Logging/Solution/$(BINARYDIR)/Log4CPlus.so ../3rdParty/pugixml/pugixml/$(BINARYDIR)/pugixml.so ../TaskLibraries/$(BINARYDIR)/TaskLibraries.so ../wiringPi/wiringPi/$(BINARYDIR)/wiringPi.so
+EXTERNAL_LIBS := ../Logging/Solution/$(BINARYDIR)/Log4CPlus.so ../TaskLibraries/$(BINARYDIR)/TaskLibraries.so ../wiringPi/wiringPi/$(BINARYDIR)/wiringPi.so
 EXTERNAL_LIBS_COPIED := $(foreach lib, $(EXTERNAL_LIBS),$(BINARYDIR)/$(notdir $(lib)))
 
 CFLAGS += $(COMMONFLAGS)
@@ -165,9 +165,6 @@ $(BINARYDIR)/%.o : %.cxx $(all_make_files) |$(BINARYDIR)
 #VisualGDB: GeneratedRules				#<--- All lines below are auto-generated
 $(BINARYDIR)/Log4CPlus.so : ../Logging/Solution/$(BINARYDIR)/Log4CPlus.so
 	$(CP) ../Logging/Solution/$(BINARYDIR)/Log4CPlus.so $(BINARYDIR)/Log4CPlus.so
-
-$(BINARYDIR)/pugixml.so : ../3rdParty/pugixml/pugixml/$(BINARYDIR)/pugixml.so
-	$(CP) ../3rdParty/pugixml/pugixml/$(BINARYDIR)/pugixml.so $(BINARYDIR)/pugixml.so
 
 $(BINARYDIR)/TaskLibraries.so : ../TaskLibraries/$(BINARYDIR)/TaskLibraries.so
 	$(CP) ../TaskLibraries/$(BINARYDIR)/TaskLibraries.so $(BINARYDIR)/TaskLibraries.so

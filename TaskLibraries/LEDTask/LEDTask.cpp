@@ -28,6 +28,11 @@ void LEDTask::SetPins(int data, int clock, int load)
 	_load = load;
 }
 
+void LEDTask::Clear()
+{
+	send16bits(0);
+}
+
 void LEDTask::max7219Send(unsigned char reg_number, unsigned char dataout)
 {
 	digitalWrite(_load, 1);  // set LOAD 1 to start

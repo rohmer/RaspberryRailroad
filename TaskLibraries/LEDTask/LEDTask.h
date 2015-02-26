@@ -38,6 +38,7 @@ class LEDTask : public TaskBase
 		void Init();
 		void SetPins(int data, int clock, int load);
 		void Draw(int column, int row, bool powerMode);
+		void Clear();
 		std::string GetTaskName() { return "LEDTask";  }
 		~LEDTask();
 };

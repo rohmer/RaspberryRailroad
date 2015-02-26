@@ -18,6 +18,9 @@ void LEDTaskTests::BlinkRow1Col1()
 	args.push_back(1);
 
 	ledTask->Draw(1, 1, true);
-	ledTask->Run(args);
+	usleep(1000000);
+	ledTask->Clear();
+	usleep(1000000);
+
 
 }
