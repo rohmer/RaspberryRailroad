@@ -5,3 +5,4 @@ TaskBase::TaskBase(Logger logger)
 {
 	this->log = logger;
 }
+

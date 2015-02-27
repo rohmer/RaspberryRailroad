@@ -14,6 +14,9 @@
     <Filter Include="ServoTask">
       <UniqueIdentifier>{03800e3a-542e-4866-bcfc-e3072e5aafc3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ScriptedTask">
+      <UniqueIdentifier>{7e68a119-24d5-41e5-a640-f5ede4c08cb7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="Makefile" />
@@ -44,6 +47,9 @@
       <Filter>LEDTask</Filter>
     </ClCompile>
     <ClCompile Include="TaskLibrary.cpp" />
+    <ClCompile Include="ScriptedTask\ScriptedTask.cpp">
+      <Filter>ScriptedTask</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TaskBase\TaskBase.h">
@@ -65,5 +71,8 @@
       <Filter>LEDTask</Filter>
     </ClInclude>
     <ClInclude Include="TaskLibrary.h" />
+    <ClInclude Include="ScriptedTask\ScriptedTask.h">
+      <Filter>ScriptedTask</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

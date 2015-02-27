@@ -15,4 +15,5 @@ class TaskBase
 		virtual void Run(vector<int> args)=0;
 		virtual void Init()=0;
 		virtual std::string GetTaskName() = 0;
+		
 };

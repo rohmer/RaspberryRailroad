@@ -29,8 +29,11 @@ class LEDTask : public TaskBase
 		int _data, _clock, _load;
 		int numDevice;
 		int spiFD;
-		void max7219Send(unsigned char reg_number, unsigned char dataout);
-		void send16bits(unsigned short output);
+		void max7219Send(unsigned char reg_number, unsigned char column);		
+		void putByte(unsigned char data);
+		void internalDraw();
+		bool rows[8];
+		bool cols[8];
 
 	public:
 		LEDTask(Logger logger);
