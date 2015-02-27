@@ -2,16 +2,13 @@
 #include "LEDTaskTests.h"
 #include "log4cplus/logger.h"
 #include "log4cplus/fileappender.h"
+#include "LogHelper.h"
 
 using namespace std;
 
 int main(int argc, char *argv[])
-{
-	log4cplus::initialize();
-	SharedAppenderPtr fileAppender(new RollingFileAppender(LOG4CPLUS_TEXT("TaskLibraryTest.log"), 5 * 1024, 5));
-	fileAppender->setLayout((std::auto_ptr<Layout>(new TTCCLayout())));
-	Logger::getRoot().addAppender(fileAppender);
-	Logger log = Logger::getRoot();
+{	
+	Logger log = LogHelper::GetLogger(DEBUG_LOG_LEVEL, true, true, "TestLog.log", false, 0, "");
 	LEDTaskTests ledTest(log);
 	ledTest.BlinkRow1Col1();
 	return 0;

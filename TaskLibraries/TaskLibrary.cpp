@@ -18,7 +18,8 @@ TaskBase *TaskLibrary::GetTask(TaskTypes types)
 		log.log(DEBUG_LOG_LEVEL, "Lib already loaded, returning instance");
 		return it->second;
 	}
-// We haven't created one yet, lets create it
+	
+	// We haven't created one yet, lets create it
 	switch (types)
 	{
 		case TLEDTask:
@@ -33,14 +34,12 @@ TaskBase *TaskLibrary::GetTask(TaskTypes types)
 			TaskBase *tb = new ServoTask(log);
 			libsLoaded.insert(std::pair<TaskTypes, TaskBase*>(TServoTask, tb));
 			log.log(DEBUG_LOG_LEVEL, "Returning new instance of ServoTask");
-			map<TaskTypes, TaskBase*>::iterator it = libsLoaded.find(TServoTask);
 			return tb;
 		}
 		case TScriptedTask:
 			TaskBase *tb = new ScriptedTask(log);
 			libsLoaded.insert(std::pair<TaskTypes, TaskBase*>(TScriptedTask, tb));
 			log.log(DEBUG_LOG_LEVEL, "Returning new instance of ScriptedTask");
-			map<TaskTypes, TaskBase*>::iterator it = libsLoaded.find(TScriptedTask);
 			return tb;
 	}	
 }
