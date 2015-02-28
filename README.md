@@ -10,3 +10,8 @@ Right now I am working on 2 major things:
 1. Task and a Task Library to control things like LEDs, Servo Motors, etc
 2. An occupancy library that can read from sensors to detect when a section of track is occupied and run tasks (Lower cross gates, blink
 LEDs, etc.)
+
+Licensed under the Microsoft Public License (MS-PL)
+http://opensource.org/licenses/MS-PL
+
+Enjoy!  Contribute!
