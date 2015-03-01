@@ -12,16 +12,16 @@ AR := C:/SysGCC/raspberry/bin/arm-linux-gnueabihf-ar.exe
 OBJCOPY := C:/SysGCC/raspberry/bin/arm-linux-gnueabihf-objcopy.exe
 
 #Additional flags
-PREPROCESSOR_MACROS := DEBUG
-INCLUDE_DIRS := ..\Logging\include ..\wiringPI\wiringPI
-LIBRARY_DIRS := thread
+PREPROCESSOR_MACROS := 
+INCLUDE_DIRS := 
+LIBRARY_DIRS := 
 LIBRARY_NAMES := 
 ADDITIONAL_LINKER_INPUTS := 
 MACOS_FRAMEWORKS := 
 LINUX_PACKAGES := 
 
-CFLAGS := -ggdb -ffunction-sections -O0
-CXXFLAGS := -ggdb -ffunction-sections -O0
+CFLAGS := -ggdb -ffunction-sections
+CXXFLAGS := -ggdb -ffunction-sections
 ASFLAGS := 
 LDFLAGS := -Wl,-gc-sections
 COMMONFLAGS := 
