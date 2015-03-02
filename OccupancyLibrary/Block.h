@@ -21,9 +21,8 @@ class Block
 	};
 
 	private:
-		vector<int> activationDetectors;
+		vector<int> detectors;
 		vector<int> connectedBlocks;
-		vector<int> deactivationDetectors;		
 		vector<BlockTaskType> activationTasks;
 		vector<BlockTaskType> deactivationTasks;
 
@@ -41,8 +40,7 @@ class Block
 	public:
 		Block(Logger logger, OpticalDetector* opticalDetector, TaskLibrary* taskLibrary, int blockIdentifier);
 		Block(Logger logger, int blockIdentifier);
-		void AddActivationDetector(int detectorNum);
-		void AddDeactivationDetector(int detectorNum);
+		void AddDetector(int detectorNum);		
 		void Update();
 		void NeighborOccupied(bool value);
 		bool IsNeighborOccupied();
@@ -54,4 +52,6 @@ class Block
 		void AddActivationTask(BlockTaskType task);
 		void AddDeactivationTask(BlockTaskType task);
 		int GetID();
+		vector<int> GetNeighbors();
+		bool SetOccupied(bool val) { isOccupied = val; }
 };

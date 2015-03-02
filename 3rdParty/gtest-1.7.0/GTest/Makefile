@@ -23,7 +23,7 @@ error:
 	$(error Invalid configuration, please check your inputs)
 endif
 
-SOURCEFILES := ../test/gtest_unittest.cc
+SOURCEFILES := ../src/gtest-all.cc ../src/gtest_main.cc
 EXTERNAL_LIBS := 
 EXTERNAL_LIBS_COPIED := $(foreach lib, $(EXTERNAL_LIBS),$(BINARYDIR)/$(notdir $(lib)))
 
@@ -165,6 +165,10 @@ $(BINARYDIR)/%.o : %.cxx $(all_make_files) |$(BINARYDIR)
 #VisualGDB: GeneratedRules				#<--- All lines below are auto-generated
 
 
-$(BINARYDIR)/gtest_unittest.o : ../test/gtest_unittest.cc $(all_make_files) |$(BINARYDIR)
+$(BINARYDIR)/gtest-all.o : ../src/gtest-all.cc $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/gtest_main.o : ../src/gtest_main.cc $(all_make_files) |$(BINARYDIR)
 	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
 

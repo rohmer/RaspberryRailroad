@@ -23,7 +23,7 @@ error:
 	$(error Invalid configuration, please check your inputs)
 endif
 
-SOURCEFILES := LEDTaskTests.cpp TaskLibraryTest.cpp
+SOURCEFILES := BaseTests.cpp LEDTaskTests.cpp TaskLibraryTest.cpp
 EXTERNAL_LIBS := ../../../Logging/Solution/$(BINARYDIR)/Log4CPlus.so ../../$(BINARYDIR)/TaskLibraries.so ../../../wiringPi/wiringPi/$(BINARYDIR)/wiringPi.so
 EXTERNAL_LIBS_COPIED := $(foreach lib, $(EXTERNAL_LIBS),$(BINARYDIR)/$(notdir $(lib)))
 

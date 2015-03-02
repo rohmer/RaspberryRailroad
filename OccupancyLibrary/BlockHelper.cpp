@@ -6,7 +6,7 @@
 /// <param name="logger">The logger.</param>
 /// <param name="filename">The filename of the block file</param>
 /// File Format:
-/// <Block Name="Descriptive Block Name"><Activation SensorID="1"/><Deactivation SensorID="2"/><Connected BlockName="Block Name"/></Block>
+/// <Block Name="Descriptive Block Name"><Sensor SensorID="1"/><Connected BlockName="Block Name"/></Block>
 /// <returns>
 /// Vector of Block*
 /// </returns>
@@ -50,34 +50,21 @@ vector<Block*> BlockHelper::ReadXMLBlockFile(Logger logger, std::string filename
 			logger.log(WARN_LOG_LEVEL, msg.str());
 		}
 
-		if (node.child("Activation"))
+		if (node.child("Sensor"))
 		{
-			for (pugi::xml_node activationNode = node.child("Activation"); activationNode; activationNode = node.next_sibling("Activation"))
+			for (pugi::xml_node activationNode = node.child("Sensor"); activationNode; activationNode = node.next_sibling("Sensor"))
 			{
 				xml_attribute activationAttribute = activationNode.attribute("SensorID");
 				if (activationAttribute)
 				{
 					msg.clear();
-					msg << "BlockID: " << blockID << " has an activation sensor defined, ID=" << activationAttribute.value();
+					msg << "BlockID: " << blockID << " has an sensor defined, ID=" << activationAttribute.value();
 					logger.log(DEBUG_LOG_LEVEL, msg.str());
-					block->AddActivationDetector(activationAttribute.as_int());
+					block->AddDetector(activationAttribute.as_int());
 				}
 			}
 		}
-		if (node.child("Dectivation"))
-		{
-			for (pugi::xml_node activationNode = node.child("Deactivation"); activationNode; activationNode = node.next_sibling("Deactivation"))
-			{
-				xml_attribute activationAttribute = activationNode.attribute("SensorID");
-				if (activationAttribute)
-				{
-					msg.clear();
-					msg << "BlockID: " << blockID << " has an deactivation sensor defined, ID=" << activationAttribute.value();
-					logger.log(DEBUG_LOG_LEVEL, msg.str());
-					block->AddDeactivationDetector(activationAttribute.as_int());
-				}
-			}
-		}
+		
 		returnValue.push_back(block);
 		blockID++;
 	}

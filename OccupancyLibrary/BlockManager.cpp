@@ -42,17 +42,15 @@ int BlockManager::AddBlock(std::string blockName)
 	return blockNum;
 }
 
-int BlockManager::AddBlock(std::string blockName, std::vector<int> activationDetectors, std::vector<int> deactivationDetectors)
+int BlockManager::AddBlock(std::string blockName, std::vector<int> detectors)
 {
 	ostringstream msg;
-	msg << "Entering BlockManager::AddBlock(" << blockName << ", activationDetectors, deactivationDetectors)";
+	msg << "Entering BlockManager::AddBlock(" << blockName << ", detectors)";
 	log.log(DEBUG_LOG_LEVEL, msg.str());
 	Block* newBlock = new Block(log, opticalDetector, taskLib, blockCounter);
 	newBlock->SetBlockName(blockName);
-	for (int a = 0; a < activationDetectors.size(); a++)
-		newBlock->AddActivationDetector(activationDetectors[a]);
-	for (int a = 0; a < deactivationDetectors.size(); a++)
-		newBlock->AddDeactivationDetector(deactivationDetectors[a]);
+	for (int a = 0; a < detectors.size(); a++)
+		newBlock->AddDetector(detectors[a]);
 	blocks.insert(std::pair<int, Block*>(blockCounter, newBlock));
 	int blockNum = blockCounter;
 	blockCounter++;
@@ -62,24 +60,22 @@ int BlockManager::AddBlock(std::string blockName, std::vector<int> activationDet
 	return blockNum;
 }
 
-int BlockManager::AddBlock(std::string blockName, std::vector<int> activationDetectors, std::vector<int> deactivationDetectors, std::vector<int> neighborBlocks)
+int BlockManager::AddBlock(std::string blockName, std::vector<int> detectors, std::vector<int> neighborBlocks)
 {
 	ostringstream msg;
-	msg << "Entering BlockManager::AddBlock(" << blockName << ", activationDetectors, deactivationDetectors, neighborBlocks)";
+	msg << "Entering BlockManager::AddBlock(" << blockName << ", detectors, neighborBlocks)";
 	log.log(DEBUG_LOG_LEVEL, msg.str());
 	Block* newBlock = new Block(log, opticalDetector, taskLib, blockCounter);
 	newBlock->SetBlockName(blockName);
-	for (int a = 0; a < activationDetectors.size(); a++)
-		newBlock->AddActivationDetector(activationDetectors[a]);
-	for (int a = 0; a < deactivationDetectors.size(); a++)
-		newBlock->AddDeactivationDetector(deactivationDetectors[a]);
+	for (int a = 0; a < detectors.size(); a++)
+		newBlock->AddDetector(detectors[a]);
 	for (int a = 0; a < neighborBlocks.size(); a++)
 		newBlock->AddNeighbor(neighborBlocks[a]);
 	blocks.insert(std::pair<int, Block*>(blockCounter, newBlock));
 	int blockNum = blockCounter;
 	blockCounter++;
 	msg.clear();
-	msg << "Entering BlockManager::AddBlock(" << blockName << ", activationDetectors, deactivationDetectors), rc==" << blockNum;
+	msg << "Entering BlockManager::AddBlock(" << blockName << ", detectors, neighborBlocks), rc==" << blockNum;
 	log.log(DEBUG_LOG_LEVEL, msg.str());
 	return blockNum;
 }
@@ -90,6 +86,19 @@ void BlockManager::UpdateBlocks()
 	typedef std::map<int, Block*>::iterator it_type;
 	for (it_type iterator = blocks.begin(); iterator != blocks.end(); iterator++)
 	{
+		// First check neighbors to see if they are active
+		for (int n = 0; n < iterator->second->GetNeighbors().size(); n++)
+		{
+			Block* neighbor = blocks[iterator->second->GetNeighbors()[n]];
+			if (neighbor->IsOccupied())
+			{
+				// Neighbor is occupied, so we arent
+				iterator->second->SetOccupied(false);
+				ostringstream msg;
+				msg << "Setting block: " << iterator->first << " to unoccupied because neighbor is occupied";
+				log.log(DEBUG_LOG_LEVEL, msg.str());
+			}
+		}
 		iterator->second->Update();
 	}
 	log.log(DEBUG_LOG_LEVEL, LOG4CPLUS_TEXT("Entering BlockManager::UpdateBlocks()"));

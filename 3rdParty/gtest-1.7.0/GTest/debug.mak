@@ -15,15 +15,15 @@ OBJCOPY := C:/SysGCC/raspberry/bin/arm-linux-gnueabihf-objcopy.exe
 PREPROCESSOR_MACROS := DEBUG
 INCLUDE_DIRS := ../include ..
 LIBRARY_DIRS := 
-LIBRARY_NAMES := 
+LIBRARY_NAMES := pthread
 ADDITIONAL_LINKER_INPUTS := 
 MACOS_FRAMEWORKS := 
 LINUX_PACKAGES := 
 
-CFLAGS := -ggdb -ffunction-sections -O0
-CXXFLAGS := -ggdb -ffunction-sections -O0
+CFLAGS := -ggdb -ffunction-sections -O0 -DGTEST_HAS_PTHREAD
+CXXFLAGS := -ggdb -ffunction-sections -O0 -DGTEST_HAS_PTHREAD
 ASFLAGS := 
-LDFLAGS := -Wl,-gc-sections
+LDFLAGS := -Wl,-gc-sections -DGTEST_HAS_PTHREAD
 COMMONFLAGS := 
 
 START_GROUP := -Wl,--start-group

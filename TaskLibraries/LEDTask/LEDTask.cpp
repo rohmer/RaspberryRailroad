@@ -2,9 +2,10 @@
 
 LEDTask::LEDTask(Logger logger) :TaskBase(logger)
 {	
-	log.log(log4cplus::DEBUG_LOG_LEVEL, "LEDTask::LEDTask created");
-	numDevice = 1;
-	SetPins(0, 3, 4);
+	log.log(log4cplus::DEBUG_LOG_LEVEL, "LEDTask::LEDTask created");	
+	_spiChannel = 0;
+	_spiSpeed = 1000000;
+	_maxCount = 1;
 }
 
 /// <summary>
@@ -17,15 +18,41 @@ LEDTask::LEDTask(Logger logger) :TaskBase(logger)
 /// </param>
 void LEDTask::Run(vector<int> args)
 {
+	ostringstream msg;
+	ostringstream argstring;
+	for (int a = 0; a < args.size() - 1; a++)
+		argstring << args[a] << ",";
+	argstring << args[args.size() - 1];
+	msg << "Entering LEDTask::Run(" << argstring << ")";
+	log.log(DEBUG_LOG_LEVEL, msg.str());
 	if (!successfulInit)
 		Init();
+	if (args.size() < 4)
+	{
+		msg.clear();
+		msg << "LEDTask::Run() expects 4 arguments, received: " << args.size();
+		log.log(ERROR_LOG_LEVEL, msg.str());
+		msg.clear();
+		msg << "Exiting LEDTask::Run(" << argstring << ")";
+		log.log(DEBUG_LOG_LEVEL, msg.str());
+		return;
+	}
+	int row = args[1];
+	int col = args[2];
+	bool power = true;
+	if (args[3] == 0)
+		power = false;
+	Draw(col, row, power);
+	msg.clear();
+	msg << "Exiting LEDTask::Run(" << argstring << ")";
+	log.log(DEBUG_LOG_LEVEL, msg.str());	
 }
 
-void LEDTask::SetPins(int data, int clock, int load)
+void LEDTask::SetMaxParam(int spiSpeed, int spiChannel, int maxCount)
 {
-	_data = data;
-	_clock = clock;
-	_load = load;
+	_spiSpeed = spiSpeed;
+	_spiChannel = spiChannel;
+	_maxCount = maxCount;
 }
 
 void LEDTask::Clear()
@@ -38,46 +65,11 @@ void LEDTask::Clear()
 	internalDraw();
 }
 
-void LEDTask::putByte(unsigned char data)
-{
-	unsigned char i = 8;
-	unsigned char mask;
-	while (i > 0)
-	{
-		mask = 0x01 << (i - 1);				// Get bitmask
-		digitalWrite(_clock, LOW);			// tick
-		if (data & mask)					// Choose bit
-		{
-			digitalWrite(_data, HIGH);		// Send 1
-		}
-		else
-		{
-			digitalWrite(_data, LOW);		// Send 0
-		}
-		digitalWrite(_clock, HIGH);			// tock
-		i--;
-	}
-}
-
-void LEDTask::max7219Send(unsigned char reg_number, unsigned char column)
-{
-	digitalWrite(_load, LOW);	// set LOAD 0 to start
-	putByte(reg_number);		// Specify row
-	putByte(column);			// Specify column
-	digitalWrite(_load, 0);		// LOAD 0 to latch
-	digitalWrite(_load, 1);		// set LOAD 1 to finish
-}
-
 void LEDTask::Init()
 {			
-	pinMode(_data, OUTPUT);
-	pinMode(_clock, OUTPUT);
-	pinMode(_load, OUTPUT);
-	max7219Send(SCAN_LIMIT, 7);
-	max7219Send(DECODE_MODE, 0x00);		// Using LED Matrix (not digits)
-	max7219Send(DISPLAY_TEST, 0x00);	// No display test
-	max7219Send(INTENSITY, 15);			// High intensity
-	max7219Send(SHUTDOWN, 0x00);		// Not in shutdown
+	spiFD = max7219_init(_spiChannel, _spiSpeed, _maxCount);
+	max7219_set_intensity(0, 15);
+	max7219_set_decode(0, NO_DECODE);
 	Clear();							// Turn everything off
 }
 
@@ -99,7 +91,7 @@ void LEDTask::internalDraw()
 			col += 2 ^ a;
 		}
 	}
-	max7219Send(row, col);
+	max7219_send_data(0, row, col);
 }
 
 void LEDTask::Draw(int column, int row, bool powerMode)
@@ -123,6 +115,6 @@ void LEDTask::Draw(int column, int row, bool powerMode)
 LEDTask::~LEDTask()
 {
 	log.log(DEBUG_LOG_LEVEL, "Running ~LEDTask()");
-	max7219Send(SHUTDOWN, 0);
+	max7219_set_shutdown(0, SHUTDOWN_MODE);
 	log.log(DEBUG_LOG_LEVEL, "~LEDTask() complete");
 }

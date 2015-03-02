@@ -43,12 +43,15 @@
     <ClCompile Include="ServoTask\pca9685.c">
       <Filter>ServoTask</Filter>
     </ClCompile>
-    <ClCompile Include="LEDTask\max7219.c">
-      <Filter>LEDTask</Filter>
-    </ClCompile>
     <ClCompile Include="TaskLibrary.cpp" />
     <ClCompile Include="ScriptedTask\ScriptedTask.cpp">
       <Filter>ScriptedTask</Filter>
+    </ClCompile>
+    <ClCompile Include="max7221.cpp">
+      <Filter>LEDTask</Filter>
+    </ClCompile>
+    <ClCompile Include="LEDTask\max7219.cpp">
+      <Filter>LEDTask</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -73,6 +76,9 @@
     <ClInclude Include="TaskLibrary.h" />
     <ClInclude Include="ScriptedTask\ScriptedTask.h">
       <Filter>ScriptedTask</Filter>
+    </ClInclude>
+    <ClInclude Include="max7221.h">
+      <Filter>LEDTask</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

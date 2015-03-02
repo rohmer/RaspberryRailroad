@@ -24,7 +24,7 @@ error:
 endif
 
 SOURCEFILES := LEDTaskTests.cpp TaskLibraryTest.cpp
-EXTERNAL_LIBS := ../../../Logging/Solution/$(BINARYDIR)/Log4CPlus.a ../../$(BINARYDIR)/TaskLibraries.a ../../../wiringPi/wiringPi/$(BINARYDIR)/wiringPi.so
+EXTERNAL_LIBS := ../../../Logging/Solution/$(BINARYDIR)/Log4CPlus.so ../../$(BINARYDIR)/TaskLibraries.so ../../../wiringPi/wiringPi/$(BINARYDIR)/wiringPi.so
 EXTERNAL_LIBS_COPIED := $(foreach lib, $(EXTERNAL_LIBS),$(BINARYDIR)/$(notdir $(lib)))
 
 CFLAGS += $(COMMONFLAGS)
@@ -163,11 +163,11 @@ $(BINARYDIR)/%.o : %.cxx $(all_make_files) |$(BINARYDIR)
 	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
 
 #VisualGDB: GeneratedRules				#<--- All lines below are auto-generated
-$(BINARYDIR)/Log4CPlus.a : ../../../Logging/Solution/$(BINARYDIR)/Log4CPlus.a
-	$(CP) ../../../Logging/Solution/$(BINARYDIR)/Log4CPlus.a $(BINARYDIR)/Log4CPlus.a
+$(BINARYDIR)/Log4CPlus.so : ../../../Logging/Solution/$(BINARYDIR)/Log4CPlus.so
+	$(CP) ../../../Logging/Solution/$(BINARYDIR)/Log4CPlus.so $(BINARYDIR)/Log4CPlus.so
 
-$(BINARYDIR)/TaskLibraries.a : ../../$(BINARYDIR)/TaskLibraries.a
-	$(CP) ../../$(BINARYDIR)/TaskLibraries.a $(BINARYDIR)/TaskLibraries.a
+$(BINARYDIR)/TaskLibraries.so : ../../$(BINARYDIR)/TaskLibraries.so
+	$(CP) ../../$(BINARYDIR)/TaskLibraries.so $(BINARYDIR)/TaskLibraries.so
 
 $(BINARYDIR)/wiringPi.so : ../../../wiringPi/wiringPi/$(BINARYDIR)/wiringPi.so
 	$(CP) ../../../wiringPi/wiringPi/$(BINARYDIR)/wiringPi.so $(BINARYDIR)/wiringPi.so

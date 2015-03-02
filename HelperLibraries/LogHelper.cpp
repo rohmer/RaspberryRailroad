@@ -5,7 +5,7 @@ Logger LogHelper::GetLogger(log4cplus::LogLevel minSevToLog, bool logToStdOut,
 							bool logToNet, int port, std::string hostname)
 {
 	log4cplus::initialize();
-	Logger logger = Logger::getRoot();
+	Logger logger = Logger::getRoot();	
 	log4cplus::getMDC().put(LOG4CPLUS_TEXT("key"),
 		LOG4CPLUS_TEXT("MDC value"));
 	logger.setLogLevel(minSevToLog);

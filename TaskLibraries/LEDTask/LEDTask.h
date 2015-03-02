@@ -13,24 +13,14 @@ using namespace std;
 using namespace log4cplus;
 using namespace log4cplus::helpers;
 
-// The Max7219 Registers :
-
-#define DECODE_MODE   0x09                       
-#define INTENSITY     0x0a                        
-#define SCAN_LIMIT    0x0b                        
-#define SHUTDOWN      0x0c                        
-#define DISPLAY_TEST  0x0f              
-
 // Used in conjunction with a Max7219 to control multiple LEDs
 class LEDTask : public TaskBase
 {
 	private:
 		bool successfulInit;
-		int _data, _clock, _load;
+		int _spiSpeed, _spiChannel, _maxCount;
 		int numDevice;
 		int spiFD;
-		void max7219Send(unsigned char reg_number, unsigned char column);		
-		void putByte(unsigned char data);
 		void internalDraw();
 		bool rows[8];
 		bool cols[8];
@@ -38,8 +28,8 @@ class LEDTask : public TaskBase
 	public:
 		LEDTask(Logger logger);
 		void Run(vector<int> args);	
+		void SetMaxParam(int sipSpeed, int spiChannel, int maxCount);
 		void Init();
-		void SetPins(int data, int clock, int load);
 		void Draw(int column, int row, bool powerMode);
 		void Clear();
 		std::string GetTaskName() { return "LEDTask";  }

@@ -28,8 +28,8 @@ class BlockManager
 		bool AddDetectorArray(ADCPiI2CAddress arrayAddress);
 		int AddBlock();
 		int AddBlock(std::string blockName);
-		int AddBlock(std::string blockName, std::vector<int> activationDetectors, std::vector<int> deactivationDetectors);
-		int AddBlock(std::string blockName, std::vector<int> activationDetectors, std::vector<int> deactivationDetectors, std::vector<int> neighborBlocks);
+		int AddBlock(std::string blockName, std::vector<int> deectors);
+		int AddBlock(std::string blockName, std::vector<int> detectors, std::vector<int> neighborBlocks);
 
 		void UpdateBlocks();
 

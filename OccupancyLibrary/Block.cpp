@@ -20,51 +20,30 @@ Block::Block(Logger logger, int blockIdentifier)
 	log.log(DEBUG_LOG_LEVEL, "Block::Block() initalized");
 }
 
-void Block::AddActivationDetector(int detectorNum)
+void Block::AddDetector(int detectorNum)
 {
 	ostringstream msg;
-	msg << "Adding activation point: " << detectorNum;
+	msg << "Adding Detector: " << detectorNum;
 	log.log(DEBUG_LOG_LEVEL, msg.str());
-	activationDetectors.push_back(detectorNum);
+	detectors.push_back(detectorNum);
 }
 
-void Block::AddDeactivationDetector(int detectorNum)
+vector<int> Block::GetNeighbors()
 {
-	ostringstream msg;
-	msg << "Adding deactivation point: " << detectorNum;
-	log.log(DEBUG_LOG_LEVEL, msg.str());
-	deactivationDetectors.push_back(detectorNum);
+	return connectedBlocks;
 }
 
 void Block::Update()
 {
 	ostringstream msg;
 	msg << "Entering Block::Update() for blockID: " << blockID;
-	log.log(DEBUG_LOG_LEVEL,msg.str());
-	// Only process potential state changes
-	// i.e. Occupied -> Unoccupied
-	if (isOccupied)
+	log.log(DEBUG_LOG_LEVEL,msg.str());	
+	if(!isOccupied)
 	{
-		for (int a = 0; a < deactivationDetectors.size(); a++)
+		for (int a = 0; a < detectors.size(); a++)
 		{
-			opticalDetector->UpdateDetector(deactivationDetectors[a]);
-			if (opticalDetector->IsTriggered(activationDetectors[a]))
-			{
-				msg.clear();
-				msg << "Block :" << blockID << " is becoming unoccupied";
-				log.log(DEBUG_LOG_LEVEL, msg.str());
-				isOccupied = false;		
-				for (int b = 0; b < deactivationTasks.size(); b++)
-					execTask(deactivationTasks[a]);
-			}
-		}
-	}
-	else
-	{
-		for (int a = 0; a < activationDetectors.size(); a++)
-		{
-			opticalDetector->UpdateDetector(activationDetectors[a]);
-			if (opticalDetector->IsTriggered(activationDetectors[a]))
+			opticalDetector->UpdateDetector(detectors[a]);
+			if (opticalDetector->IsTriggered(detectors[a]))
 			{
 				msg.clear();
 				msg << "Block :" << blockID << " is becoming occupied";
