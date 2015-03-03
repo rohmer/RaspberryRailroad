@@ -13,9 +13,9 @@ OBJCOPY := C:/SysGCC/raspberry/bin/arm-linux-gnueabihf-objcopy.exe
 
 #Additional flags
 PREPROCESSOR_MACROS := DEBUG
-INCLUDE_DIRS := ../.. ../../../Logging/include ../../../wiringPI/wiringPI ../../../HelperLibraries ../../../3rdParty/gtest-1.7.0/include
-LIBRARY_DIRS := 
-LIBRARY_NAMES := pthread
+INCLUDE_DIRS := ../.. ../../../Logging/include ../../../wiringPI/wiringPI ../../../HelperLibraries ../../../3rdParty/libuinttest-7.0.2/include
+LIBRARY_DIRS := ../../../3rdParty/libunittest-7.0.2/Debug
+LIBRARY_NAMES := pthread UnitTest
 ADDITIONAL_LINKER_INPUTS := 
 MACOS_FRAMEWORKS := 
 LINUX_PACKAGES := 

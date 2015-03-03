@@ -23,8 +23,8 @@ error:
 	$(error Invalid configuration, please check your inputs)
 endif
 
-SOURCEFILES := BaseTests.cpp LEDTaskTests.cpp TaskLibraryTest.cpp
-EXTERNAL_LIBS := ../../../Logging/Solution/$(BINARYDIR)/Log4CPlus.so ../../$(BINARYDIR)/TaskLibraries.so ../../../wiringPi/wiringPi/$(BINARYDIR)/wiringPi.so
+SOURCEFILES := LEDTaskTests.cpp TaskLibraryTest.cpp
+EXTERNAL_LIBS := ../../../Logging/Solution/$(BINARYDIR)/Log4CPlus.so ../../../3rdParty/libunittest-7.0.2/libUnitTest/$(BINARYDIR)/libunittest.so ../../../HelperLibraries/$(BINARYDIR)/HelperLibraries.so ../../$(BINARYDIR)/TaskLibraries.so ../../../wiringPi/wiringPi/$(BINARYDIR)/wiringPi.so
 EXTERNAL_LIBS_COPIED := $(foreach lib, $(EXTERNAL_LIBS),$(BINARYDIR)/$(notdir $(lib)))
 
 CFLAGS += $(COMMONFLAGS)
@@ -165,6 +165,12 @@ $(BINARYDIR)/%.o : %.cxx $(all_make_files) |$(BINARYDIR)
 #VisualGDB: GeneratedRules				#<--- All lines below are auto-generated
 $(BINARYDIR)/Log4CPlus.so : ../../../Logging/Solution/$(BINARYDIR)/Log4CPlus.so
 	$(CP) ../../../Logging/Solution/$(BINARYDIR)/Log4CPlus.so $(BINARYDIR)/Log4CPlus.so
+
+$(BINARYDIR)/libunittest.so : ../../../3rdParty/libunittest-7.0.2/libUnitTest/$(BINARYDIR)/libunittest.so
+	$(CP) ../../../3rdParty/libunittest-7.0.2/libUnitTest/$(BINARYDIR)/libunittest.so $(BINARYDIR)/libunittest.so
+
+$(BINARYDIR)/HelperLibraries.so : ../../../HelperLibraries/$(BINARYDIR)/HelperLibraries.so
+	$(CP) ../../../HelperLibraries/$(BINARYDIR)/HelperLibraries.so $(BINARYDIR)/HelperLibraries.so
 
 $(BINARYDIR)/TaskLibraries.so : ../../$(BINARYDIR)/TaskLibraries.so
 	$(CP) ../../$(BINARYDIR)/TaskLibraries.so $(BINARYDIR)/TaskLibraries.so

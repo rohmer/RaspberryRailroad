@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.22609.0
+VisualStudioVersion = 14.0.22512.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TaskLibraries", "TaskLibraries.vcxproj", "{542DD695-A5C3-42BA-89E7-47BC491D31D6}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -16,6 +16,8 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TaskLibraryTest", "Test\TaskLibraryTest\TaskLibraryTest.vcxproj", "{D40020F3-09BF-472B-8528-766918A6BC84}"
 	ProjectSection(ProjectDependencies) = postProject
 		{31172E34-FEE3-4CE2-9691-07CC1BA2B371} = {31172E34-FEE3-4CE2-9691-07CC1BA2B371}
+		{6A99BE52-854D-4ACC-B8BD-4A2E8149237D} = {6A99BE52-854D-4ACC-B8BD-4A2E8149237D}
+		{EFBBD166-9E11-4CD9-8324-41B2B67E2F39} = {EFBBD166-9E11-4CD9-8324-41B2B67E2F39}
 		{542DD695-A5C3-42BA-89E7-47BC491D31D6} = {542DD695-A5C3-42BA-89E7-47BC491D31D6}
 		{C2A0FFC1-44BF-4AEE-B4C1-937F1DC998D6} = {C2A0FFC1-44BF-4AEE-B4C1-937F1DC998D6}
 	EndProjectSection
@@ -34,7 +36,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HelperLibraries", "..\Helpe
 		{31172E34-FEE3-4CE2-9691-07CC1BA2B371} = {31172E34-FEE3-4CE2-9691-07CC1BA2B371}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GTest", "..\3rdParty\gtest-1.7.0\GTest\GTest.vcxproj", "{EBB13A2C-8CB1-45AE-9ED9-8B211EC3D6B9}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libUnitTest", "..\3rdParty\libunittest-7.0.2\libUnitTest\libUnitTest.vcxproj", "{6A99BE52-854D-4ACC-B8BD-4A2E8149237D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -70,10 +72,10 @@ Global
 		{EFBBD166-9E11-4CD9-8324-41B2B67E2F39}.Debug|Win32.Build.0 = Debug|Win32
 		{EFBBD166-9E11-4CD9-8324-41B2B67E2F39}.Release|Win32.ActiveCfg = Release|Win32
 		{EFBBD166-9E11-4CD9-8324-41B2B67E2F39}.Release|Win32.Build.0 = Release|Win32
-		{EBB13A2C-8CB1-45AE-9ED9-8B211EC3D6B9}.Debug|Win32.ActiveCfg = Debug|Win32
-		{EBB13A2C-8CB1-45AE-9ED9-8B211EC3D6B9}.Debug|Win32.Build.0 = Debug|Win32
-		{EBB13A2C-8CB1-45AE-9ED9-8B211EC3D6B9}.Release|Win32.ActiveCfg = Release|Win32
-		{EBB13A2C-8CB1-45AE-9ED9-8B211EC3D6B9}.Release|Win32.Build.0 = Release|Win32
+		{6A99BE52-854D-4ACC-B8BD-4A2E8149237D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{6A99BE52-854D-4ACC-B8BD-4A2E8149237D}.Debug|Win32.Build.0 = Debug|Win32
+		{6A99BE52-854D-4ACC-B8BD-4A2E8149237D}.Release|Win32.ActiveCfg = Release|Win32
+		{6A99BE52-854D-4ACC-B8BD-4A2E8149237D}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

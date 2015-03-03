@@ -28,9 +28,6 @@
     <ClCompile Include="LEDTaskTests.cpp">
       <Filter>Tests</Filter>
     </ClCompile>
-    <ClCompile Include="BaseTests.cpp">
-      <Filter>Tests</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Makefile" />
