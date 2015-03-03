@@ -24,7 +24,7 @@ error:
 endif
 
 SOURCEFILES := LEDTaskTests.cpp TaskLibraryTest.cpp
-EXTERNAL_LIBS := ../../../Logging/Solution/$(BINARYDIR)/Log4CPlus.so ../../$(BINARYDIR)/TaskLibraries.so ../../../3rdParty/cpptest-1.1.2/cpptest/$(BINARYDIR)/cpptest.so
+EXTERNAL_LIBS := ../../../Logging/Solution/$(BINARYDIR)/Log4CPlus.so ../../$(BINARYDIR)/TaskLibraries.so ../../../3rdParty/cpptest-1.1.2/cpptest/$(BINARYDIR)/cpptest.so ../../../wiringPi/wiringPi/$(BINARYDIR)/wiringPi.so
 EXTERNAL_LIBS_COPIED := $(foreach lib, $(EXTERNAL_LIBS),$(BINARYDIR)/$(notdir $(lib)))
 
 CFLAGS += $(COMMONFLAGS)
@@ -171,4 +171,7 @@ $(BINARYDIR)/TaskLibraries.so : ../../$(BINARYDIR)/TaskLibraries.so
 
 $(BINARYDIR)/cpptest.so : ../../../3rdParty/cpptest-1.1.2/cpptest/$(BINARYDIR)/cpptest.so
 	$(CP) ../../../3rdParty/cpptest-1.1.2/cpptest/$(BINARYDIR)/cpptest.so $(BINARYDIR)/cpptest.so
+
+$(BINARYDIR)/wiringPi.so : ../../../wiringPi/wiringPi/$(BINARYDIR)/wiringPi.so
+	$(CP) ../../../wiringPi/wiringPi/$(BINARYDIR)/wiringPi.so $(BINARYDIR)/wiringPi.so
 
