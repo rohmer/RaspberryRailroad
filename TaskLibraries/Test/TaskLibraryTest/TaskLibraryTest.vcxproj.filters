@@ -20,13 +20,16 @@
     <Filter Include="Tests">
       <UniqueIdentifier>{4c71e5e5-2b75-4c78-8f91-5cdcfaedaa98}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Tests\TaskLibrary">
+      <UniqueIdentifier>{26bf5f86-a50d-4aad-9c7e-11cb5d93b852}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="LEDTaskTests.cpp">
-      <Filter>Tests</Filter>
+      <Filter>Tests\TaskLibrary</Filter>
     </ClCompile>
     <ClCompile Include="TaskLibraryTest.cpp">
-      <Filter>Tests</Filter>
+      <Filter>Tests\TaskLibrary</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -39,14 +42,14 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="LEDTaskTests.h">
-      <Filter>Tests</Filter>
-    </ClInclude>
     <ClInclude Include="Tests.h">
       <Filter>Tests</Filter>
     </ClInclude>
     <ClInclude Include="TaskLibraryTest.h">
-      <Filter>Tests</Filter>
+      <Filter>Tests\TaskLibrary</Filter>
+    </ClInclude>
+    <ClInclude Include="LEDTaskTests.h">
+      <Filter>Tests\TaskLibrary</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
