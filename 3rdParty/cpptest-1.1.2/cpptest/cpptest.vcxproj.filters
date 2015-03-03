@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source files">
+      <UniqueIdentifier>{23695760-b9cd-480a-8c06-d84f27341f5d}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header files">
+      <UniqueIdentifier>{94c970a7-89e4-40bf-a3ac-12cab5ded621}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource files">
+      <UniqueIdentifier>{29602767-82f2-4b0a-9434-d0afd2b182ba}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="Make files">
+      <UniqueIdentifier>{df8e7d1a-b820-4f53-b064-27de747dc9b7}</UniqueIdentifier>
+      <Extensions>*.mak</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Makefile" />
+    <None Include="debug.mak">
+      <Filter>Make files</Filter>
+    </None>
+    <None Include="release.mak">
+      <Filter>Make files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\collectoroutput.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\compileroutput.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\htmloutput.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\missing.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\source.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\suite.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\textoutput.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\time.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\utils.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\cpptest.h">
+      <Filter>Source files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\cpptest-assert.h">
+      <Filter>Source files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\cpptest-collectoroutput.h">
+      <Filter>Source files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\cpptest-compileroutput.h">
+      <Filter>Source files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\cpptest-htmloutput.h">
+      <Filter>Source files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\cpptest-output.h">
+      <Filter>Source files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\cpptest-source.h">
+      <Filter>Source files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\cpptest-suite.h">
+      <Filter>Source files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\cpptest-textoutput.h">
+      <Filter>Source files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\cpptest-time.h">
+      <Filter>Source files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\missing.h">
+      <Filter>Source files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\utils.h">
+      <Filter>Source files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

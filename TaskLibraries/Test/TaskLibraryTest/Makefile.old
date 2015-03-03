@@ -24,7 +24,7 @@ error:
 endif
 
 SOURCEFILES := LEDTaskTests.cpp TaskLibraryTest.cpp
-EXTERNAL_LIBS := ../../../Logging/Solution/$(BINARYDIR)/Log4CPlus.so ../../../3rdParty/libunittest-7.0.2/libUnitTest/$(BINARYDIR)/libUnitTest.so ../../../HelperLibraries/$(BINARYDIR)/HelperLibraries.so ../../$(BINARYDIR)/TaskLibraries.so ../../../wiringPi/wiringPi/$(BINARYDIR)/wiringPi.so
+EXTERNAL_LIBS := ../../../Logging/Solution/$(BINARYDIR)/Log4CPlus.so ../../$(BINARYDIR)/TaskLibraries.so ../../../3rdParty/cpptest-1.1.2/cpptest/$(BINARYDIR)/cpptest.so ../../../wiringPi/wiringPi/$(BINARYDIR)/wiringPi.so
 EXTERNAL_LIBS_COPIED := $(foreach lib, $(EXTERNAL_LIBS),$(BINARYDIR)/$(notdir $(lib)))
 
 CFLAGS += $(COMMONFLAGS)
@@ -166,14 +166,11 @@ $(BINARYDIR)/%.o : %.cxx $(all_make_files) |$(BINARYDIR)
 $(BINARYDIR)/Log4CPlus.so : ../../../Logging/Solution/$(BINARYDIR)/Log4CPlus.so
 	$(CP) ../../../Logging/Solution/$(BINARYDIR)/Log4CPlus.so $(BINARYDIR)/Log4CPlus.so
 
-$(BINARYDIR)/libUnitTest.so : ../../../3rdParty/libunittest-7.0.2/libUnitTest/$(BINARYDIR)/libUnitTest.so
-	$(CP) ../../../3rdParty/libunittest-7.0.2/libUnitTest/$(BINARYDIR)/libUnitTest.so $(BINARYDIR)/libUnitTest.so
-
-$(BINARYDIR)/HelperLibraries.so : ../../../HelperLibraries/$(BINARYDIR)/HelperLibraries.so
-	$(CP) ../../../HelperLibraries/$(BINARYDIR)/HelperLibraries.so $(BINARYDIR)/HelperLibraries.so
-
 $(BINARYDIR)/TaskLibraries.so : ../../$(BINARYDIR)/TaskLibraries.so
 	$(CP) ../../$(BINARYDIR)/TaskLibraries.so $(BINARYDIR)/TaskLibraries.so
+
+$(BINARYDIR)/cpptest.so : ../../../3rdParty/cpptest-1.1.2/cpptest/$(BINARYDIR)/cpptest.so
+	$(CP) ../../../3rdParty/cpptest-1.1.2/cpptest/$(BINARYDIR)/cpptest.so $(BINARYDIR)/cpptest.so
 
 $(BINARYDIR)/wiringPi.so : ../../../wiringPi/wiringPi/$(BINARYDIR)/wiringPi.so
 	$(CP) ../../../wiringPi/wiringPi/$(BINARYDIR)/wiringPi.so $(BINARYDIR)/wiringPi.so

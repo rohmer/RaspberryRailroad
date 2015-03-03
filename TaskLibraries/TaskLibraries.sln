@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.22512.0
+VisualStudioVersion = 14.0.22609.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TaskLibraries", "TaskLibraries.vcxproj", "{542DD695-A5C3-42BA-89E7-47BC491D31D6}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -16,10 +16,8 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TaskLibraryTest", "Test\TaskLibraryTest\TaskLibraryTest.vcxproj", "{D40020F3-09BF-472B-8528-766918A6BC84}"
 	ProjectSection(ProjectDependencies) = postProject
 		{31172E34-FEE3-4CE2-9691-07CC1BA2B371} = {31172E34-FEE3-4CE2-9691-07CC1BA2B371}
-		{6A99BE52-854D-4ACC-B8BD-4A2E8149237D} = {6A99BE52-854D-4ACC-B8BD-4A2E8149237D}
-		{EFBBD166-9E11-4CD9-8324-41B2B67E2F39} = {EFBBD166-9E11-4CD9-8324-41B2B67E2F39}
 		{542DD695-A5C3-42BA-89E7-47BC491D31D6} = {542DD695-A5C3-42BA-89E7-47BC491D31D6}
-		{C2A0FFC1-44BF-4AEE-B4C1-937F1DC998D6} = {C2A0FFC1-44BF-4AEE-B4C1-937F1DC998D6}
+		{BB99849A-4FB0-4FC5-9909-E3F16405E6C8} = {BB99849A-4FB0-4FC5-9909-E3F16405E6C8}
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OccupancyLibrary", "..\OccupancyLibrary\OccupancyLibrary.vcxproj", "{6A10A353-0FBA-4F03-96C4-3AC10D8240C0}"
@@ -31,12 +29,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OccupancyLibrary", "..\Occu
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PiRRDaemon", "..\PiRRDaemon\PiRRDaemon.vcxproj", "{F5A79E80-6687-4C6B-A480-98C571A1CE39}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HelperLibraries", "..\HelperLibraries\HelperLibraries.vcxproj", "{EFBBD166-9E11-4CD9-8324-41B2B67E2F39}"
-	ProjectSection(ProjectDependencies) = postProject
-		{31172E34-FEE3-4CE2-9691-07CC1BA2B371} = {31172E34-FEE3-4CE2-9691-07CC1BA2B371}
-	EndProjectSection
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libUnitTest", "..\3rdParty\libunittest-7.0.2\libUnitTest\libUnitTest.vcxproj", "{6A99BE52-854D-4ACC-B8BD-4A2E8149237D}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cpptest", "..\3rdParty\cpptest-1.1.2\cpptest\cpptest.vcxproj", "{BB99849A-4FB0-4FC5-9909-E3F16405E6C8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -68,14 +61,10 @@ Global
 		{F5A79E80-6687-4C6B-A480-98C571A1CE39}.Debug|Win32.Build.0 = Debug|Win32
 		{F5A79E80-6687-4C6B-A480-98C571A1CE39}.Release|Win32.ActiveCfg = Release|Win32
 		{F5A79E80-6687-4C6B-A480-98C571A1CE39}.Release|Win32.Build.0 = Release|Win32
-		{EFBBD166-9E11-4CD9-8324-41B2B67E2F39}.Debug|Win32.ActiveCfg = Debug|Win32
-		{EFBBD166-9E11-4CD9-8324-41B2B67E2F39}.Debug|Win32.Build.0 = Debug|Win32
-		{EFBBD166-9E11-4CD9-8324-41B2B67E2F39}.Release|Win32.ActiveCfg = Release|Win32
-		{EFBBD166-9E11-4CD9-8324-41B2B67E2F39}.Release|Win32.Build.0 = Release|Win32
-		{6A99BE52-854D-4ACC-B8BD-4A2E8149237D}.Debug|Win32.ActiveCfg = Debug|Win32
-		{6A99BE52-854D-4ACC-B8BD-4A2E8149237D}.Debug|Win32.Build.0 = Debug|Win32
-		{6A99BE52-854D-4ACC-B8BD-4A2E8149237D}.Release|Win32.ActiveCfg = Release|Win32
-		{6A99BE52-854D-4ACC-B8BD-4A2E8149237D}.Release|Win32.Build.0 = Release|Win32
+		{BB99849A-4FB0-4FC5-9909-E3F16405E6C8}.Debug|Win32.ActiveCfg = Debug|Win32
+		{BB99849A-4FB0-4FC5-9909-E3F16405E6C8}.Debug|Win32.Build.0 = Debug|Win32
+		{BB99849A-4FB0-4FC5-9909-E3F16405E6C8}.Release|Win32.ActiveCfg = Release|Win32
+		{BB99849A-4FB0-4FC5-9909-E3F16405E6C8}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

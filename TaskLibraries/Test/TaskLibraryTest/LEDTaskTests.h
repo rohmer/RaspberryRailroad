@@ -1,8 +1,5 @@
 #pragma once
-
-#include "TaskLibrary.h"
-#include <log4cplus/logger.h>
-#include <unistd.h>
+#include "Tests.h"
 
 class LEDTaskTests
 {

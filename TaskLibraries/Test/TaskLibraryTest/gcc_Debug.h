@@ -383,7 +383,7 @@
 //../../../Logging/include
 //../../../wiringPI/wiringPI
 //../../../HelperLibraries
-//../../../3rdParty/libuinttest-7.0.2/include
+//../../../3rdParty/cpptest-1.1.2/src
 // --- Include directories end --- //
 
 

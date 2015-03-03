@@ -22,10 +22,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="TaskLibraryTest.cpp">
-      <Filter>Source files</Filter>
-    </ClCompile>
     <ClCompile Include="LEDTaskTests.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="TaskLibraryTest.cpp">
       <Filter>Tests</Filter>
     </ClCompile>
   </ItemGroup>
@@ -43,6 +43,9 @@
       <Filter>Tests</Filter>
     </ClInclude>
     <ClInclude Include="Tests.h">
+      <Filter>Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="TaskLibraryTest.h">
       <Filter>Tests</Filter>
     </ClInclude>
   </ItemGroup>
