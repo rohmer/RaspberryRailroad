@@ -10,8 +10,10 @@ class TaskLibraryTestSuite : public Test::Suite
 			Test::TextOutput output(Test::TextOutput::Verbose);
 			TEST_ADD(TaskLibraryTestSuite::LogStdOutTest);
 			TEST_ADD(TaskLibraryTestSuite::LogFileTest);
+			TEST_ADD(TaskLibraryTestSuite::NetworkLogTest);
 		}
-	private:
+	
 		void LogStdOutTest();
 		void LogFileTest();
+		void NetworkLogTest();
 };

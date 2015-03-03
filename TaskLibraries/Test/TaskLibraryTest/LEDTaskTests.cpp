@@ -1,26 +1,26 @@
 #include "LEDTaskTests.h"
 
-LEDTaskTests::LEDTaskTests(Logger logger)
+void LEDTaskTests::CreateLEDTask()
 {
-	log = logger;
-	string msg = "LEDTaskTests initialized";
-	log.log(DEBUG_LOG_LEVEL,msg);
-}
+	try
+	{
+		TaskLibrary* tl = new TaskLibrary(DEBUG_LOG_LEVEL, true, false, "", false, 0, "");
+		LEDTask* ledPtr = NULL;
+		ledPtr=dynamic_cast<LEDTask*> (tl->GetTask(TLEDTask));
+		if (!ledPtr)
+		{
+			TEST_FAIL("Failed to create a LEDTask");
+		}
 
-void LEDTaskTests::BlinkRow1Col1()
-{
-	TaskLibrary tl(log);
-	LEDTask *ledTask = reinterpret_cast<LEDTask*>(tl.GetTask(TLEDTask));
-	vector<int> args;
-	args.push_back(1);
-	args.push_back(1);
-	args.push_back(1);
-	args.push_back(1);
-
-	ledTask->Draw(1, 1, true);
-	usleep(1000000);
-	ledTask->Clear();
-	usleep(1000000);
-
-
+		if (ledPtr->GetTaskName().compare("LEDTask") != 0)
+		{
+			TEST_FAIL("GetTaskName() did not return \"LEDTask\" for an LEDTask");
+		}
+	}
+	catch (std::exception const & e)
+	{
+		ostringstream msg;
+		msg << "Exception caught in test: " << e.what();
+		TEST_FAIL(msg);
+	}
 }

@@ -1,14 +1,16 @@
 #pragma once
 #include "Tests.h"
 
-class LEDTaskTests
+class LEDTaskTests : public Test::Suite
 {
-	private:
-		Logger log;
-
 	public:
-		LEDTaskTests(Logger logger);
-		void BlinkRow1Col1();
-		
+		LEDTaskTests()
+		{
+			Test::TextOutput output(Test::TextOutput::Verbose);
+			TEST_ADD(LEDTaskTests::CreateLEDTask);
+		}
+
+	
+		void CreateLEDTask();
 
 };

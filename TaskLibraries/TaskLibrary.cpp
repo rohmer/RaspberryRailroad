@@ -1,5 +1,12 @@
 #include "TaskLibrary.h"
 
+TaskLibrary::TaskLibrary(log4cplus::LogLevel minSevToLog, bool logToStdOut, bool logToFile, std::string filename, bool logToNet, int port, std::string hostname)
+{
+	log = CreateLogger(minSevToLog, logToStdOut, logToFile, filename, logToNet, port, hostname);
+	multiThreaded = true;
+	log.log(DEBUG_LOG_LEVEL, "TaskLibrary initialized (MultiThreaded)");
+}
+
 TaskLibrary::TaskLibrary(Logger logger)
 {
 	log = logger;	

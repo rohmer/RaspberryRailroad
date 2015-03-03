@@ -29,6 +29,7 @@ class TaskLibrary
 		bool multiThreaded;
 
 	public:
+		TaskLibrary(log4cplus::LogLevel minSevToLog, bool logToStdOut, bool logToFile, std::string filename, bool logToNet, int port, std::string hostname);
 		TaskLibrary(Logger logger);
 		TaskBase *GetTask(TaskTypes);
 		void SetMultiThreaded(bool value);
