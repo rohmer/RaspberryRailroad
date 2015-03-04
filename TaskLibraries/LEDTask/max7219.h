@@ -1,79 +1,72 @@
-/*
-   This file is part of max7219 driver for max7219 driver for WiringPi.
-
-   max7219 driver for WiringPi is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-   the Free Software Foundation, either version 3 of the License, or
-     (at your option) any later version.
-
-     max7219 driver for WiringPi is distributed in the hope that it will be useful,
-     but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with max7219 driver for WiringPi.  If not, see <http://www.gnu.org/licenses/>.
-*/
-
-
-
-/*
-  Driver for the MAX7219 integrated circuit
-  datasheet available on http://datasheets.maximintegrated.com/en/ds/MAX7219-MAX7221.pdf
- */
-
-#include <stdint.h>
-#include <stdbool.h>
-#include <errno.h>
+#pragma once
+#include <wiringPi.h>
 #include <wiringPiSPI.h>
+#include <log4cplus/logger.h>
+#include "../TaskBase/TaskBase.h"
+#include <signal.h>
+#include "max7219.h"
+#include <stdlib.h>
+#include <stdio.h>
+#include <iostream>
+#include <fcntl.h>
+#include <unistd.h>
+#include <sstream>
+#include <map>
 
-#define REG_ADDR_NOOP		0x00
-#define REG_ADDR_DIGIT0		0x01
-#define REG_ADDR_DIGIT1		0x02
-#define REG_ADDR_DIGIT2		0x03
-#define REG_ADDR_DIGIT3		0x04
-#define REG_ADDR_DIGIT4		0x05
-#define REG_ADDR_DIGIT5		0x06
-#define REG_ADDR_DIGIT6		0x07
-#define REG_ADDR_DIGIT7		0x08
-#define REG_ADDR_DECODE_MODE	0x09
-#define REG_ADDR_INTENSITY	0x0A
-#define REG_ADDR_SCAN_LIMIT	0x0B
-#define REG_ADDR_SHUTDOWN	0x0C
-#define REG_ADDR_TEST		0x0F
+using namespace std;
+using namespace log4cplus;
 
-#define SHUTDOWN_MODE		0x00
-#define NORMAL_MODE		0x01
+class max7219
+{
+	const static char NoOp = 0x00;
+	const static char Digit0 = 0x01;
+	const static char Digit1 = 0x02;
+	const static char Digit2 = 0x03;
+	const static char Digit3 = 0x04;
+	const static char Digit4 = 0x05;
+	const static char Digit5 = 0x06;
+	const static char Digit6 = 0x07;
+	const static char Digit7 = 0x08;
+	const static char DecodeMode = 0x09;
+	const static char Intensity = 0x0A;
+	const static char ScanLimit = 0x0B;
+	const static char ShutDown = 0x0C;
+	const static char DisplayTest = 0x0F;
+	
 
-#define NO_DECODE		0x00
-#define CODE_B_0		0x01
-#define CODE_B_3_0		0x0F
-#define CODE_B_7_0		0xFF
+	private:
+		Logger log;
+		int numOfDevices;
+		int spiChannel;
+		int spiSpeed;
+		int spiFD;
+		char *TxBuffer;
+		char *RxBuffer;
+		int TxBufferIndex;
+		int RxBufferIndex;
+		bool initialized;
+		std::map<int,dataContainer> maxData;
 
-#define DISPLAY_0_ONLY		0x00
-#define DISPLAY_0_TO_1		0x01
-#define DISPLAY_0_TO_2		0x02
-#define DISPLAY_0_TO_3		0x03
-#define DISPLAY_0_TO_4		0x04
-#define DISPLAY_0_TO_5		0x05
-#define DISPLAY_0_TO_6		0x06
-#define DISPLAY_0_TO_7		0x07
+		void initialize();
+		void transfer(char c);
+		void endTransfer();
+		void setData(char row, char data, int device);
+		void setData(char row, char dara);
+
+	public:
+		max7219(Logger logger, int numberOfDevices);
+		void SetNumDevices(int value); 
+		void SetSPIChannel(int value); 
+		void SetSPISpeed(int value);
+		void SetShutDown(char Mode) { setData(ShutDown, !Mode); }
+		void SetScanLimit(char Digits) { setData(ScanLimit, Digits); }
+		void SetIntensity(char intense) { setData(Intensity, intense); }
+		void SetDecodeMode(char Mode) { setData(DecodeMode, Mode); }
+		void Draw(int row, int col, int maxDevice, bool powerMode);
+		void Draw(int row, int col, bool powerMode);					// Draw on all devices
+		void Clear(int maxDevice);
+		void Clear();
+		~max7219();
 
 
-int max7219_init(int channel, int speed, int count);
-
-int max7219_send_data(int id, uint8_t address, uint8_t data);
-int max7219_send_data_cascade(uint8_t *address, uint8_t *data, int l);
-int max7219_send_data_all(uint8_t address, uint8_t data);
-
-int max7219_set_shutdown(int id, uint8_t mode);
-int max7219_set_shutdown_all(uint8_t mode);
-
-int max7219_set_decode(int id, uint8_t mode);
-int max7219_set_decode_all(uint8_t mode);
-
-int max7219_test(int id);
-int max7219_test_all(void);
-
-int max7219_set_intensity(int id, uint8_t intensity);
-int max7219_set_intensity_all(uint8_t intensity);
+};

@@ -24,6 +24,7 @@ class LEDTask : public TaskBase
 		void internalDraw();
 		bool rows[8];
 		bool cols[8];
+		max7219  *maxClass;
 
 	public:
 		LEDTask(Logger logger);

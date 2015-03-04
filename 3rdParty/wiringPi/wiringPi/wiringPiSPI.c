@@ -102,7 +102,7 @@ int wiringPiSPISetupMode (int channel, int speed, int mode)
 
   mode    &= 3 ;	// Mode is 0, 1, 2 or 3
   channel &= 1 ;	// Channel is 0 or 1
-
+  
   if ((fd = open (channel == 0 ? spiDev0 : spiDev1, O_RDWR)) < 0)
     return wiringPiFailure (WPI_ALMOST, "Unable to open SPI device: %s\n", strerror (errno)) ;
 

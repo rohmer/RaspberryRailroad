@@ -68,7 +68,6 @@
   <ItemGroup>
     <ClCompile Include="LEDTask\LEDTask.cpp" />
     <ClCompile Include="LEDTask\max7219.cpp" />
-    <ClCompile Include="max7221.cpp" />
     <ClCompile Include="ScriptedTask\ScriptedTask.cpp" />
     <ClCompile Include="ServoTask\pca9685.c" />
     <ClCompile Include="ServoTask\PCA9685Driver.cpp" />
@@ -79,7 +78,6 @@
   <ItemGroup>
     <ClInclude Include="LEDTask\LEDTask.h" />
     <ClInclude Include="LEDTask\max7219.h" />
-    <ClInclude Include="max7221.h" />
     <ClInclude Include="ScriptedTask\ScriptedTask.h" />
     <ClInclude Include="ServoTask\pca9685.h" />
     <ClInclude Include="ServoTask\PCA9685Driver.h" />

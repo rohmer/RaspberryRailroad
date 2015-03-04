@@ -6,6 +6,7 @@ LEDTask::LEDTask(Logger logger) :TaskBase(logger)
 	_spiChannel = 0;
 	_spiSpeed = 1000000;
 	_maxCount = 1;
+	maxClass = new max7219(log, _maxCount);
 }
 
 /// <summary>
@@ -24,9 +25,7 @@ void LEDTask::Run(vector<int> args)
 		argstring << args[a] << ",";
 	argstring << args[args.size() - 1];
 	msg << "Entering LEDTask::Run(" << argstring << ")";
-	log.log(DEBUG_LOG_LEVEL, msg.str());
-	if (!successfulInit)
-		Init();
+	log.log(DEBUG_LOG_LEVEL, msg.str());	
 	if (args.size() < 4)
 	{
 		msg.clear();
@@ -53,68 +52,30 @@ void LEDTask::SetMaxParam(int spiSpeed, int spiChannel, int maxCount)
 	_spiSpeed = spiSpeed;
 	_spiChannel = spiChannel;
 	_maxCount = maxCount;
+	maxClass->SetNumDevices(_maxCount);
+	maxClass->SetSPIChannel(_spiChannel);
+	maxClass->SetSPISpeed(_spiSpeed);
 }
 
 void LEDTask::Clear()
 {
-	for (int a = 0; a < 8; a++)
-	{
-		rows[a] = false;
-		cols[a] = false;
-	}
-	internalDraw();
+	maxClass->Clear();
 }
 
 void LEDTask::Init()
-{			
-	spiFD = max7219_init(_spiChannel, _spiSpeed, _maxCount);
-	max7219_set_intensity(0, 15);
-	max7219_set_decode(0, NO_DECODE);
+{				
 	Clear();							// Turn everything off
-}
-
-/// <summary>
-/// Takes our matrix of rows[] and cols[] and creates 2 bytes and 
-/// </summary>
-void LEDTask::internalDraw()
-{
-	unsigned char row = 0;
-	unsigned char col = 0;
-	for (int a = 0; a <= 7; a++)
-	{
-		if (rows[a])
-		{
-			row += 2 ^ a;
-		}
-		if (cols[a])
-		{
-			col += 2 ^ a;
-		}
-	}
-	max7219_send_data(0, row, col);
 }
 
 void LEDTask::Draw(int column, int row, bool powerMode)
 {	
-	unsigned char mask;
-	for (int i = 8; i > 0; i--)
-	{
-		mask = 0x01 << (i - 1);
-		if (column & mask)
-		{
-			cols[i] = powerMode;			
-		}
-		if (row & mask)
-		{
-			rows[i] = powerMode;			
-		}
-	}
-	internalDraw();
+	ostringstream msg;
+	ostringstream args;
+
 }
 
 LEDTask::~LEDTask()
 {
-	log.log(DEBUG_LOG_LEVEL, "Running ~LEDTask()");
-	max7219_set_shutdown(0, SHUTDOWN_MODE);
+	log.log(DEBUG_LOG_LEVEL, "Running ~LEDTask()");	
 	log.log(DEBUG_LOG_LEVEL, "~LEDTask() complete");
 }
