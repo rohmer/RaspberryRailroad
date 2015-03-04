@@ -1,3 +1,0 @@
-Debug/mcp3002.o: mcp3002.c \
- c:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\stdc-predef.h \
- ../wiringPI/wiringPi.h ../wiringPI/wiringPiSPI.h mcp3002.h

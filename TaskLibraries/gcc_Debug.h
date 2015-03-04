@@ -378,7 +378,7 @@
 //c:\sysgcc\raspberry\bin\../arm-linux-gnueabihf/sysroot/usr/include/arm-linux-gnueabihf
 //c:\sysgcc\raspberry\bin\../arm-linux-gnueabihf/sysroot/usr/include
 //../Logging/include
-//../wiringPi/wiringPi
+//../3rdParty/wiringPi/wiringPi
 //../HelperLibraries
 // --- Include directories end --- //
 

@@ -4,7 +4,7 @@ void LEDTaskTests::CreateLEDTask()
 {
 	try
 	{
-		TaskLibrary* tl = new TaskLibrary(DEBUG_LOG_LEVEL, true, false, "", false, 0, "");
+		TaskLibrary* tl = new TaskLibrary(WARN_LOG_LEVEL, true, false, "", false, 0, "");
 		LEDTask* ledPtr = NULL;
 		ledPtr=dynamic_cast<LEDTask*> (tl->GetTask(TLEDTask));
 		if (!ledPtr)
@@ -29,7 +29,7 @@ void LEDTaskTests::LightLEDs()
 {
 	try
 	{
-		TaskLibrary* tl = new TaskLibrary(DEBUG_LOG_LEVEL, true, false, "", false, 0, "");
+		TaskLibrary* tl = new TaskLibrary(WARN_LOG_LEVEL, true, false, "", false, 0, "");
 		LEDTask* ledPtr = NULL;
 		ledPtr = dynamic_cast<LEDTask*> (tl->GetTask(TLEDTask));
 		if (!ledPtr)
@@ -40,7 +40,7 @@ void LEDTaskTests::LightLEDs()
 			for (int col = 1; col <= 8; col++)
 			{
 				ledPtr->Draw(col, row, true);
-				usleep(50000);
+				usleep(75000);
 				ledPtr->Clear();
 			}
 	}
@@ -56,7 +56,7 @@ void LEDTaskTests::ExecuteLEDTask()
 {
 	try
 	{
-		TaskLibrary* tl = new TaskLibrary(DEBUG_LOG_LEVEL, true, false, "", false, 0, "");
+		TaskLibrary* tl = new TaskLibrary(WARN_LOG_LEVEL, true, false, "", false, 0, "");
 		LEDTask* ledPtr = NULL;
 		ledPtr = dynamic_cast<LEDTask*> (tl->GetTask(TLEDTask));
 		if (!ledPtr)
@@ -74,7 +74,7 @@ void LEDTaskTests::ExecuteLEDTask()
 				params.push_back(1);							// Turn on
 
 				ledPtr->Run(params);
-				usleep(50000);
+				usleep(75000);
 				ledPtr->Clear();
 			}
 	}

@@ -1,3 +1,0 @@
-Debug/mcp4802.o: mcp4802.c \
- c:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\stdc-predef.h \
- ../wiringPI/wiringPi.h ../wiringPI/wiringPiSPI.h mcp4802.h

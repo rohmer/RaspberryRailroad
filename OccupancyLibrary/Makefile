@@ -24,7 +24,7 @@ error:
 endif
 
 SOURCEFILES := ADCPI.cpp Block.cpp BlockHelper.cpp BlockManager.cpp OccupancyLibrary.cpp OpticalDetector.cpp
-EXTERNAL_LIBS := ../Logging/Solution/$(BINARYDIR)/Log4CPlus.so ../TaskLibraries/$(BINARYDIR)/TaskLibraries.so ../wiringPi/wiringPi/$(BINARYDIR)/wiringPi.so
+EXTERNAL_LIBS := ../Logging/Solution/$(BINARYDIR)/Log4CPlus.so ../TaskLibraries/$(BINARYDIR)/TaskLibraries.so
 EXTERNAL_LIBS_COPIED := $(foreach lib, $(EXTERNAL_LIBS),$(BINARYDIR)/$(notdir $(lib)))
 
 CFLAGS += $(COMMONFLAGS)
@@ -168,7 +168,4 @@ $(BINARYDIR)/Log4CPlus.so : ../Logging/Solution/$(BINARYDIR)/Log4CPlus.so
 
 $(BINARYDIR)/TaskLibraries.so : ../TaskLibraries/$(BINARYDIR)/TaskLibraries.so
 	$(CP) ../TaskLibraries/$(BINARYDIR)/TaskLibraries.so $(BINARYDIR)/TaskLibraries.so
-
-$(BINARYDIR)/wiringPi.so : ../wiringPi/wiringPi/$(BINARYDIR)/wiringPi.so
-	$(CP) ../wiringPi/wiringPi/$(BINARYDIR)/wiringPi.so $(BINARYDIR)/wiringPi.so
 

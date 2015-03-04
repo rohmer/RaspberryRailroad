@@ -10,6 +10,7 @@ void TaskLibraryTestSuite::LogStdOutTest()
 	try
 	{
 		Logger log = TaskLibrary::CreateLogger(DEBUG_LOG_LEVEL, true, false, "", false, 0, "");
+		streambuf *oldBuf = cout.rdbuf();
 		ostringstream strCout;
 		cout.rdbuf(strCout.rdbuf());
 		log.log(DEBUG_LOG_LEVEL, "DEBUG MESSAGE");
@@ -31,6 +32,7 @@ void TaskLibraryTestSuite::LogStdOutTest()
 		found = strCout.str().find("FATAL MESSAGE");
 		if (found == std::string::npos)
 			TEST_FAIL("Failed to find FATAL message on console");		
+		cout.rdbuf(oldBuf);
 	}
 	catch (std::exception const & e)
 	{

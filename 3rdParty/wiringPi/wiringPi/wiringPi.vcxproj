@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{6A10A353-0FBA-4F03-96C4-3AC10D8240C0}</ProjectGuid>
+    <ProjectGuid>{A58682BD-413D-4D85-87FF-07D197A35B6E}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -35,12 +35,12 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <NMakeIncludeSearchPath>c:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\4.9;c:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\4.9\backward;c:\sysgcc\raspberry\lib\gcc\arm-linux-gnueabihf\4.9\include;c:\sysgcc\raspberry\lib\gcc\arm-linux-gnueabihf\4.9\include-fixed;c:\sysgcc\raspberry\arm-linux-gnueabihf\include;c:\sysgcc\raspberry\arm-linux-gnueabihf\include\arm-linux-gnueabihf\c++\4.9;c:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf;c:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include;$(ProjectDir)\../3rdParty/wiringPI/wiringPI;$(ProjectDir)\../Logging/include;$(ProjectDir)\../TaskLibraries;$(ProjectDir)\../3rdParty/pugixml/pugixml;$(NMakeIncludeSearchPath)</NMakeIncludeSearchPath>
+    <NMakeIncludeSearchPath>$(ProjectDir)\.;c:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\4.9;c:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\4.9\backward;c:\sysgcc\raspberry\lib\gcc\arm-linux-gnueabihf\4.9\include;c:\sysgcc\raspberry\lib\gcc\arm-linux-gnueabihf\4.9\include-fixed;c:\sysgcc\raspberry\arm-linux-gnueabihf\include;c:\sysgcc\raspberry\arm-linux-gnueabihf\include\arm-linux-gnueabihf\c++\4.9;c:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf;c:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include;$(ProjectDir)\.;$(NMakeIncludeSearchPath)</NMakeIncludeSearchPath>
     <NMakeForcedIncludes>$(ProjectDir)\gcc_Debug.h;$(VISUALGDB_DIR)\gcc_compat.h;$(NMakeForcedIncludes)</NMakeForcedIncludes>
     <NMakeBuildCommandLine>"$(VISUALGDB_DIR)\VisualGDB.exe" /build "$(ProjectPath)" "/solution:$(SolutionPath)" "/config:$(Configuration)" "/platform:$(Platform)"</NMakeBuildCommandLine>
     <NMakeCleanCommandLine>"$(VISUALGDB_DIR)\VisualGDB.exe" /clean "$(ProjectPath)" "/solution:$(SolutionPath)" "/config:$(Configuration)" "/platform:$(Platform)"</NMakeCleanCommandLine>
     <NMakeReBuildCommandLine>"$(VISUALGDB_DIR)\VisualGDB.exe" /rebuild "$(ProjectPath)" "/solution:$(SolutionPath)" "/config:$(Configuration)" "/platform:$(Platform)"</NMakeReBuildCommandLine>
-    <NMakeOutput>$(ProjectDir)OccupancyLibrary-Debug.vgdbsettings</NMakeOutput>
+    <NMakeOutput>$(ProjectDir)wiringPi-Debug.vgdbsettings</NMakeOutput>
     <IncludePath />
     <ReferencePath />
     <LibraryPath />
@@ -53,7 +53,7 @@
     <NMakeBuildCommandLine>"$(VISUALGDB_DIR)\VisualGDB.exe" /build "$(ProjectPath)" "/solution:$(SolutionPath)" "/config:$(Configuration)" "/platform:$(Platform)"</NMakeBuildCommandLine>
     <NMakeCleanCommandLine>"$(VISUALGDB_DIR)\VisualGDB.exe" /clean "$(ProjectPath)" "/solution:$(SolutionPath)" "/config:$(Configuration)" "/platform:$(Platform)"</NMakeCleanCommandLine>
     <NMakeReBuildCommandLine>"$(VISUALGDB_DIR)\VisualGDB.exe" /rebuild "$(ProjectPath)" "/solution:$(SolutionPath)" "/config:$(Configuration)" "/platform:$(Platform)"</NMakeReBuildCommandLine>
-    <NMakeOutput>$(ProjectDir)OccupancyLibrary-Release.vgdbsettings</NMakeOutput>
+    <NMakeOutput>$(ProjectDir)wiringPi-Release.vgdbsettings</NMakeOutput>
     <IncludePath />
     <ReferencePath />
     <LibraryPath />
@@ -66,20 +66,65 @@
     <None Include="release.mak" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ADCPI.cpp" />
-    <ClCompile Include="Block.cpp" />
-    <ClCompile Include="BlockHelper.cpp" />
-    <ClCompile Include="BlockManager.cpp" />
-    <ClCompile Include="OccupancyLibrary.cpp" />
-    <ClCompile Include="OpticalDetector.cpp" />
+    <ClCompile Include="drcSerial.c" />
+    <ClCompile Include="max31855.c" />
+    <ClCompile Include="max5322.c" />
+    <ClCompile Include="mcp23008.c" />
+    <ClCompile Include="mcp23016.c" />
+    <ClCompile Include="mcp23017.c" />
+    <ClCompile Include="mcp23s08.c" />
+    <ClCompile Include="mcp23s17.c" />
+    <ClCompile Include="mcp3002.c" />
+    <ClCompile Include="mcp3004.c" />
+    <ClCompile Include="mcp3422.c" />
+    <ClCompile Include="mcp4802.c" />
+    <ClCompile Include="pcf8574.c" />
+    <ClCompile Include="pcf8591.c" />
+    <ClCompile Include="piHiPri.c" />
+    <ClCompile Include="piThread.c" />
+    <ClCompile Include="sn3218.c" />
+    <ClCompile Include="softPwm.c" />
+    <ClCompile Include="softServo.c" />
+    <ClCompile Include="softTone.c" />
+    <ClCompile Include="sr595.c" />
+    <ClCompile Include="wiringPi.c" />
+    <ClCompile Include="wiringPiI2C.c" />
+    <ClCompile Include="wiringPiSPI.c" />
+    <ClCompile Include="wiringSerial.c" />
+    <ClCompile Include="wiringShift.c" />
+    <ClCompile Include="wpiExtensions.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ADCPI.h" />
-    <ClInclude Include="Block.h" />
-    <ClInclude Include="BlockHelper.h" />
-    <ClInclude Include="BlockManager.h" />
-    <ClInclude Include="OccupancyLibrary.h" />
-    <ClInclude Include="OpticalDetector.h" />
+    <ClInclude Include="drcSerial.h" />
+    <ClInclude Include="gcc_Debug.h" />
+    <ClInclude Include="gcc_Release.h" />
+    <ClInclude Include="max31855.h" />
+    <ClInclude Include="max5322.h" />
+    <ClInclude Include="mcp23008.h" />
+    <ClInclude Include="mcp23016.h" />
+    <ClInclude Include="mcp23016reg.h" />
+    <ClInclude Include="mcp23017.h" />
+    <ClInclude Include="mcp23s08.h" />
+    <ClInclude Include="mcp23s17.h" />
+    <ClInclude Include="mcp23x08.h" />
+    <ClInclude Include="mcp23x0817.h" />
+    <ClInclude Include="mcp3002.h" />
+    <ClInclude Include="mcp3004.h" />
+    <ClInclude Include="mcp3422.h" />
+    <ClInclude Include="mcp4802.h" />
+    <ClInclude Include="pcf8574.h" />
+    <ClInclude Include="pcf8591.h" />
+    <ClInclude Include="sn3218.h" />
+    <ClInclude Include="softPwm.h" />
+    <ClInclude Include="softServo.h" />
+    <ClInclude Include="softTone.h" />
+    <ClInclude Include="sr595.h" />
+    <ClInclude Include="wiringPi.h" />
+    <ClInclude Include="wiringPiI2C.h" />
+    <ClInclude Include="wiringPiSPI.h" />
+    <ClInclude Include="wiringSerial.h" />
+    <ClInclude Include="wiringShift.h" />
+    <ClInclude Include="wpiExtensions.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

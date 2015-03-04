@@ -13,7 +13,7 @@ OBJCOPY := C:/SysGCC/raspberry/bin/arm-linux-gnueabihf-objcopy.exe
 
 #Additional flags
 PREPROCESSOR_MACROS := 
-INCLUDE_DIRS := ../Logging/include ../wiringPi/wiringPi ../HelperLibraries
+INCLUDE_DIRS := ../Logging/include ../3rdParty/wiringPi/wiringPi ../HelperLibraries
 LIBRARY_DIRS := 
 LIBRARY_NAMES := pthread
 ADDITIONAL_LINKER_INPUTS := 

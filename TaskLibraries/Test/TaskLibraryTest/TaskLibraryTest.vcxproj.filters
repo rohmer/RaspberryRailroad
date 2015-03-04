@@ -31,6 +31,9 @@
     <ClCompile Include="TaskLibraryTest.cpp">
       <Filter>Tests\TaskLibrary</Filter>
     </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Makefile" />
@@ -50,6 +53,9 @@
     </ClInclude>
     <ClInclude Include="LEDTaskTests.h">
       <Filter>Tests\TaskLibrary</Filter>
+    </ClInclude>
+    <ClInclude Include="main.h">
+      <Filter>Source files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -381,7 +381,7 @@
 //c:\sysgcc\raspberry\bin\../arm-linux-gnueabihf/sysroot/usr/include
 //../..
 //../../../Logging/include
-//../../../wiringPI/wiringPI
+//../../../3rdParty/wiringPI/wiringPI
 //../../../HelperLibraries
 //../../../3rdParty/cpptest-1.1.2/src
 // --- Include directories end --- //
