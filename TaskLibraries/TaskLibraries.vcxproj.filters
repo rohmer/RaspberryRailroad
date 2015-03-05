@@ -50,6 +50,9 @@
     <ClCompile Include="LEDTask\max7219.cpp">
       <Filter>LEDTask</Filter>
     </ClCompile>
+    <ClCompile Include="LEDTask\max7219Container.cpp">
+      <Filter>LEDTask</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TaskBase\TaskBase.h">
@@ -72,6 +75,9 @@
       <Filter>ScriptedTask</Filter>
     </ClInclude>
     <ClInclude Include="LEDTask\max7219.h">
+      <Filter>LEDTask</Filter>
+    </ClInclude>
+    <ClInclude Include="LEDTask\max7219Container.h">
       <Filter>LEDTask</Filter>
     </ClInclude>
   </ItemGroup>

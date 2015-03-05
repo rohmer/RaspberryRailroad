@@ -11,16 +11,11 @@ max7219::max7219(Logger logger, int numberOfDevices)
 		numOfDevices = 1;
 	}
 	spiSpeed = 1000000;
-	char initArray[80];
-	for (int a = 0; a++; a < 10)
-	{
-		initArray[a * 10] = 0;
-		initArray[a * 10 + 1] = 'b';
-	}
-
+	
 	for (int a = 0; a < numOfDevices; a++)
 	{
-		maxData.insert(std::pair<int, char[80]>(a, initArray));
+		max7219Container c;
+		maxData.insert(std::pair<int, max7219Container>(a, c));
 	}
 
 	TxBuffer = new char[1024];
@@ -40,16 +35,11 @@ void max7219::SetNumDevices(int val)
 	log.log(DEBUG_LOG_LEVEL, msg.str());
 	numOfDevices = val;
 	maxData.clear();
-	char initArray[80];
-	for (int a = 0; a++; a < 10)
-	{
-		initArray[a * 10] = 0;
-		initArray[a * 10 + 1] = 'b';
-	}
-
+	
 	for (int a = 0; a < numOfDevices; a++)
 	{
-		maxData.insert(std::pair<int, char[80]>(a, initArray));
+		max7219Container c;
+		maxData.insert(std::pair<int, max7219Container>(a, c));
 	}
 	msg << "Exiting max7219::SetNumDevices(" << val << ")";
 	log.log(DEBUG_LOG_LEVEL, msg.str());
@@ -192,16 +182,7 @@ void max7219::Clear(int maxDevice)
 	ostringstream msg;
 	msg << "Entering max7219::Clear(" << maxDevice << ")";
 	log.log(DEBUG_LOG_LEVEL, msg.str());
-	for (int row = 1; row <= 8; row++)
-		for (int col = 1; col <= 8; col++)
-		{
-			int pt = (row - 1) * 10 + (col - 1) + 2;
-			maxData[maxDevice].data[pt] = '0';
-		}
-	for (int a = 0; a < 8; a++)
-	{
-		setData(a + 1, char(maxData[maxDevice].data[a]), maxDevice);
-	}
+	maxData[maxDevice].Clear();
 	msg.clear();
 	msg << "Exiting max7219::Clear(" << maxDevice << ")";
 	log.log(DEBUG_LOG_LEVEL, msg.str());
@@ -225,21 +206,11 @@ void max7219::Draw(int row, int col, int maxDevice, bool powerMode)
 	msg << "Entering max7219::Draw(" << args << ")";
 	log.log(DEBUG_LOG_LEVEL, msg.str());
 
-	// find the point in our array to set;
-	char val;
-	if (powerMode)
-	{
-		val = '1';
-	}
-	else
-	{
-		val = '0';
-	}
-	int pt = (row - 1) * 10 + (col-1) + 2;
-	maxData[maxDevice].data[pt] = val;
+	maxData[maxDevice].Draw(row, col, powerMode);
+	
 	for (int a = 0; a < 8; a++)
 	{
-		setData(a + 1, char(maxData[maxDevice].data[a]), maxDevice);
+		setData(a + 1, char(maxData[maxDevice].GetData()[a]), maxDevice);
 	}
 	msg.clear();
 	msg << "Entering max7219::Draw(" << args << ")";
@@ -255,24 +226,14 @@ void max7219::Draw(int row, int col, bool powerMode)
 	log.log(DEBUG_LOG_LEVEL, msg.str());
 	for (int a = 0; a < numOfDevices; a++)
 	{
-		char val;
-		if (powerMode)
-		{
-			val = '1';
-		}
-		else
-		{
-			val = '0';
-		}
-		int pt = (row - 1) * 10 + col + 2;
-		maxData[a].data[pt] = val;
+		maxData[a].Draw(row, col, powerMode);
 	}
 
 	for (int b = 0; b < numOfDevices; b++)
 	{
 		for (int a = 0; a < 8; a++)
 		{
-			setData(a + 1, char(maxData[b].data[a]), b);
+			setData(a + 1, char(maxData[b].GetData()[a]), b);
 		}
 	}
 	msg.clear();

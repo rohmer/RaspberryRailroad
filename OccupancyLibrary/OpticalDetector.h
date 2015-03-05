@@ -13,7 +13,7 @@ using namespace log4cplus;
 using namespace log4cplus::helpers;
 
 // Class for 
-class OpticalDetector : public DetectorBase
+class OpticalDetector 
 {	
 	private:
 		Logger log;

@@ -12,6 +12,7 @@
 #include <unistd.h>
 #include <sstream>
 #include <map>
+#include "max7219Container.h"
 
 using namespace std;
 using namespace log4cplus;
@@ -45,7 +46,7 @@ class max7219
 		int TxBufferIndex;
 		int RxBufferIndex;
 		bool initialized;
-		std::map<int,dataContainer> maxData;
+		std::map<int,max7219Container> maxData;
 
 		void initialize();
 		void transfer(char c);

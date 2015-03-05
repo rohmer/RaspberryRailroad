@@ -50,6 +50,9 @@
     <ClCompile Include="BlockHelper.cpp">
       <Filter>Source files\BlockDetection</Filter>
     </ClCompile>
+    <ClCompile Include="..\3rdParty\pugixml\src\pugixml.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="OccupancyLibrary.h">
@@ -69,6 +72,12 @@
     </ClInclude>
     <ClInclude Include="BlockHelper.h">
       <Filter>Source files\BlockDetection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rdParty\pugixml\src\pugiconfig.hpp">
+      <Filter>Source files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rdParty\pugixml\src\pugixml.hpp">
+      <Filter>Source files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

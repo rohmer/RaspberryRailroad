@@ -384,6 +384,8 @@
 //../../../3rdParty/wiringPI/wiringPI
 //../../../HelperLibraries
 //../../../3rdParty/cpptest-1.1.2/src
+//../../../OccupancyLibrary
+//../../../3rdParty/pugixml/src
 // --- Include directories end --- //
 
 

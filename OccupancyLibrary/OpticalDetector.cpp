@@ -1,6 +1,6 @@
 #include "OpticalDetector.h"
 
-OpticalDetector::OpticalDetector(Logger logger) :DetectorBase(log)
+OpticalDetector::OpticalDetector(Logger logger)
 {
 	log = logger;
 	adcpi = ADCPI(log);

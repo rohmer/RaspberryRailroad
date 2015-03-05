@@ -35,5 +35,6 @@ class TaskLibrary
 		void SetMultiThreaded(bool value);
 		void RunTask(TaskBase* task, vector<int> args);	
 		static Logger CreateLogger(log4cplus::LogLevel minSevToLog, bool logToStdOut, bool logToFile, std::string filename, bool logToNet, int port, std::string hostname);
+		Logger GetLogger() { return log; }
 };
 #endif

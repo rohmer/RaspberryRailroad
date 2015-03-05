@@ -30,6 +30,7 @@ class BlockManager
 		int AddBlock(std::string blockName);
 		int AddBlock(std::string blockName, std::vector<int> deectors);
 		int AddBlock(std::string blockName, std::vector<int> detectors, std::vector<int> neighborBlocks);
+		int AddBlock(Block* block);
 
 		void UpdateBlocks();
 

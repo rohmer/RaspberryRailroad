@@ -6,4 +6,5 @@
 #include "cpptest.h"
 #include <log4cplus/logger.h>
 #include "TaskLibrary.h"
+#include "OccupancyLibrary.h"
 

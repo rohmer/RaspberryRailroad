@@ -23,6 +23,9 @@
     <Filter Include="Tests\TaskLibrary">
       <UniqueIdentifier>{26bf5f86-a50d-4aad-9c7e-11cb5d93b852}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Tests\OccupancyLibrary">
+      <UniqueIdentifier>{c0f4d81a-9331-4ac9-a047-9a0ce4197513}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="LEDTaskTests.cpp">
@@ -33,6 +36,9 @@
     </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="OccupancyLibraryTests.cpp">
+      <Filter>Tests\OccupancyLibrary</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -57,5 +63,13 @@
     <ClInclude Include="main.h">
       <Filter>Source files</Filter>
     </ClInclude>
+    <ClInclude Include="OccupancyLibraryTests.h">
+      <Filter>Tests\OccupancyLibrary</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Xsd Include="TestBlocks.xml">
+      <Filter>Tests\OccupancyLibrary</Filter>
+    </Xsd>
   </ItemGroup>
 </Project>

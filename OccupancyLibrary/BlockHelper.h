@@ -1,5 +1,6 @@
 #pragma once
 #include "pugiconfig.hpp"
+#include "pugixml.hpp"
 #include <map>
 #include <vector>
 #include <sstream>
@@ -17,6 +18,7 @@ using namespace pugi;
 // Class for reading XML and creating a blockmap for the BlockManager
 class BlockHelper
 {
-	static vector<Block*> ReadXMLBlockFile(Logger logger, std::string filename);
-	static Block* GetBlockByName(vector<Block*> input, std::string name);
+	public:
+		static vector<Block*> ReadXMLBlockFile(Logger logger, std::string filename);
+		static Block* GetBlockByName(vector<Block*> input, std::string name);
 };

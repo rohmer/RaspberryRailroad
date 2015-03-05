@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Blocks>
+  <Block Name="Block1">
+    <Sensor SensorID="1"/>
+    <Sensor SensorID="2"/>
+    <Sensor SensorID="3"/>
+    <Connected BlockName="Block2"/>
+    <Connected BlockName="Block5"/>
+  </Block>
+  <Block Name="Block2">
+    <Sensor SensorID="4"/>
+    <Sensor SensorID="5"/>
+    <Sensor SensorID="6"/>
+    <Connected BlockName="Block1"/>
+    <Connected BlockName="Block3"/>
+  </Block>
+  <Block Name="Block3">
+    <Sensor SensorID="7"/>
+    <Sensor SensorID="8"/>
+    <Sensor SensorID="9"/>
+    <Connected BlockName="Block2"/>
+    <Connected BlockName="Block4"/>
+  </Block>
+  <Block Name="Block4">
+    <Sensor SensorID="10"/>
+    <Sensor SensorID="11"/>
+    <Sensor SensorID="12"/>
+    <Connected BlockName="Block3"/>
+    <Connected BlockName="Block5"/>
+  </Block>
+  <Block Name="Block5">
+    <Sensor SensorID="13"/>
+    <Sensor SensorID="14"/>
+    <Sensor SensorID="15"/>
+    <Connected BlockName="Block4"/>
+    <Connected BlockName="Block1"/>
+  </Block>
+</Blocks>

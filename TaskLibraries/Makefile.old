@@ -23,7 +23,7 @@ error:
 	$(error Invalid configuration, please check your inputs)
 endif
 
-SOURCEFILES := LEDTask/LEDTask.cpp LEDTask/max7219.cpp max7221.cpp ScriptedTask/ScriptedTask.cpp ServoTask/pca9685.c ServoTask/PCA9685Driver.cpp ServoTask/ServoTask.cpp TaskBase/TaskBase.cpp TaskLibrary.cpp
+SOURCEFILES := LEDTask/LEDTask.cpp LEDTask/max7219.cpp ScriptedTask/ScriptedTask.cpp ServoTask/pca9685.c ServoTask/PCA9685Driver.cpp ServoTask/ServoTask.cpp TaskBase/TaskBase.cpp TaskLibrary.cpp
 EXTERNAL_LIBS := ../Logging/Solution/$(BINARYDIR)/Log4CPlus.so ../3rdParty/wiringPi/wiringPi/$(BINARYDIR)/wiringPi.so
 EXTERNAL_LIBS_COPIED := $(foreach lib, $(EXTERNAL_LIBS),$(BINARYDIR)/$(notdir $(lib)))
 

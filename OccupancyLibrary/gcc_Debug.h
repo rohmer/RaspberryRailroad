@@ -381,7 +381,7 @@
 //../3rdParty/wiringPI/wiringPI
 //../Logging/include
 //../TaskLibraries
-//../3rdParty/pugixml/pugixml
+//../3rdParty/pugixml/src
 // --- Include directories end --- //
 
 

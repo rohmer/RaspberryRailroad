@@ -23,8 +23,8 @@ error:
 	$(error Invalid configuration, please check your inputs)
 endif
 
-SOURCEFILES := LEDTaskTests.cpp main.cpp TaskLibraryTest.cpp
-EXTERNAL_LIBS := ../../../Logging/Solution/$(BINARYDIR)/Log4CPlus.so ../../$(BINARYDIR)/TaskLibraries.so ../../../3rdParty/cpptest-1.1.2/cpptest/$(BINARYDIR)/cpptest.so ../../../3rdParty/wiringPi/wiringPi/$(BINARYDIR)/wiringPi.so
+SOURCEFILES := LEDTaskTests.cpp main.cpp OccupancyLibraryTests.cpp TaskLibraryTest.cpp
+EXTERNAL_LIBS := ../../../Logging/Solution/$(BINARYDIR)/Log4CPlus.so ../../../3rdParty/pugixml/pugixml/$(BINARYDIR)/pugixml.so ../../../OccupancyLibrary/$(BINARYDIR)/OccupancyLibrary.so ../../$(BINARYDIR)/TaskLibraries.so ../../../3rdParty/cpptest-1.1.2/cpptest/$(BINARYDIR)/cpptest.so ../../../3rdParty/wiringPi/wiringPi/$(BINARYDIR)/wiringPi.so
 EXTERNAL_LIBS_COPIED := $(foreach lib, $(EXTERNAL_LIBS),$(BINARYDIR)/$(notdir $(lib)))
 
 CFLAGS += $(COMMONFLAGS)
@@ -165,6 +165,12 @@ $(BINARYDIR)/%.o : %.cxx $(all_make_files) |$(BINARYDIR)
 #VisualGDB: GeneratedRules				#<--- All lines below are auto-generated
 $(BINARYDIR)/Log4CPlus.so : ../../../Logging/Solution/$(BINARYDIR)/Log4CPlus.so
 	$(CP) ../../../Logging/Solution/$(BINARYDIR)/Log4CPlus.so $(BINARYDIR)/Log4CPlus.so
+
+$(BINARYDIR)/pugixml.so : ../../../3rdParty/pugixml/pugixml/$(BINARYDIR)/pugixml.so
+	$(CP) ../../../3rdParty/pugixml/pugixml/$(BINARYDIR)/pugixml.so $(BINARYDIR)/pugixml.so
+
+$(BINARYDIR)/OccupancyLibrary.so : ../../../OccupancyLibrary/$(BINARYDIR)/OccupancyLibrary.so
+	$(CP) ../../../OccupancyLibrary/$(BINARYDIR)/OccupancyLibrary.so $(BINARYDIR)/OccupancyLibrary.so
 
 $(BINARYDIR)/TaskLibraries.so : ../../$(BINARYDIR)/TaskLibraries.so
 	$(CP) ../../$(BINARYDIR)/TaskLibraries.so $(BINARYDIR)/TaskLibraries.so

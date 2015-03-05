@@ -380,6 +380,7 @@
 //../Logging/include
 //../3rdParty/wiringPi/wiringPi
 //../HelperLibraries
+//../OccupancyLibrary
 // --- Include directories end --- //
 
 

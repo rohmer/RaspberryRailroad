@@ -26,6 +26,16 @@ int BlockManager::AddBlock()
 	return blockNum;
 }
 
+int BlockManager::AddBlock(Block* block)
+{
+	log.log(DEBUG_LOG_LEVEL, "Entering BlockManager::AddBlock()");
+
+	blocks.insert(std::pair<int, Block*>(block->GetID(), block));
+
+	ostringstream msg;
+	msg << "Exiting BlockManager::AddBlock(), rc==" << block->GetID();
+	log.log(DEBUG_LOG_LEVEL, msg.str());
+}
 int BlockManager::AddBlock(std::string blockName)
 {
 	ostringstream msg;

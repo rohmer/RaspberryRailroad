@@ -1,6 +1,9 @@
 #pragma once
 #include "log4cplus\logger.h"
 #include <vector>
+#include "BlockManager.h"
+#include "BlockHelper.h"
+#include "Block.h"
 
 using namespace log4cplus;
 using namespace log4cplus::helpers;
@@ -10,7 +13,14 @@ using namespace std;
 class OccupancyLibrary
 {
 	private:
-		Logger logger;
-		
+		Logger log;
+		BlockManager* blockManager;
+		TaskLibrary* taskLibrary;
+
+	public:
+		OccupancyLibrary();
+		OccupancyLibrary(log4cplus::LogLevel minSevToLog, bool logToStdOut, bool logToFile, std::string filename, bool logToNet, int port, std::string hostname);
+		OccupancyLibrary(Logger logger);
+		bool ImportXML(string xmlFilename);
 
 };

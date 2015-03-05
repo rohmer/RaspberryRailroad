@@ -23,7 +23,7 @@ error:
 	$(error Invalid configuration, please check your inputs)
 endif
 
-SOURCEFILES := LEDTask/LEDTask.cpp LEDTask/max7219.cpp ScriptedTask/ScriptedTask.cpp ServoTask/pca9685.c ServoTask/PCA9685Driver.cpp ServoTask/ServoTask.cpp TaskBase/TaskBase.cpp TaskLibrary.cpp
+SOURCEFILES := LEDTask/LEDTask.cpp LEDTask/max7219.cpp LEDTask/max7219Container.cpp ScriptedTask/ScriptedTask.cpp ServoTask/pca9685.c ServoTask/PCA9685Driver.cpp ServoTask/ServoTask.cpp TaskBase/TaskBase.cpp TaskLibrary.cpp
 EXTERNAL_LIBS := ../Logging/Solution/$(BINARYDIR)/Log4CPlus.so ../3rdParty/wiringPi/wiringPi/$(BINARYDIR)/wiringPi.so
 EXTERNAL_LIBS_COPIED := $(foreach lib, $(EXTERNAL_LIBS),$(BINARYDIR)/$(notdir $(lib)))
 
@@ -170,6 +170,10 @@ $(BINARYDIR)/LEDTask.o : LEDTask/LEDTask.cpp $(all_make_files) |$(BINARYDIR)
 
 
 $(BINARYDIR)/max7219.o : LEDTask/max7219.cpp $(all_make_files) |$(BINARYDIR)
+	$(CXX) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/max7219Container.o : LEDTask/max7219Container.cpp $(all_make_files) |$(BINARYDIR)
 	$(CXX) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
 
 
