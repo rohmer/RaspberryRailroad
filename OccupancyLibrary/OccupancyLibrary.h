@@ -22,5 +22,6 @@ class OccupancyLibrary
 		OccupancyLibrary(log4cplus::LogLevel minSevToLog, bool logToStdOut, bool logToFile, std::string filename, bool logToNet, int port, std::string hostname);
 		OccupancyLibrary(Logger logger);
 		bool ImportXML(string xmlFilename);
-
+		Block* GetBlock(string blockName);
+		Logger GetLogger() { return log; }
 };

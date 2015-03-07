@@ -113,3 +113,15 @@ void BlockManager::UpdateBlocks()
 	}
 	log.log(DEBUG_LOG_LEVEL, LOG4CPLUS_TEXT("Entering BlockManager::UpdateBlocks()"));
 }
+
+Block* BlockManager::GetBlock(string blockName)
+{
+	typedef std::map<int, Block*>::iterator it_type;
+	for (it_type iterator = blocks.begin(); iterator != blocks.end(); iterator++)
+	{
+		if (iterator->second->GetBlockName().compare(blockName) == 0)
+			return iterator->second;
+	}
+
+	return NULL;
+}

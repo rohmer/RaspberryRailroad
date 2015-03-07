@@ -32,7 +32,8 @@ vector<Block*> BlockHelper::ReadXMLBlockFile(Logger logger, std::string filename
 	// We are looking for top level nodes named Block
 	map<int, Block*> blocks;
 	int blockID = 0;
-	for (pugi::xml_node node = xdoc.child("Block"); node; node = node.next_sibling("Block"))
+	pugi::xml_node baseNode = xdoc.child("Blocks");
+	for (pugi::xml_node node = baseNode.child("Block"); node; node = node.next_sibling("Block"))
 	{
 		Block* block = new Block(logger, blockID);
 		if (node.attribute("Name"))
@@ -50,20 +51,17 @@ vector<Block*> BlockHelper::ReadXMLBlockFile(Logger logger, std::string filename
 			logger.log(WARN_LOG_LEVEL, msg.str());
 		}
 
-		if (node.child("Sensor"))
+		for (pugi::xml_node activationNode = node.child("Sensor"); activationNode; activationNode = activationNode.next_sibling("Sensor"))
 		{
-			for (pugi::xml_node activationNode = node.child("Sensor"); activationNode; activationNode = node.next_sibling("Sensor"))
+			xml_attribute activationAttribute = activationNode.attribute("SensorID");
+			if (activationAttribute)
 			{
-				xml_attribute activationAttribute = activationNode.attribute("SensorID");
-				if (activationAttribute)
-				{
-					msg.clear();
-					msg << "BlockID: " << blockID << " has an sensor defined, ID=" << activationAttribute.value();
-					logger.log(DEBUG_LOG_LEVEL, msg.str());
-					block->AddDetector(activationAttribute.as_int());
-				}
+				msg.clear();
+				msg << "BlockID: " << blockID << " has an sensor defined, ID=" << activationAttribute.value();
+				logger.log(DEBUG_LOG_LEVEL, msg.str());
+				block->AddDetector(activationAttribute.as_int());
 			}
-		}
+		}		
 		
 		returnValue.push_back(block);
 		blockID++;
@@ -71,7 +69,7 @@ vector<Block*> BlockHelper::ReadXMLBlockFile(Logger logger, std::string filename
 
 	// Step 2, added blocks, now add connections by name
 	blockID = 0;
-	for (pugi::xml_node node = xdoc.child("Block"); node; node = node.next_sibling("Block"))
+	for (pugi::xml_node node = baseNode.child("Block"); node; node = node.next_sibling("Block"))
 	{
 		Block* thisBlock = NULL;
 		if (node.attribute("Name"))
@@ -92,7 +90,7 @@ vector<Block*> BlockHelper::ReadXMLBlockFile(Logger logger, std::string filename
 		}
 
 		// We have our block, now lets work on connections
-		for (pugi::xml_node connectedNode = node.child("Connected"); connectedNode; connectedNode = node.next_sibling("Connected"))
+		for (pugi::xml_node connectedNode = node.child("Connected"); connectedNode; connectedNode = connectedNode.next_sibling("Connected"))
 		{
 			xml_attribute connectedAttribute = connectedNode.attribute("BlockName");
 			if (connectedAttribute)

@@ -46,6 +46,7 @@ void TaskLibraryTestSuite::LogFileTest()
 {
 	try
 	{
+		remove("LogFileTest.txt");
 		Logger log = TaskLibrary::CreateLogger(DEBUG_LOG_LEVEL, false, true, "LogFileTest.txt", false, 0, "");
 		log.log(DEBUG_LOG_LEVEL, "DEBUG MESSAGE");
 		log.log(WARN_LOG_LEVEL, "WARN MESSAGE");

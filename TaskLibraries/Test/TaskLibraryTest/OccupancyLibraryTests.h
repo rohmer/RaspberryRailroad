@@ -8,7 +8,7 @@ public:
 	{
 		Test::TextOutput output(Test::TextOutput::Verbose);
 		TEST_ADD(OccupancyLibraryTests::InitializationTest);		
-		TEST_ADD(OccupancyLibraryTests::ReadXML1);
+		TEST_ADD(OccupancyLibraryTests::ReadXML1);		
 	}
 
 	void InitializationTest();	

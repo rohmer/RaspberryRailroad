@@ -47,3 +47,8 @@ bool OccupancyLibrary::ImportXML(string xmlFilename)
 	log.log(DEBUG_LOG_LEVEL, msg.str());
 	return true;
 }
+
+Block* OccupancyLibrary::GetBlock(string blockName)
+{
+	return blockManager->GetBlock(blockName);
+}

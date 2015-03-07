@@ -17,6 +17,7 @@ Block::Block(Logger logger, int blockIdentifier)
 	log = logger;
 	isOccupied = false;
 	neighborOccupied = false;
+	blockID = blockIdentifier;
 	log.log(DEBUG_LOG_LEVEL, "Block::Block() initalized");
 }
 

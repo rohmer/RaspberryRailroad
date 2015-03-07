@@ -54,4 +54,5 @@ class Block
 		int GetID();
 		vector<int> GetNeighbors();
 		bool SetOccupied(bool val) { isOccupied = val; }
+		vector<int> GetDetectors() { return detectors; }
 };

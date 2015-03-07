@@ -7,8 +7,8 @@
 #include "log4cplus\logger.h"
 #include "Block.h"
 #include "ADCPI.h"
-#include "DetectorBase.h"
 #include "OpticalDetector.h"
+#include "BlockHelper.h"
 
 using namespace std;
 using namespace log4cplus;
@@ -34,6 +34,7 @@ class BlockManager
 
 		void UpdateBlocks();
 
+		Block* GetBlock(string blockName);
 
 
 };
