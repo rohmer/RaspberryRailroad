@@ -16,3 +16,9 @@ Licensed under the Microsoft Public License (MS-PL)
 http://opensource.org/licenses/MS-PL
 
 Enjoy!  Contribute!
+
+<h2>Special Thanks!</h2>
+Thanks to the folks at SysProgs for proving me a reduced price copy of VisualGDB for working on this project.
+Excellent product, if you do Pi, I suggest it.
+
+http://visualgdb.com
