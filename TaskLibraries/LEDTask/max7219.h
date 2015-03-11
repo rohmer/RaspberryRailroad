@@ -41,28 +41,21 @@ class max7219
 		int spiChannel;
 		int spiSpeed;
 		int spiFD;
-		char *TxBuffer;
-		char *RxBuffer;
-		int TxBufferIndex;
-		int RxBufferIndex;
 		bool initialized;
-		std::map<int,max7219Container> maxData;
+		unsigned char spiData[16];
+		unsigned char status[64];
 
 		void initialize();
-		void transfer(char c);
-		void endTransfer();
-		void setData(char row, char data, int device);
-		void setData(char row, char dara);
+		void spiTransfer(int addr, volatile unsigned char opcode, volatile unsigned char data);
 
 	public:
 		max7219(Logger logger, int numberOfDevices);
 		void SetNumDevices(int value); 
 		void SetSPIChannel(int value); 
 		void SetSPISpeed(int value);
-		void SetShutDown(char Mode) { setData(ShutDown, !Mode); }
-		void SetScanLimit(char Digits) { setData(ScanLimit, Digits); }
-		void SetIntensity(char intense) { setData(Intensity, intense); }
-		void SetDecodeMode(char Mode) { setData(DecodeMode, Mode); }
+		void Shutdown(int maxDevice, bool value);
+		void SetIntensity(int maxDevice, int value);
+
 		void Draw(int row, int col, int maxDevice, bool powerMode);
 		void Draw(int row, int col, bool powerMode);					// Draw on all devices
 		void Clear(int maxDevice);

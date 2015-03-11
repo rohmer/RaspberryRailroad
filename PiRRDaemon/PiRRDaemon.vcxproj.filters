@@ -17,6 +17,9 @@
       <UniqueIdentifier>{392437b8-f3f7-49db-ab93-f76359ab70e5}</UniqueIdentifier>
       <Extensions>*.mak</Extensions>
     </Filter>
+    <Filter Include="Config">
+      <UniqueIdentifier>{9451e02d-e78e-4a15-985b-5d61f7872e1a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="Makefile" />
@@ -31,5 +34,13 @@
     <ClCompile Include="Main.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
+    <ClCompile Include="Configuration.cpp">
+      <Filter>Config</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Configuration.h">
+      <Filter>Config</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

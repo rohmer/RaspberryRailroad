@@ -17,6 +17,9 @@
     <Filter Include="ScriptedTask">
       <UniqueIdentifier>{7e68a119-24d5-41e5-a640-f5ede4c08cb7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="PauseTask">
+      <UniqueIdentifier>{fa4fa296-7951-4c66-9a01-70159dd1d7fc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="Makefile" />
@@ -53,6 +56,9 @@
     <ClCompile Include="LEDTask\max7219Container.cpp">
       <Filter>LEDTask</Filter>
     </ClCompile>
+    <ClCompile Include="PauseTask\PauseTask.cpp">
+      <Filter>PauseTask</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TaskBase\TaskBase.h">
@@ -79,6 +85,9 @@
     </ClInclude>
     <ClInclude Include="LEDTask\max7219Container.h">
       <Filter>LEDTask</Filter>
+    </ClInclude>
+    <ClInclude Include="PauseTask\PauseTask.h">
+      <Filter>PauseTask</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

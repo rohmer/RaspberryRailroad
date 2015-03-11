@@ -12,16 +12,6 @@ max7219::max7219(Logger logger, int numberOfDevices)
 	}
 	spiSpeed = 1000000;
 	
-	for (int a = 0; a < numOfDevices; a++)
-	{
-		max7219Container c;
-		maxData.insert(std::pair<int, max7219Container>(a, c));
-	}
-
-	TxBuffer = new char[1024];
-	RxBuffer = new char[1024];
-	TxBufferIndex = 0;
-	RxBufferIndex = 0;
 	ostringstream msg;
 	initialized = false;
 	msg << "max7219(logger," << numberOfDevices << ") initialized";
@@ -34,13 +24,7 @@ void max7219::SetNumDevices(int val)
 	msg << "Entering max7219::SetNumDevices(" << val << ")";
 	log.log(DEBUG_LOG_LEVEL, msg.str());
 	numOfDevices = val;
-	maxData.clear();
-	
-	for (int a = 0; a < numOfDevices; a++)
-	{
-		max7219Container c;
-		maxData.insert(std::pair<int, max7219Container>(a, c));
-	}
+	initialized = false;
 	msg << "Exiting max7219::SetNumDevices(" << val << ")";
 	log.log(DEBUG_LOG_LEVEL, msg.str());
 
@@ -55,8 +39,7 @@ void max7219::SetSPIChannel(int val)
 	{
 		close(spiFD);
 		initialized = false;		
-	}
-	initialize();
+	}	
 	msg.clear();
 	msg << "Exiting max7219::SetSPIChannel(" << val << ")";
 	log.log(DEBUG_LOG_LEVEL, msg.str());
@@ -72,8 +55,7 @@ void max7219::SetSPISpeed(int val)
 	{
 		close(spiFD);
 		initialized = false;
-	}
-	initialize();
+	}	
 	msg.clear();
 	msg << "Exiting max7219::SetSPISpeed(" << val << ")";
 	log.log(DEBUG_LOG_LEVEL, msg.str());
@@ -82,9 +64,8 @@ void max7219::SetSPISpeed(int val)
 
 max7219::~max7219()
 {
-	SetShutDown(true);
-	delete[] TxBuffer;
-	delete[] RxBuffer;
+	for (int a = 0; a < numOfDevices; a++)
+		Shutdown(a, true);
 	close(spiFD);
 	log.log(DEBUG_LOG_LEVEL, "max7219::~max7219() completed");
 }
@@ -103,100 +84,122 @@ void max7219::initialize()
 	}
 	msg << "Opened file handle: " << spiFD;
 	log.log(DEBUG_LOG_LEVEL, msg.str());
-	SetDecodeMode(false);
-	SetScanLimit(7);
-	SetIntensity(15);
-	SetShutDown(false);
+	for (int i = 0; i < numOfDevices; i++)
+	{
+		spiTransfer(i, DisplayTest, 0);
+		spiTransfer(i, ScanLimit, 7);
+		spiTransfer(i, DecodeMode, 0);
+		SetIntensity(i, 15);
 
+	}
+	
 	log.log(DEBUG_LOG_LEVEL, "Exiting max7219::initialize()");
 	initialized = true;
 }
 
-void max7219::transfer(char c)
+void max7219::SetIntensity(int addr, int value)
 {
 	ostringstream msg;
-	msg << "Entering max7219::transfer(" << c << ")";
+	ostringstream args;
+	args << addr << "," << value;
+	msg << "Entering max7219::SetIntensity(" << addr << ")";
 	log.log(DEBUG_LOG_LEVEL, msg.str());
-
-	TxBuffer[TxBufferIndex] = c;
-	TxBufferIndex++;
-	log.log(DEBUG_LOG_LEVEL,"Exiting max7219::transfer()");
-}
-
-void max7219::endTransfer()
-{
-	if (!initialized)
+	if (value > 15)
 	{
-		initialize();
+		log.log(WARN_LOG_LEVEL, "Intensity set to >15, defaulting to 15");
+		value = 15;
 	}
-	if (!initialized)
+	if (value < 0)
 	{
-		log.log(DEBUG_LOG_LEVEL, "Exiting max7219::endTransfer()");
-		TxBufferIndex = 0;
-		return;
+		log.log(WARN_LOG_LEVEL, "Intensity set to <0, defaulting to 0");
+		value = 0;
 	}
-	log.log(DEBUG_LOG_LEVEL, "Entering max7219::endTransfer()");
-	int temp = write(spiFD, TxBuffer, TxBufferIndex);
-	ostringstream msg;
-	msg << "Written: " << temp << " Index: " << TxBufferIndex << " Buffer: ";
-	log.log(DEBUG_LOG_LEVEL, msg.str());
-	TxBufferIndex = 0;
-	log.log(DEBUG_LOG_LEVEL, "Exiting max7219::endTransfer()");
+	if (value)
+		spiTransfer(addr, Intensity, value);
+	else
+		spiTransfer(addr, Intensity, value);
 }
 
-void max7219::setData(char row, char data, int device)
+void max7219::Shutdown(int addr, bool value)
 {
 	ostringstream msg;
-	ostringstream args;	
-	args << row << "," << data << "," << device;
-	msg << "Entering max7219::setData(" << args << ")";
+	ostringstream args;
+	args << addr << "," << value;
+	msg << "Entering max7219::Shutdown(" << addr << ")";
 	log.log(DEBUG_LOG_LEVEL, msg.str());
-	for (int i = numOfDevices; i > 0; i--)
+	if (value)
+		spiTransfer(addr, ShutDown, 1);
+	else
+		spiTransfer(addr, ShutDown, 0);
+}
+
+void max7219::Clear(int addr)
+{
+	ostringstream msg;
+	msg << "Entering max7219::Clear(" << addr << ")";
+	log.log(DEBUG_LOG_LEVEL, msg.str());
+	int offset;
+	if (addr<0 || addr>numOfDevices)
 	{
-		if ((i == device) || (device==255))
-		{
-			transfer(row);
-			transfer(data);
-		}
-		else
-		{
-			transfer(NoOp);
-			transfer(0);
-		}
+		log.log(ERROR_LOG_LEVEL, "Address is outside of the range of max Devices");
+		msg.clear();
+		msg << "Exiting max7219::Clear(" << addr << ")";
+		log.log(DEBUG_LOG_LEVEL, msg.str());
 	}
-	endTransfer();
-	delay(1);
 
-	msg.clear();
-	msg << "Exiting max7219::setData(" << args << ")";
-	log.log(DEBUG_LOG_LEVEL, msg.str());
-}
-
-void max7219::setData(char row, char data)
-{
-	setData(row, data, 255);
-}
-
-void max7219::Clear(int maxDevice)
-{
-	ostringstream msg;
-	msg << "Entering max7219::Clear(" << maxDevice << ")";
-	log.log(DEBUG_LOG_LEVEL, msg.str());
-	maxData[maxDevice].Clear();
-	msg.clear();
-	msg << "Exiting max7219::Clear(" << maxDevice << ")";
+	offset = addr * 8;
+	for (int i = 0; i < 8; i++)
+	{
+		status[offset + i] = 0;
+		spiTransfer(addr, i + 1, status[offset + i]);
+	}
+	msg << "Exiting max7219::Clear(" << addr << ")";
 	log.log(DEBUG_LOG_LEVEL, msg.str());
 }
 
 void max7219::Clear()
 {
-	log.log(DEBUG_LOG_LEVEL,"Entering max7219::Clear())");
-	for (int a = 0; a < numOfDevices; a++)
-	{
-		Clear(a);
-	}
-	log.log(DEBUG_LOG_LEVEL, "Exiting max7219::Clear())");
+	log.log(DEBUG_LOG_LEVEL,"Entering max7219::Clear()");
+	for (int i = 0; i < numOfDevices; i++)
+		Clear(i);
+	log.log(DEBUG_LOG_LEVEL, "Exiting max7219::Clear()");
 }
+
+void max7219::spiTransfer(int addr, volatile unsigned char opcode, volatile unsigned char data)
+{
+	ostringstream msg;
+	ostringstream args;
+	args << addr << "," << opcode << "," << data;
+	msg << "Entering max7219::spiTransfer(" << args << ")";
+	log.log(DEBUG_LOG_LEVEL, msg.str());
+
+	int offset = addr * 2;
+	int maxbytes = numOfDevices * 2;
+
+	for (int i = 0; i < maxbytes; i++)
+		spiData[i] = (char)0;
+
+	spiData[offset + 1] = opcode;
+	spiData[offset] = data;
+	int bytesWritten = wiringPiSPIDataRW(spiChannel, spiData, maxbytes);
+	if (bytesWritten != maxbytes)
+	{
+		msg.clear();
+		msg << "Expected to write: " << maxbytes << ", actually wrote: " << bytesWritten;
+		log.log(ERROR_LOG_LEVEL, msg.str());
+	}
+	else
+	{
+		msg.clear();
+		msg << "Wrote: " << bytesWritten << " to SPI channel: " << spiChannel << " successfully";
+		log.log(DEBUG_LOG_LEVEL, msg.str());
+	}
+
+	msg.clear();
+	msg << "Exiting max7219::spiTransfer(" << args << ")";
+	log.log(DEBUG_LOG_LEVEL, msg.str());
+}
+
 
 void max7219::Draw(int row, int col, int maxDevice, bool powerMode)
 {
@@ -205,15 +208,38 @@ void max7219::Draw(int row, int col, int maxDevice, bool powerMode)
 	args << row << "," << col << "," << maxDevice << "," << powerMode;
 	msg << "Entering max7219::Draw(" << args << ")";
 	log.log(DEBUG_LOG_LEVEL, msg.str());
-
-	maxData[maxDevice].Draw(row, col, powerMode);
-	
-	for (int a = 0; a < 8; a++)
+	if (!initialized)
 	{
-		setData(a + 1, char(maxData[maxDevice].GetData()[a]), maxDevice);
+		initialize();
 	}
+	if (!initialized)
+	{
+		log.log(DEBUG_LOG_LEVEL, "Exiting max7219::Draw()");		
+		return;
+	}
+
+	int offset;
+	char val = 0x00;
+	if (maxDevice<0 || maxDevice>numOfDevices)
+	{
+		log.log(ERROR_LOG_LEVEL, "maxDevice is outside the range of max devices, not drawing");
+		msg.clear();
+		msg << "Exiting max7219::Draw(" << args << ")";
+		log.log(DEBUG_LOG_LEVEL, msg.str());
+	}
+
+	offset = maxDevice * 8;
+	val = 128 >> col;
+	if (powerMode)
+		status[offset + row] = status[offset + row] | val;
+	else
+	{
+		val = ~val;
+		status[offset + row] = status[offset + row] & val;
+	}
+	spiTransfer(maxDevice, row + 1, status[offset + row]);
 	msg.clear();
-	msg << "Entering max7219::Draw(" << args << ")";
+	msg << "Exiting max7219::Draw(" << args << ")";
 	log.log(DEBUG_LOG_LEVEL, msg.str());
 }
 
@@ -223,20 +249,24 @@ void max7219::Draw(int row, int col, bool powerMode)
 	ostringstream args;
 	args << row << "," << col << "," << powerMode;
 	msg << "Entering max7219::Draw(" << args << ")";
+
 	log.log(DEBUG_LOG_LEVEL, msg.str());
-	for (int a = 0; a < numOfDevices; a++)
+	if (!initialized)
 	{
-		maxData[a].Draw(row, col, powerMode);
+		initialize();
+	}
+	if (!initialized)
+	{
+		log.log(DEBUG_LOG_LEVEL, "Exiting max7219::endTransfer()");		
+		return;
 	}
 
-	for (int b = 0; b < numOfDevices; b++)
+	for (int a = 0; a < numOfDevices; a++)
 	{
-		for (int a = 0; a < 8; a++)
-		{
-			setData(a + 1, char(maxData[b].GetData()[a]), b);
-		}
+		Draw(row, col, a, powerMode);
 	}
+
 	msg.clear();
-	msg << "Entering max7219::Draw(" << args << ")";
+	msg << "Exiting max7219::Draw(" << args << ")";
 	log.log(DEBUG_LOG_LEVEL, msg.str());
 }
