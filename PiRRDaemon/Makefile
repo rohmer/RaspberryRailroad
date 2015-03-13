@@ -24,7 +24,7 @@ error:
 endif
 
 SOURCEFILES := Configuration.cpp Main.cpp
-EXTERNAL_LIBS := 
+EXTERNAL_LIBS := ../3rdParty/libjson/libJson/$(BINARYDIR)/libJson.so ../Logging/Solution/$(BINARYDIR)/Log4CPlus.so ../OccupancyLibrary/$(BINARYDIR)/OccupancyLibrary.so ../TaskLibraries/$(BINARYDIR)/TaskLibraries.so ../3rdParty/wiringPi/wiringPi/$(BINARYDIR)/wiringPi.so
 EXTERNAL_LIBS_COPIED := $(foreach lib, $(EXTERNAL_LIBS),$(BINARYDIR)/$(notdir $(lib)))
 
 CFLAGS += $(COMMONFLAGS)
@@ -163,3 +163,18 @@ $(BINARYDIR)/%.o : %.cxx $(all_make_files) |$(BINARYDIR)
 	$(CC) $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
 
 #VisualGDB: GeneratedRules				#<--- All lines below are auto-generated
+$(BINARYDIR)/libJson.so : ../3rdParty/libjson/libJson/$(BINARYDIR)/libJson.so
+	$(CP) ../3rdParty/libjson/libJson/$(BINARYDIR)/libJson.so $(BINARYDIR)/libJson.so
+
+$(BINARYDIR)/Log4CPlus.so : ../Logging/Solution/$(BINARYDIR)/Log4CPlus.so
+	$(CP) ../Logging/Solution/$(BINARYDIR)/Log4CPlus.so $(BINARYDIR)/Log4CPlus.so
+
+$(BINARYDIR)/OccupancyLibrary.so : ../OccupancyLibrary/$(BINARYDIR)/OccupancyLibrary.so
+	$(CP) ../OccupancyLibrary/$(BINARYDIR)/OccupancyLibrary.so $(BINARYDIR)/OccupancyLibrary.so
+
+$(BINARYDIR)/TaskLibraries.so : ../TaskLibraries/$(BINARYDIR)/TaskLibraries.so
+	$(CP) ../TaskLibraries/$(BINARYDIR)/TaskLibraries.so $(BINARYDIR)/TaskLibraries.so
+
+$(BINARYDIR)/wiringPi.so : ../3rdParty/wiringPi/wiringPi/$(BINARYDIR)/wiringPi.so
+	$(CP) ../3rdParty/wiringPi/wiringPi/$(BINARYDIR)/wiringPi.so $(BINARYDIR)/wiringPi.so
+

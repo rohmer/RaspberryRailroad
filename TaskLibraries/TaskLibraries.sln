@@ -30,12 +30,21 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OccupancyLibrary", "..\Occu
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PiRRDaemon", "..\PiRRDaemon\PiRRDaemon.vcxproj", "{F5A79E80-6687-4C6B-A480-98C571A1CE39}"
+	ProjectSection(ProjectDependencies) = postProject
+		{354EE023-4B8C-40AF-B108-2F54AB980117} = {354EE023-4B8C-40AF-B108-2F54AB980117}
+		{31172E34-FEE3-4CE2-9691-07CC1BA2B371} = {31172E34-FEE3-4CE2-9691-07CC1BA2B371}
+		{6A10A353-0FBA-4F03-96C4-3AC10D8240C0} = {6A10A353-0FBA-4F03-96C4-3AC10D8240C0}
+		{542DD695-A5C3-42BA-89E7-47BC491D31D6} = {542DD695-A5C3-42BA-89E7-47BC491D31D6}
+		{A58682BD-413D-4D85-87FF-07D197A35B6E} = {A58682BD-413D-4D85-87FF-07D197A35B6E}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cpptest", "..\3rdParty\cpptest-1.1.2\cpptest\cpptest.vcxproj", "{BB99849A-4FB0-4FC5-9909-E3F16405E6C8}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "wiringPi", "..\3rdParty\wiringPi\wiringPi\wiringPi.vcxproj", "{A58682BD-413D-4D85-87FF-07D197A35B6E}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "pugixml", "..\3rdParty\pugixml\pugixml\pugixml.vcxproj", "{4F52C939-EE13-485D-921D-FEA73D90A4EB}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libJson", "..\3rdParty\libjson\libJson\libJson.vcxproj", "{354EE023-4B8C-40AF-B108-2F54AB980117}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,6 +84,10 @@ Global
 		{4F52C939-EE13-485D-921D-FEA73D90A4EB}.Debug|Win32.Build.0 = Debug|Win32
 		{4F52C939-EE13-485D-921D-FEA73D90A4EB}.Release|Win32.ActiveCfg = Release|Win32
 		{4F52C939-EE13-485D-921D-FEA73D90A4EB}.Release|Win32.Build.0 = Release|Win32
+		{354EE023-4B8C-40AF-B108-2F54AB980117}.Debug|Win32.ActiveCfg = Debug|Win32
+		{354EE023-4B8C-40AF-B108-2F54AB980117}.Debug|Win32.Build.0 = Debug|Win32
+		{354EE023-4B8C-40AF-B108-2F54AB980117}.Release|Win32.ActiveCfg = Release|Win32
+		{354EE023-4B8C-40AF-B108-2F54AB980117}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

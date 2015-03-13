@@ -171,28 +171,37 @@ TaskBase* ScriptedTask::getTask(TaskTypes ttype)
 	// We haven't created one yet, lets create it
 	switch (ttype)
 	{
-	case TLEDTask:
-	{
-		TaskBase * tb = new LEDTask(log);
-		loadedTasks.insert(std::pair<TaskTypes, TaskBase*>(TLEDTask, tb));
-		log.log(DEBUG_LOG_LEVEL, "Returning new instance of LEDTask");
-		tb->Init();
-		return tb;
-	}
-	case TServoTask:
-	{
-		TaskBase *tb = new ServoTask(log);
-		loadedTasks.insert(std::pair<TaskTypes, TaskBase*>(TServoTask, tb));
-		log.log(DEBUG_LOG_LEVEL, "Returning new instance of ServoTask");
-		tb->Init();
-		return tb;
-	}
-	case TScriptedTask:
-		TaskBase *tb = new ScriptedTask(log);
-		loadedTasks.insert(std::pair<TaskTypes, TaskBase*>(TScriptedTask, tb));
-		log.log(DEBUG_LOG_LEVEL, "Returning new instance of ScriptedTask");
-		tb->Init();
-		return tb;
+		case TLEDTask:
+		{
+			TaskBase * tb = new LEDTask(log);
+			loadedTasks.insert(std::pair<TaskTypes, TaskBase*>(TLEDTask, tb));
+			log.log(DEBUG_LOG_LEVEL, "Returning new instance of LEDTask");
+			tb->Init();
+			return tb;
+		}
+		case TServoTask:
+		{
+			TaskBase *tb = new ServoTask(log);
+			loadedTasks.insert(std::pair<TaskTypes, TaskBase*>(TServoTask, tb));
+			log.log(DEBUG_LOG_LEVEL, "Returning new instance of ServoTask");
+			tb->Init();
+			return tb;
+		}
+		case TScriptedTask:
+		{
+			TaskBase *tb = new ScriptedTask(log);
+			loadedTasks.insert(std::pair<TaskTypes, TaskBase*>(TScriptedTask, tb));
+			log.log(DEBUG_LOG_LEVEL, "Returning new instance of ScriptedTask");
+			tb->Init();
+			return tb;
+		}
+		case TPauseTask:
+		{
+			TaskBase *tb = new PauseTask(log);
+			loadedTasks.insert(std::pair<TaskTypes, TaskBase*>(TPauseTask, tb));
+			log.log(DEBUG_LOG_LEVEL, "Returning new instance of PauseTask");
+			return tb;
+		}
 	}
 }
 

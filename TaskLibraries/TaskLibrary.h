@@ -5,6 +5,7 @@
 // Now include each type of specialized task
 #include "LEDTask/LEDTask.h"
 #include "ServoTask/ServoTask.h"
+#include "PauseTask\PauseTask.h"
 #include <log4cplus\consoleappender.h>
 #include <log4cplus\fileappender.h>
 #include <log4cplus\socketappender.h>
@@ -17,7 +18,7 @@
 
 #ifndef TaskLibrarySet
 #define TaskLibrarySet
-enum TaskTypes { TLEDTask, TServoTask, TScriptedTask };
+enum TaskTypes { TLEDTask, TServoTask, TScriptedTask, TPauseTask };
 
 using namespace std;
 
