@@ -8,10 +8,10 @@
 int main(int argc, char* argv[])
 {
 	Test::TextOutput output(Test::TextOutput::Verbose, std::cout);
-	//TaskLibraryTestSuite tlts;
-	//tlts.run(output, false);
-	//LEDTaskTests ltt;
-	//ltt.run(output, false);
+	TaskLibraryTestSuite tlts;
+	tlts.run(output, false);
+	LEDTaskTests ltt;
+	ltt.run(output, false);
 	OccupancyLibraryTests olt;
 	olt.run(output, false);
 }

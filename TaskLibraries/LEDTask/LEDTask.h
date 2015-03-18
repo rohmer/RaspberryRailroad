@@ -29,7 +29,7 @@ class LEDTask : public TaskBase
 	public:
 		LEDTask(Logger logger);
 		void Run(vector<int> args);	
-		void SetMaxParam(int sipSpeed, int spiChannel, int maxCount);
+		void SetMaxParam(int spiSpeed, int spiChannel);
 		void Init();
 		void Draw(int column, int row, bool powerMode);
 		void Clear();

@@ -48,6 +48,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libJson", "..\3rdParty\libj
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Max7221", "..\Experiments\Max7221\Max7221.vcxproj", "{8DC1D713-6199-4BEA-9E33-C43D4E5F1C8C}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DatabaseConnector", "..\DatabaseConnector\DatabaseConnector.vcxproj", "{498ABD68-99F1-4564-A9BF-BAFAC9E3E7BC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -94,6 +96,10 @@ Global
 		{8DC1D713-6199-4BEA-9E33-C43D4E5F1C8C}.Debug|Win32.Build.0 = Debug|Win32
 		{8DC1D713-6199-4BEA-9E33-C43D4E5F1C8C}.Release|Win32.ActiveCfg = Release|Win32
 		{8DC1D713-6199-4BEA-9E33-C43D4E5F1C8C}.Release|Win32.Build.0 = Release|Win32
+		{498ABD68-99F1-4564-A9BF-BAFAC9E3E7BC}.Debug|Win32.ActiveCfg = Debug|Win32
+		{498ABD68-99F1-4564-A9BF-BAFAC9E3E7BC}.Debug|Win32.Build.0 = Debug|Win32
+		{498ABD68-99F1-4564-A9BF-BAFAC9E3E7BC}.Release|Win32.ActiveCfg = Release|Win32
+		{498ABD68-99F1-4564-A9BF-BAFAC9E3E7BC}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -12,53 +12,45 @@
 #include <unistd.h>
 #include <sstream>
 #include <map>
-#include "max7219Container.h"
+#include <linux/spi/spidev.h>
+#include <sys/ioctl.h>
+#include <linux/types.h>
+#include <stdint.h>
+#include <math.h>
+#include <string.h>
 
 using namespace std;
 using namespace log4cplus;
 
 class max7219
 {
-	const static char NoOp = 0x00;
-	const static char Digit0 = 0x01;
-	const static char Digit1 = 0x02;
-	const static char Digit2 = 0x03;
-	const static char Digit3 = 0x04;
-	const static char Digit4 = 0x05;
-	const static char Digit5 = 0x06;
-	const static char Digit6 = 0x07;
-	const static char Digit7 = 0x08;
-	const static char DecodeMode = 0x09;
-	const static char Intensity = 0x0A;
-	const static char ScanLimit = 0x0B;
-	const static char ShutDown = 0x0C;
-	const static char DisplayTest = 0x0F;
+	#define INTENSITY     0x0a
+	#define SHUTDOWN      0x0c   
 	
-
 	private:
-		Logger log;
-		int numOfDevices;
+		Logger log;		
 		int spiChannel;
 		int spiSpeed;
 		int spiFD;
 		bool initialized;
 		unsigned char spiData[16];
-		unsigned char status[64];
+		bool status[64];
+		char *device;
+		uint8_t mode;
+		uint8_t bits;
 
 		void initialize();
-		void spiTransfer(int addr, volatile unsigned char opcode, volatile unsigned char data);
-
+		void spiTransfer(unsigned char opcode, unsigned char data);
+		
 	public:
-		max7219(Logger logger, int numberOfDevices);
-		void SetNumDevices(int value); 
+		max7219(Logger logger);
 		void SetSPIChannel(int value); 
 		void SetSPISpeed(int value);
-		void Shutdown(int maxDevice, bool value);
-		void SetIntensity(int maxDevice, int value);
+		void Shutdown(bool value);
+		void SetIntensity(int value);
+		void SetSPIBits(uint8_t spiBits) { bits = spiBits; }
 
-		void Draw(int row, int col, int maxDevice, bool powerMode);
-		void Draw(int row, int col, bool powerMode);					// Draw on all devices
-		void Clear(int maxDevice);
+		void Draw(int row, int col, bool powerMode);		
 		void Clear();
 		~max7219();
 

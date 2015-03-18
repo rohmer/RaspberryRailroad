@@ -6,7 +6,7 @@ LEDTask::LEDTask(Logger logger) :TaskBase(logger)
 	_spiChannel = 0;
 	_spiSpeed = 1000000;
 	_maxCount = 1;
-	maxClass = new max7219(log, _maxCount);
+	maxClass = new max7219(log);
 }
 
 /// <summary>
@@ -47,12 +47,10 @@ void LEDTask::Run(vector<int> args)
 	log.log(DEBUG_LOG_LEVEL, msg.str());	
 }
 
-void LEDTask::SetMaxParam(int spiSpeed, int spiChannel, int maxCount)
+void LEDTask::SetMaxParam(int spiSpeed, int spiChannel)
 {
 	_spiSpeed = spiSpeed;
-	_spiChannel = spiChannel;
-	_maxCount = maxCount;
-	maxClass->SetNumDevices(_maxCount);
+	_spiChannel = spiChannel;	
 	maxClass->SetSPIChannel(_spiChannel);
 	maxClass->SetSPISpeed(_spiSpeed);
 }
@@ -71,6 +69,13 @@ void LEDTask::Draw(int column, int row, bool powerMode)
 {	
 	ostringstream msg;
 	ostringstream args;
+	args << column << "," << row << "," << powerMode;
+	msg << "Entering LEDTask::Draw(" << args << ")";
+	log.log(DEBUG_LOG_LEVEL, msg.str());
+	maxClass->Draw(row, column, powerMode);
+	msg.clear();
+	msg << "Exiting LEDTask::Draw(" << args << ")";
+	log.log(DEBUG_LOG_LEVEL, msg.str());
 
 }
 
