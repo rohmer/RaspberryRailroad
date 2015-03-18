@@ -17,10 +17,16 @@
       <UniqueIdentifier>{3c6f6e42-d176-49f0-afa8-e40663000149}</UniqueIdentifier>
       <Extensions>*.mak</Extensions>
     </Filter>
+    <Filter Include="DatabaseAppender">
+      <UniqueIdentifier>{27a99db7-6d1c-43ef-9ce4-525192eb0a7d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DatabaseConnector.h">
       <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="DatabaseAppender.h">
+      <Filter>DatabaseAppender</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -31,5 +37,10 @@
     <None Include="release.mak">
       <Filter>Make files</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="DatabaseAppender.cpp">
+      <Filter>DatabaseAppender</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
