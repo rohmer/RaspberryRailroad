@@ -82,6 +82,7 @@
 #define __LLACCUM_MIN__ (-0X1P31LLK-0X1P31LLK)
 #define __SIZEOF_INT__ 4
 #define __SIZEOF_POINTER__ 4
+#define NDEBUG 1
 #define __GCC_ATOMIC_CHAR16_T_LOCK_FREE 1
 #define __USACCUM_IBIT__ 8
 #define __USER_LABEL_PREFIX__ 
@@ -121,7 +122,6 @@
 #define __FLT_HAS_DENORM__ 1
 #define __SIZEOF_LONG_DOUBLE__ 8
 #define __BIGGEST_ALIGNMENT__ 8
-#define JSON_COMMENTS 1
 #define __DQ_IBIT__ 0
 #define __DBL_MAX__ double(1.7976931348623157e+308L)
 #define __ULFRACT_IBIT__ 0

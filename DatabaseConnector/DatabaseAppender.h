@@ -5,11 +5,14 @@
 #include <log4cplus/spi/factory.h>
 #include <log4cplus/spi/loggingevent.h>
 #include <string>
-#include <mysql/mysql.h>
-#include <mysql/my_global.h>
 #include <sstream>
 #include <string.h>
 #include <time.h>
+#include <mysql_connection.h>
+#include <cppconn/driver.h>
+#include <cppconn/exception.h>
+#include <cppconn/resultset.h>
+#include <cppconn/statement.h>
 
 using namespace std;
 
@@ -19,8 +22,9 @@ namespace log4cplus
 	{
 		private:
 			bool validConnection;
-			MYSQL *dbConnection;
-			
+			sql::Connection *dbConnection;
+			sql::Driver *dbDriver;
+
 			void connectToDB();
 			bool checkAndCreateTable();
 

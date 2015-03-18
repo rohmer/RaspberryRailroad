@@ -12,7 +12,7 @@ AR := C:/SysGCC/raspberry/bin/arm-linux-gnueabihf-ar.exe
 OBJCOPY := C:/SysGCC/raspberry/bin/arm-linux-gnueabihf-objcopy.exe
 
 #Additional flags
-PREPROCESSOR_MACROS := DEBUG JSON_LESS_MEMORY JSON_COMMENTS
+PREPROCESSOR_MACROS := DEBUG JSON_LESS_MEMORY NDEBUG
 INCLUDE_DIRS := 
 LIBRARY_DIRS := 
 LIBRARY_NAMES := 

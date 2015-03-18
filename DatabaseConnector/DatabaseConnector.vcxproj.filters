@@ -43,4 +43,7 @@
       <Filter>DatabaseAppender</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <Library Include="..\3rdParty\mysqlconnector\libmysqlcppconn.so" />
+  </ItemGroup>
 </Project>

@@ -379,7 +379,7 @@
 //c:\sysgcc\raspberry\bin\../arm-linux-gnueabihf/sysroot/usr/include/arm-linux-gnueabihf
 //c:\sysgcc\raspberry\bin\../arm-linux-gnueabihf/sysroot/usr/include
 //../Logging/include
-//mysql
+//../3rdParty/mysqlconnector
 // --- Include directories end --- //
 
 
