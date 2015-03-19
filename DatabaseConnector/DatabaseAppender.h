@@ -36,6 +36,8 @@ namespace log4cplus
 			//Dtor	
 			~DatabaseAppender();			
 
+			virtual void close();
+
 		protected:
 			void append(spi::InternalLoggingEvent const & ev);
 				
@@ -44,7 +46,6 @@ namespace log4cplus
 			string dbServer;
 			string db;
 			string dbUser;
-			string dbPassword;
-			int dbPort;
+			string dbPassword;			
 	};
 }

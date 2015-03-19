@@ -112,3 +112,25 @@ void TaskLibraryTestSuite::NetworkLogTest()
 	//no-op now
 	TEST_ASSERT(true);
 }
+
+void TaskLibraryTestSuite::DatabaseLogTest()
+{
+	try
+	{
+		// Clear the database of log messages
+		if (!DatabaseUtilities::ClearTable("test", "test", "mysql", "localhost", "logs"))
+			TEST_FAIL("Failed to clear the table, database error?");
+
+		Logger log = TaskLibrary::CreateLogger(DEBUG_LOG_LEVEL, false, true, "LogFileTest.txt", false, 0, "",true,"localhost","mysql","test","test",0);
+		log.log(DEBUG_LOG_LEVEL, "DEBUG MESSAGE");
+		log.log(WARN_LOG_LEVEL, "WARN MESSAGE");
+		log.log(ERROR_LOG_LEVEL, "ERROR MESSAGE");
+		log.log(FATAL_LOG_LEVEL, "FATAL MESSAGE");
+	} 
+	catch(std::exception const &e)
+	{
+		ostringstream msg;
+		msg << "Exception caught in test: " << e.what();
+		TEST_FAIL(msg);
+	}
+}

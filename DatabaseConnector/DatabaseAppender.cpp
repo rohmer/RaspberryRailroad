@@ -20,8 +20,7 @@ DatabaseAppender::DatabaseAppender(helpers::Properties const & properties)
 	properties.getString(dbServer, LOG4CPLUS_TEXT("databaseServer"));
 	properties.getString(db, LOG4CPLUS_TEXT("database"));
 	properties.getString(dbUser, LOG4CPLUS_TEXT("databaseUser"));
-	properties.getString(dbPassword, LOG4CPLUS_TEXT("databasePassword"));
-	properties.getInt(dbPort, LOG4CPLUS_TEXT("dbPort"));
+	properties.getString(dbPassword, LOG4CPLUS_TEXT("databasePassword"));	
 	dbConnection = NULL;
 }
 
@@ -68,14 +67,14 @@ void DatabaseAppender::connectToDB()
 bool DatabaseAppender::checkAndCreateTable()
 {
 	sql::Statement *stmt = dbConnection->createStatement();
-	sql::ResultSet *res = stmt->executeQuery("show tables like 'log4cplus'");
+	sql::ResultSet *res = stmt->executeQuery("show tables like 'logs'");
 	if (res->rowsCount() == 1)
 		return true;
 	
 	try
 	{
 		// Create the table
-		if (!stmt->execute("CREATE TABLE log4cplus(timestamp DATETIME, severity TEXT, message TEXT, file TEXT, function TEXT, line INT)"))
+		if (!stmt->execute("CREATE TABLE logs(timestamp DATETIME, severity TEXT, message TEXT, file TEXT, function TEXT, line INT)"))
 		{
 			ostringstream msg;
 			msg << "Error creating table: ";
@@ -121,7 +120,7 @@ void DatabaseAppender::append(spi::InternalLoggingEvent const & ev)
 	try
 	{
 		sql::Statement *stmt = dbConnection->createStatement();
-		query << "INSERT INTO log4cplus VALUES(now(),'" << sevString << "','" << msg << "','" << file << "','" << function << "'," << line << ")";
+		query << "INSERT INTO logs VALUES(now(),'" << sevString << "','" << msg << "','" << file << "','" << function << "'," << line << ")";
 		if (!stmt->execute(query.str().c_str()))
 		{
 			ostringstream msg;
@@ -138,4 +137,11 @@ void DatabaseAppender::append(spi::InternalLoggingEvent const & ev)
 	}
 
 	return;
+}
+
+void DatabaseAppender::close()
+{
+	helpers::getLogLog().debug(
+		LOG4CPLUS_TEXT("Entering DatabaseAppender::close().."));
+	closed = true;
 }

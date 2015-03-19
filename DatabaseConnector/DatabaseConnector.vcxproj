@@ -64,7 +64,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="DatabaseAppender.h" />
-    <ClInclude Include="DatabaseConnector.h" />
+    <ClInclude Include="DatabaseUtilities.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="debug.mak" />
@@ -73,6 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DatabaseAppender.cpp" />
+    <ClCompile Include="DatabaseUtilities.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="..\3rdParty\mysqlconnector\libmysqlcppconn.so">

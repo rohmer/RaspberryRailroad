@@ -24,7 +24,7 @@ error:
 endif
 
 SOURCEFILES := LEDTaskTests.cpp main.cpp OccupancyLibraryTests.cpp TaskLibraryTest.cpp
-EXTERNAL_LIBS := ../../../Logging/Solution/$(BINARYDIR)/Log4CPlus.so ../../../3rdParty/pugixml/pugixml/$(BINARYDIR)/pugixml.so ../../../OccupancyLibrary/$(BINARYDIR)/OccupancyLibrary.so ../../$(BINARYDIR)/TaskLibraries.so ../../../3rdParty/cpptest-1.1.2/cpptest/$(BINARYDIR)/cpptest.so ../../../3rdParty/wiringPi/wiringPi/$(BINARYDIR)/wiringPi.so
+EXTERNAL_LIBS := ../../../Logging/Solution/$(BINARYDIR)/Log4CPlus.so ../../../3rdParty/pugixml/pugixml/$(BINARYDIR)/pugixml.so ../../../OccupancyLibrary/$(BINARYDIR)/OccupancyLibrary.so ../../../DatabaseConnector/$(BINARYDIR)/DatabaseConnector.so ../../$(BINARYDIR)/TaskLibraries.so ../../../3rdParty/cpptest-1.1.2/cpptest/$(BINARYDIR)/cpptest.so ../../../3rdParty/wiringPi/wiringPi/$(BINARYDIR)/wiringPi.so
 EXTERNAL_LIBS_COPIED := $(foreach lib, $(EXTERNAL_LIBS),$(BINARYDIR)/$(notdir $(lib)))
 
 CFLAGS += $(COMMONFLAGS)
@@ -171,6 +171,9 @@ $(BINARYDIR)/pugixml.so : ../../../3rdParty/pugixml/pugixml/$(BINARYDIR)/pugixml
 
 $(BINARYDIR)/OccupancyLibrary.so : ../../../OccupancyLibrary/$(BINARYDIR)/OccupancyLibrary.so
 	$(CP) ../../../OccupancyLibrary/$(BINARYDIR)/OccupancyLibrary.so $(BINARYDIR)/OccupancyLibrary.so
+
+$(BINARYDIR)/DatabaseConnector.so : ../../../DatabaseConnector/$(BINARYDIR)/DatabaseConnector.so
+	$(CP) ../../../DatabaseConnector/$(BINARYDIR)/DatabaseConnector.so $(BINARYDIR)/DatabaseConnector.so
 
 $(BINARYDIR)/TaskLibraries.so : ../../$(BINARYDIR)/TaskLibraries.so
 	$(CP) ../../$(BINARYDIR)/TaskLibraries.so $(BINARYDIR)/TaskLibraries.so

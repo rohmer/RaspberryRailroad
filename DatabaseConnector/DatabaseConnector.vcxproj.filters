@@ -20,13 +20,16 @@
     <Filter Include="DatabaseAppender">
       <UniqueIdentifier>{27a99db7-6d1c-43ef-9ce4-525192eb0a7d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Utilities">
+      <UniqueIdentifier>{bbbd1317-34b9-4771-b652-0573f9dff9ec}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="DatabaseConnector.h">
-      <Filter>Header files</Filter>
-    </ClInclude>
     <ClInclude Include="DatabaseAppender.h">
       <Filter>DatabaseAppender</Filter>
+    </ClInclude>
+    <ClInclude Include="DatabaseUtilities.h">
+      <Filter>Utilities</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -41,6 +44,9 @@
   <ItemGroup>
     <ClCompile Include="DatabaseAppender.cpp">
       <Filter>DatabaseAppender</Filter>
+    </ClCompile>
+    <ClCompile Include="DatabaseUtilities.cpp">
+      <Filter>Utilities</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

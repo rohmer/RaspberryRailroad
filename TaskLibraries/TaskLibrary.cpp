@@ -135,3 +135,49 @@ Logger TaskLibrary::CreateLogger(log4cplus::LogLevel minSevToLog, bool logToStdO
 	return logger;
 }
 
+Logger TaskLibrary::CreateLogger(log4cplus::LogLevel minSevToLog, bool logToStdOut, bool logToFile, std::string filename, bool logToNet, int port, std::string hostname, bool logToDB, std::string databaseServer, std::string database, std::string userName, std::string password, int dbPort)
+{
+	log4cplus::initialize();
+	Logger logger = Logger::getRoot();
+	log4cplus::getMDC().put(LOG4CPLUS_TEXT("key"),
+		LOG4CPLUS_TEXT("MDC value"));
+	logger.setLogLevel(minSevToLog);
+	log4cplus::tstring pattern = LOG4CPLUS_TEXT("%d{%m/%d/%y %H:%M:%S,%Q} [%t] %-5p %c{2} %%%x%% - %X{key} - %m [%l]%n");
+	if (logToStdOut)
+	{
+		SharedObjectPtr<Appender> appender(new ConsoleAppender());
+
+		appender->setLayout(std::auto_ptr<Layout>(new PatternLayout(pattern)));
+		logger.addAppender(appender);
+	}
+
+	if (logToFile)
+	{
+		SharedFileAppenderPtr appender(
+			new RollingFileAppender(LOG4CPLUS_TEXT(filename), 5 * 1024 * 1024, 5,
+			false, true));
+
+		appender->setLayout(std::auto_ptr<Layout>(new PatternLayout(pattern)));
+		appender->getloc();
+		logger.addAppender(SharedAppenderPtr(appender.get()));
+	}
+	if (logToNet)
+	{
+		tstring serverName = LOG4CPLUS_TEXT(serverName);
+		SharedAppenderPtr appender(new SocketAppender(serverName, port));
+		appender->setLayout(std::auto_ptr<Layout>(new PatternLayout(pattern)));
+		logger.addAppender(appender);
+	}
+	if (logToDB)
+	{
+		tstring dbServer = LOG4CPLUS_TEXT(dbServer);
+		tstring db = LOG4CPLUS_TEXT(db);
+		tstring dbUser = LOG4CPLUS_TEXT(userName);
+		tstring dbPassword = LOG4CPLUS_TEXT(password);
+		SharedAppenderPtr appender(new DatabaseAppender(dbServer, database, dbUser, dbPassword, dbPort));
+		log4cplus::tstring dbPattern = LOG4CPLUS_TEXT("%m");
+		appender->setLayout(std::auto_ptr<Layout>(new PatternLayout(dbPattern)));
+		logger.addAppender(appender);
+	}
+	return logger;
+}
