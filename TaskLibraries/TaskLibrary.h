@@ -15,7 +15,7 @@
 #include <vector>
 #include <unistd.h>
 #include "ScriptedTask/ScriptedTask.h"
-#include <DatabaseAppender.h>
+#include "../DatabaseConnector/DatabaseAppender.h"
 
 #ifndef TaskLibrarySet
 #define TaskLibrarySet

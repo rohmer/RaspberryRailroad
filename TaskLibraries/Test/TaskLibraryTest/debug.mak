@@ -14,8 +14,8 @@ OBJCOPY := C:/SysGCC/raspberry/bin/arm-linux-gnueabihf-objcopy.exe
 #Additional flags
 PREPROCESSOR_MACROS := DEBUG
 INCLUDE_DIRS := ../.. ../../../Logging/include ../../../3rdParty/wiringPI/wiringPI ../../../HelperLibraries ../../../3rdParty/cpptest-1.1.2/src ../../../OccupancyLibrary ../../../3rdParty/pugixml/src ../../../DatabaseConnector
-LIBRARY_DIRS := 
-LIBRARY_NAMES := pthread
+LIBRARY_DIRS := /usr/local/lib
+LIBRARY_NAMES := pthread mysqlcppconn
 ADDITIONAL_LINKER_INPUTS := 
 MACOS_FRAMEWORKS := 
 LINUX_PACKAGES := 

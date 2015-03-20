@@ -72,4 +72,7 @@
       <Filter>Tests\OccupancyLibrary</Filter>
     </Xsd>
   </ItemGroup>
+  <ItemGroup>
+    <Library Include="..\..\..\3rdParty\mysqlconnector\libmysqlcppconn.so" />
+  </ItemGroup>
 </Project>

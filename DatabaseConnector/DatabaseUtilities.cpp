@@ -24,14 +24,13 @@ sql::Connection *DatabaseUtilities::getDBConnection(string dbUser, string dbPass
 
 bool DatabaseUtilities::ClearTable(string dbUser, string dbPass, string database, string dbServer, string table)
 {
-	sql::Connection *dbConnection = getDBConnection(dbUser, dbPass, database, dbServer);
-	if (dbConnection == NULL)
-		return false;
-
-	sql::Statement *stmt=dbConnection->createStatement();
-
 	try
 	{
+		sql::Connection *dbConnection = getDBConnection(dbUser, dbPass, database, dbServer);
+		if (dbConnection == NULL)
+			return false;
+
+		sql::Statement *stmt = dbConnection->createStatement();
 		ostringstream statement;
 		statement << "TRUNCATE TABLE " << table;
 		if (!stmt->execute(statement.str()))

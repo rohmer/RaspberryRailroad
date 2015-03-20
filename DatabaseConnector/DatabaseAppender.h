@@ -8,11 +8,11 @@
 #include <sstream>
 #include <string.h>
 #include <time.h>
-#include <mysql_connection.h>
-#include <cppconn/driver.h>
-#include <cppconn/exception.h>
-#include <cppconn/resultset.h>
-#include <cppconn/statement.h>
+#include "../3rdParty/mysqlconnector/mysql_connection.h"
+#include "../3rdParty/mysqlconnector/cppconn/driver.h"
+#include "../3rdParty/mysqlconnector/cppconn/exception.h"
+#include "../3rdParty/mysqlconnector/cppconn/resultset.h"
+#include "../3rdParty/mysqlconnector/cppconn/statement.h"
 
 using namespace std;
 

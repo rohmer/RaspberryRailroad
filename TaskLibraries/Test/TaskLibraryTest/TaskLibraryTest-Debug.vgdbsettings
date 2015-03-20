@@ -133,24 +133,7 @@
   </Debug>
   <CustomBuild>
     <PreBuildActions />
-    <PostBuildActions>
-      <CustomActionBase xsi:type="SourceTransferAction">
-        <SkipWhenRunningCommandList>false</SkipWhenRunningCommandList>
-        <RemoteHost>
-          <HostName>build</HostName>
-          <Transport>Alias</Transport>
-          <UserName />
-        </RemoteHost>
-        <LocalDirectory>$(ProjectDir)</LocalDirectory>
-        <RemoteDirectory>/tmp</RemoteDirectory>
-        <FileMasks>
-          <string>*.xml</string>
-        </FileMasks>
-        <TransferNewFilesOnly>false</TransferNewFilesOnly>
-        <IncludeSubdirectories>true</IncludeSubdirectories>
-        <SelectedDirectories />
-      </CustomActionBase>
-    </PostBuildActions>
+    <PostBuildActions />
     <PreCleanActions />
     <PostCleanActions />
   </CustomBuild>

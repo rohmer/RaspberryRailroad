@@ -1,0 +1,273 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="driver">
+      <UniqueIdentifier>{cd1957e2-82d6-4a42-966d-25a743cb67f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="driver\nativeapi">
+      <UniqueIdentifier>{9dad9732-08c3-423f-aa60-7a90079e9975}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cppconn">
+      <UniqueIdentifier>{bf7930ed-7c41-40e0-96d1-8a35592a59e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="thread">
+      <UniqueIdentifier>{32a779a7-9df1-419b-995d-f6337271409d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\driver\nativeapi\libmysql_dynamic_proxy.cpp">
+      <Filter>driver\nativeapi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\driver\nativeapi\libmysql_static_proxy.cpp">
+      <Filter>driver\nativeapi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\driver\nativeapi\library_loader.cpp">
+      <Filter>driver\nativeapi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\driver\nativeapi\mysql_client_api.cpp">
+      <Filter>driver\nativeapi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\driver\nativeapi\mysql_native_connection_wrapper.cpp">
+      <Filter>driver\nativeapi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\driver\nativeapi\mysql_native_driver_wrapper.cpp">
+      <Filter>driver\nativeapi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\driver\nativeapi\mysql_native_resultset_wrapper.cpp">
+      <Filter>driver\nativeapi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\driver\nativeapi\mysql_native_statement_wrapper.cpp">
+      <Filter>driver\nativeapi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\driver\mysql_art_resultset.cpp">
+      <Filter>driver</Filter>
+    </ClCompile>
+    <ClCompile Include="..\driver\mysql_art_rset_metadata.cpp">
+      <Filter>driver</Filter>
+    </ClCompile>
+    <ClCompile Include="..\driver\mysql_connection.cpp">
+      <Filter>driver</Filter>
+    </ClCompile>
+    <ClCompile Include="..\driver\mysql_debug.cpp">
+      <Filter>driver</Filter>
+    </ClCompile>
+    <ClCompile Include="..\driver\mysql_driver.cpp">
+      <Filter>driver</Filter>
+    </ClCompile>
+    <ClCompile Include="..\driver\mysql_metadata.cpp">
+      <Filter>driver</Filter>
+    </ClCompile>
+    <ClCompile Include="..\driver\mysql_parameter_metadata.cpp">
+      <Filter>driver</Filter>
+    </ClCompile>
+    <ClCompile Include="..\driver\mysql_prepared_statement.cpp">
+      <Filter>driver</Filter>
+    </ClCompile>
+    <ClCompile Include="..\driver\mysql_ps_resultset.cpp">
+      <Filter>driver</Filter>
+    </ClCompile>
+    <ClCompile Include="..\driver\mysql_ps_resultset_metadata.cpp">
+      <Filter>driver</Filter>
+    </ClCompile>
+    <ClCompile Include="..\driver\mysql_resultbind.cpp">
+      <Filter>driver</Filter>
+    </ClCompile>
+    <ClCompile Include="..\driver\mysql_resultset.cpp">
+      <Filter>driver</Filter>
+    </ClCompile>
+    <ClCompile Include="..\driver\mysql_resultset_metadata.cpp">
+      <Filter>driver</Filter>
+    </ClCompile>
+    <ClCompile Include="..\driver\mysql_statement.cpp">
+      <Filter>driver</Filter>
+    </ClCompile>
+    <ClCompile Include="..\driver\mysql_uri.cpp">
+      <Filter>driver</Filter>
+    </ClCompile>
+    <ClCompile Include="..\driver\mysql_util.cpp">
+      <Filter>driver</Filter>
+    </ClCompile>
+    <ClCompile Include="..\driver\mysql_warning.cpp">
+      <Filter>driver</Filter>
+    </ClCompile>
+    <ClCompile Include="..\thread\my_pthread.c">
+      <Filter>thread</Filter>
+    </ClCompile>
+    <ClCompile Include="..\thread\my_thr_init.c">
+      <Filter>thread</Filter>
+    </ClCompile>
+    <ClCompile Include="..\thread\my_wincond.c">
+      <Filter>thread</Filter>
+    </ClCompile>
+    <ClCompile Include="..\thread\my_winthread.c">
+      <Filter>thread</Filter>
+    </ClCompile>
+    <ClCompile Include="..\thread\thr_mutex.c">
+      <Filter>thread</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\driver\nativeapi\libmysql_dynamic_proxy.h">
+      <Filter>driver\nativeapi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\driver\nativeapi\libmysql_static_proxy.h">
+      <Filter>driver\nativeapi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\driver\nativeapi\library_loader.h">
+      <Filter>driver\nativeapi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\driver\nativeapi\mysql_client_api.h">
+      <Filter>driver\nativeapi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\driver\nativeapi\mysql_native_connection_wrapper.h">
+      <Filter>driver\nativeapi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\driver\nativeapi\mysql_native_driver_wrapper.h">
+      <Filter>driver\nativeapi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\driver\nativeapi\mysql_native_resultset_wrapper.h">
+      <Filter>driver\nativeapi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\driver\nativeapi\mysql_native_statement_wrapper.h">
+      <Filter>driver\nativeapi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\driver\nativeapi\mysql_private_iface.h">
+      <Filter>driver\nativeapi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\driver\nativeapi\native_connection_wrapper.h">
+      <Filter>driver\nativeapi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\driver\nativeapi\native_driver_wrapper.h">
+      <Filter>driver\nativeapi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\driver\nativeapi\native_resultset_wrapper.h">
+      <Filter>driver\nativeapi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\driver\nativeapi\native_statement_wrapper.h">
+      <Filter>driver\nativeapi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\driver\mysql_art_resultset.h">
+      <Filter>driver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\driver\mysql_art_rset_metadata.h">
+      <Filter>driver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\driver\mysql_connection.h">
+      <Filter>driver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\driver\mysql_connection_data.h">
+      <Filter>driver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\driver\mysql_connection_options.h">
+      <Filter>driver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\driver\mysql_debug.h">
+      <Filter>driver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\driver\mysql_driver.h">
+      <Filter>driver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\driver\mysql_error.h">
+      <Filter>driver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\driver\mysql_metadata.h">
+      <Filter>driver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\driver\mysql_parameter_metadata.h">
+      <Filter>driver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\driver\mysql_prepared_statement.h">
+      <Filter>driver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\driver\mysql_ps_resultset.h">
+      <Filter>driver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\driver\mysql_ps_resultset_metadata.h">
+      <Filter>driver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\driver\mysql_public_iface.h">
+      <Filter>driver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\driver\mysql_resultbind.h">
+      <Filter>driver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\driver\mysql_resultset.h">
+      <Filter>driver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\driver\mysql_resultset_metadata.h">
+      <Filter>driver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\driver\mysql_statement.h">
+      <Filter>driver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\driver\mysql_statement_options.h">
+      <Filter>driver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\driver\mysql_uri.h">
+      <Filter>driver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\driver\mysql_util.h">
+      <Filter>driver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\driver\mysql_warning.h">
+      <Filter>driver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\cppconn\build_config.h">
+      <Filter>cppconn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\cppconn\config.h">
+      <Filter>cppconn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\cppconn\connection.h">
+      <Filter>cppconn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\cppconn\datatype.h">
+      <Filter>cppconn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\cppconn\driver.h">
+      <Filter>cppconn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\cppconn\exception.h">
+      <Filter>cppconn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\cppconn\metadata.h">
+      <Filter>cppconn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\cppconn\parameter_metadata.h">
+      <Filter>cppconn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\cppconn\prepared_statement.h">
+      <Filter>cppconn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\cppconn\resultset.h">
+      <Filter>cppconn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\cppconn\resultset_metadata.h">
+      <Filter>cppconn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\cppconn\sqlstring.h">
+      <Filter>cppconn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\cppconn\statement.h">
+      <Filter>cppconn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\cppconn\variant.h">
+      <Filter>cppconn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\cppconn\version_info.h">
+      <Filter>cppconn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\cppconn\warning.h">
+      <Filter>cppconn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\thread\my_no_pthread.h">
+      <Filter>thread</Filter>
+    </ClInclude>
+    <ClInclude Include="..\thread\my_pthread.h">
+      <Filter>thread</Filter>
+    </ClInclude>
+    <ClInclude Include="..\thread\thr_alarm.h">
+      <Filter>thread</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

@@ -53,6 +53,6 @@ class Block
 		void AddDeactivationTask(BlockTaskType task);
 		int GetID();
 		vector<int> GetNeighbors();
-		bool SetOccupied(bool val) { isOccupied = val; }
+		void SetOccupied(bool val) { isOccupied = val; }
 		vector<int> GetDetectors() { return detectors; }
 };

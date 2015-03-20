@@ -7,9 +7,7 @@
       <PathStyle>MinGWUnixSlash</PathStyle>
     </CustomSourceDirectories>
     <BuildHost>
-      <HostName>127.0.0.1</HostName>
-      <Transport>SSH</Transport>
-      <UserName>pi</UserName>
+      <Transport>None</Transport>
     </BuildHost>
     <DeploymentHost>
       <HostName>127.0.0.1</HostName>
@@ -19,9 +17,7 @@
     <MainSourceTransferCommand>
       <SkipWhenRunningCommandList>false</SkipWhenRunningCommandList>
       <RemoteHost>
-        <HostName>127.0.0.1</HostName>
-        <Transport>SSH</Transport>
-        <UserName>pi</UserName>
+        <Transport>None</Transport>
       </RemoteHost>
       <LocalDirectory>$(ProjectDir)</LocalDirectory>
       <RemoteDirectory>/tmp/VisualGDB/$(ProjectDirUnixStyle)</RemoteDirectory>
@@ -36,6 +32,7 @@
       </FileMasks>
       <TransferNewFilesOnly>true</TransferNewFilesOnly>
       <IncludeSubdirectories>true</IncludeSubdirectories>
+      <SelectedDirectories />
     </MainSourceTransferCommand>
     <AllowChangingHostForMainCommands>false</AllowChangingHostForMainCommands>
     <SkipBuildIfNoSourceFilesChanged>false</SkipBuildIfNoSourceFilesChanged>
@@ -68,6 +65,9 @@
     </Toolchain>
     <MakeCommandTemplate>
       <SkipWhenRunningCommandList>false</SkipWhenRunningCommandList>
+      <RemoteHost>
+        <Transport>None</Transport>
+      </RemoteHost>
       <Command>cmd.exe</Command>
       <Arguments>/c "C:\SysGCC\raspberry\bin\make.exe"</Arguments>
       <WorkingDirectory>$(BuildDir)</WorkingDirectory>

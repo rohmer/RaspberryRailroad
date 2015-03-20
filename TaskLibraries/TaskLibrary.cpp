@@ -174,7 +174,7 @@ Logger TaskLibrary::CreateLogger(log4cplus::LogLevel minSevToLog, bool logToStdO
 		tstring db = LOG4CPLUS_TEXT(db);
 		tstring dbUser = LOG4CPLUS_TEXT(userName);
 		tstring dbPassword = LOG4CPLUS_TEXT(password);
-		SharedAppenderPtr appender(new DatabaseAppender(dbServer, database, dbUser, dbPassword, dbPort));
+		SharedAppenderPtr appender(new DatabaseAppender(dbServer, database, dbUser, dbPassword));
 		log4cplus::tstring dbPattern = LOG4CPLUS_TEXT("%m");
 		appender->setLayout(std::auto_ptr<Layout>(new PatternLayout(dbPattern)));
 		logger.addAppender(appender);

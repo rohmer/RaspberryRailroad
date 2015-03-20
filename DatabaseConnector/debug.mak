@@ -14,7 +14,7 @@ OBJCOPY := C:/SysGCC/raspberry/bin/arm-linux-gnueabihf-objcopy.exe
 #Additional flags
 PREPROCESSOR_MACROS := DEBUG
 INCLUDE_DIRS := ../Logging/include ../3rdParty/mysqlconnector
-LIBRARY_DIRS := 
+LIBRARY_DIRS := mysqlcppconn
 LIBRARY_NAMES := 
 ADDITIONAL_LINKER_INPUTS := 
 MACOS_FRAMEWORKS := 
