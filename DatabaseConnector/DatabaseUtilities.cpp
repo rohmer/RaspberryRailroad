@@ -22,12 +22,38 @@ sql::Connection *DatabaseUtilities::getDBConnection(string dbUser, string dbPass
 	return dbConnection;
 }
 
-bool DatabaseUtilities::ClearTable(string dbUser, string dbPass, string database, string dbServer, string table)
+bool DatabaseUtilities::TableExists(string dbUser, string dbPass, string database, string dbServer, string table)
 {
 	try
 	{
 		sql::Connection *dbConnection = getDBConnection(dbUser, dbPass, database, dbServer);
-		if (dbConnection == NULL)
+		if (dbConnection == NULL)			
+			return false;
+
+		sql::Statement *stmt = dbConnection->createStatement();
+		sql::ResultSet *res = stmt->executeQuery("show tables like 'logs'");
+		if (res->rowsCount() == 1)
+			return true;
+	
+		stmt->close();
+		return false;
+	} 
+	catch (sql::SQLException &e)
+	{
+		cout << e.what();
+		return false;
+	}
+	
+}
+
+bool DatabaseUtilities::ClearTable(string dbUser, string dbPass, string database, string dbServer, string table)
+{
+	if (!TableExists(dbUser, dbPass, database, dbServer, table))
+		return true;
+	try
+	{
+		sql::Connection *dbConnection = getDBConnection(dbUser, dbPass, database, dbServer);
+		if (dbConnection == NULL)			
 			return false;
 
 		sql::Statement *stmt = dbConnection->createStatement();
@@ -41,6 +67,7 @@ bool DatabaseUtilities::ClearTable(string dbUser, string dbPass, string database
 	} 
 	catch (sql::SQLException &e)
 	{
+		cout << e.what();
 		return false;
 	}
 	return true;

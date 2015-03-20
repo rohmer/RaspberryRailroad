@@ -18,4 +18,5 @@ class DatabaseUtilities
 
 	public:
 		static bool ClearTable(string dbUser, string dbPass, string database, string dbServer, string table);
+		static bool TableExists(string dbUser, string dbPass, string database, string dbServer, string table);
 };
