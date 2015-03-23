@@ -31,14 +31,12 @@ class TaskLibrary
 		bool multiThreaded;
 
 	public:
-		TaskLibrary(log4cplus::LogLevel minSevToLog, bool logToStdOut, bool logToFile, std::string filename, bool logToNet, int port, std::string hostname);
-		TaskLibrary(log4cplus::LogLevel minSevToLog, bool logToStdOut, bool logToFile, std::string filename, bool logToNet, int port, std::string hostname, bool logToDB, std::string databaseServer, std::string database, std::string userName, std::string password, int dbPort);
+		TaskLibrary(log4cplus::LogLevel minSevToLog, bool logToStdOut, bool logToFile, std::string filename, bool logToNet, int port, std::string hostname);		
 		TaskLibrary(Logger logger);
 		TaskBase *GetTask(TaskTypes);
 		void SetMultiThreaded(bool value);
 		void RunTask(TaskBase* task, vector<int> args);	
-		static Logger CreateLogger(log4cplus::LogLevel minSevToLog, bool logToStdOut, bool logToFile, std::string filename, bool logToNet, int port, std::string hostname);
-		static Logger CreateLogger(log4cplus::LogLevel minSevToLog, bool logToStdOut, bool logToFile, std::string filename, bool logToNet, int port, std::string hostname, bool logToDB, std::string databaseServer, std::string database, std::string userName, std::string password, int dbPort);
+		static Logger CreateLogger(log4cplus::LogLevel minSevToLog, bool logToStdOut, bool logToFile, std::string filename, bool logToNet, int port, std::string hostname);		
 		Logger GetLogger() { return log; }
 };
 #endif

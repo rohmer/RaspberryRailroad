@@ -24,7 +24,7 @@ error:
 endif
 
 SOURCEFILES := LEDTask/LEDTask.cpp LEDTask/max7219.cpp LEDTask/max7219Container.cpp PauseTask/PauseTask.cpp ScriptedTask/ScriptedTask.cpp ServoTask/pca9685.c ServoTask/PCA9685Driver.cpp ServoTask/ServoTask.cpp TaskBase/TaskBase.cpp TaskLibrary.cpp
-EXTERNAL_LIBS := ../Logging/Solution/$(BINARYDIR)/Log4CPlus.so ../3rdParty/wiringPi/wiringPi/$(BINARYDIR)/wiringPi.so
+EXTERNAL_LIBS := ../Logging/Solution/$(BINARYDIR)/Log4CPlus.so ../DatabaseConnector/$(BINARYDIR)/DatabaseConnector.so ../3rdParty/wiringPi/wiringPi/$(BINARYDIR)/wiringPi.so
 EXTERNAL_LIBS_COPIED := $(foreach lib, $(EXTERNAL_LIBS),$(BINARYDIR)/$(notdir $(lib)))
 
 CFLAGS += $(COMMONFLAGS)
@@ -202,6 +202,9 @@ $(BINARYDIR)/TaskBase.o : TaskBase/TaskBase.cpp $(all_make_files) |$(BINARYDIR)
 
 $(BINARYDIR)/Log4CPlus.so : ../Logging/Solution/$(BINARYDIR)/Log4CPlus.so
 	$(CP) ../Logging/Solution/$(BINARYDIR)/Log4CPlus.so $(BINARYDIR)/Log4CPlus.so
+
+$(BINARYDIR)/DatabaseConnector.so : ../DatabaseConnector/$(BINARYDIR)/DatabaseConnector.so
+	$(CP) ../DatabaseConnector/$(BINARYDIR)/DatabaseConnector.so $(BINARYDIR)/DatabaseConnector.so
 
 $(BINARYDIR)/wiringPi.so : ../3rdParty/wiringPi/wiringPi/$(BINARYDIR)/wiringPi.so
 	$(CP) ../3rdParty/wiringPi/wiringPi/$(BINARYDIR)/wiringPi.so $(BINARYDIR)/wiringPi.so

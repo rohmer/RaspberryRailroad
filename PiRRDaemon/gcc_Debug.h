@@ -609,6 +609,9 @@
 #ifndef __UDQ_FBIT__
 #define __UDQ_FBIT__ 64
 #endif
+#ifndef DEBUG
+#define DEBUG 1
+#endif
 #ifndef __INT8_TYPE__
 #define __INT8_TYPE__ signed char
 #endif
@@ -1080,9 +1083,6 @@
 #ifndef __ATOMIC_RELEASE
 #define __ATOMIC_RELEASE 3
 #endif
-#ifndef DEBUG
-#define DEBUG 
-#endif
 #endif
 
 // --- Include directories begin --- //
@@ -1094,6 +1094,10 @@
 //c:/sysgcc/raspberry/lib/gcc/../../lib/gcc/arm-linux-gnueabihf/4.9/../../../../arm-linux-gnueabihf/include/arm-linux-gnueabihf/c++/4.9
 //c:\sysgcc\raspberry\bin\../arm-linux-gnueabihf/sysroot/usr/include/arm-linux-gnueabihf
 //c:\sysgcc\raspberry\bin\../arm-linux-gnueabihf/sysroot/usr/include
+//../Logging/include
+//../TaskLibraries
+//../OccupancyLibrary
+//../3rdParty/libjson
 // --- Include directories end --- //
 
 
