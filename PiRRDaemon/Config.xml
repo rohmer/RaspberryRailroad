@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+  <logger minSev="WARN" logStdOut="true">
+    <fileLogger logFile="PiRRDaemon.log"/>
+    <netLogger port="1234" server="logserver"/>               
+  </logger>
+  <occupancy blockFile="TestBlocks.xml"/>
+  <taskLibrary taskFile="tasks.xml"/>
+</config>

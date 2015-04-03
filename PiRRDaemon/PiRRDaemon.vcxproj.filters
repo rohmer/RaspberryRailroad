@@ -29,6 +29,9 @@
     <None Include="release.mak">
       <Filter>Make files</Filter>
     </None>
+    <None Include="Config.json">
+      <Filter>Config</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -42,5 +45,10 @@
     <ClInclude Include="Configuration.h">
       <Filter>Config</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="Config.xml">
+      <Filter>Config</Filter>
+    </Xml>
   </ItemGroup>
 </Project>

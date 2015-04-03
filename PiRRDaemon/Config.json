@@ -1,0 +1,15 @@
+{
+  "config": {
+    "logger": {
+      "-logStdOut": "true",
+      "-minSev": "WARN",
+      "fileLogger": { "-logFile": "PiRRDaemon.log" },
+      "netLogger": {
+        "-server": "logserver",
+        "-port": "1234"
+      }
+    },
+    "occupancy": { "-blockFile": "TestBlocks.xml" },
+    "taskLibrary": { "-taskFile": "tasks.xml" }
+  }
+}

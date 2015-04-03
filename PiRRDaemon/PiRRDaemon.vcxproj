@@ -63,6 +63,7 @@
   <ItemDefinitionGroup>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <None Include="Config.json" />
     <None Include="debug.mak" />
     <None Include="Makefile" />
     <None Include="release.mak" />
@@ -73,6 +74,29 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Configuration.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\3rdParty\libjson\libJson\libJson.vcxproj">
+      <Project>{354ee023-4b8c-40af-b108-2f54ab980117}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\3rdParty\wiringPi\wiringPi\wiringPi.vcxproj">
+      <Project>{a58682bd-413d-4d85-87ff-07d197a35b6e}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Experiments\Max7221\Max7221.vcxproj">
+      <Project>{8dc1d713-6199-4bea-9e33-c43d4e5f1c8c}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Logging\Solution\Log4CPlus.vcxproj">
+      <Project>{31172e34-fee3-4ce2-9691-07cc1ba2b371}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\OccupancyLibrary\OccupancyLibrary.vcxproj">
+      <Project>{6a10a353-0fba-4f03-96c4-3ac10d8240c0}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\TaskLibraries\TaskLibraries.vcxproj">
+      <Project>{542dd695-a5c3-42ba-89e7-47bc491d31d6}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="Config.xml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
