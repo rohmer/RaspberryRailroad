@@ -39,5 +39,17 @@ bool Configuration::parseConfig()
 
 	// File is read, lets parse
 	JSONNODE *node = json_parse(jsonText.c_str());
+	
+	if (!parseJSON(node))
+		return false;
+}
 
+bool Configuration::parseJSON(const JSONNODE *n)
+{
+	if (n == NULL)
+		return false;
+	
+	
+	
+	return true;
 }

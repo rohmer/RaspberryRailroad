@@ -85,6 +85,7 @@
     <ClCompile Include="..\_internal\Source\libjson.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\JSONOptions.h" />
     <ClInclude Include="..\_internal\Source\internalJSONNode.h" />
     <ClInclude Include="..\_internal\Source\JSONAllocator.h" />
     <ClInclude Include="..\_internal\Source\JSONChildren.h" />
